@@ -4,12 +4,13 @@ import traceback
 import requests
 
 class DatabaseManager:
-    def __init__(self, url, port, db, user):
+    def __init__(self, url, port, db, user, password):
         self.url = url
         self.port = port
         self.db = db
         self.user = user
-        self.engine = create_engine(f"mysql+pymysql://{user}@{url}:{port}/{db}", echo=True)
+        self.password = password
+        self.engine = create_engine(f"mysql+pymysql://{user}:{password}@{url}:{port}/{db}", echo=True)
         
     def create_database(self):
         sql = f"CREATE DATABASE IF NOT EXISTS {self.db};"
@@ -73,9 +74,10 @@ URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
 PORT = "3306"
 DB = "dublinbikes"
 USER = "admin"
+PASSWORD = "boldlynavigatingnature"
 
 # Create a DatabaseManager instance to manage database operations
-db_manager = DatabaseManager(URL, PORT, DB, USER)
+db_manager = DatabaseManager(URL, PORT, DB, USER, PASSWORD)
 db_manager.create_database()
 db_manager.create_table("availability", [
     "number INTEGER",
