@@ -13,12 +13,18 @@ class DatabaseManager:
         
     def create_database(self):
         sql = f"CREATE DATABASE IF NOT EXISTS {self.db};"
-        self.engine.execute(sql)
+        with self.engine.connect() as conn:
+            conn.execute(sql)
         
     def create_table(self, table_name, columns):
         columns_str = ', '.join(columns)
         sql = f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});"
-        self.engine.execute(sql)
+        with self.engine.connect() as conn:
+            conn.execute(sql)
+            
+    def execute_sql(self, sql):
+        with self.engine.connect() as conn:
+            conn.execute(sql)
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
@@ -36,8 +42,7 @@ class StationDataHandler:
             traceback.print_exc()
             return None
 
-    def insert_station_data(self, engine, station_data):
-        db_manager = DatabaseManager(engine.url, engine.port, engine.db, engine.user)
+    def insert_station_data(self, db_manager, station_data):
         db_manager.create_table("station", [
             "address VARCHAR(256)",
             "banking INTEGER",
@@ -58,7 +63,7 @@ class StationDataHandler:
                     INSERT INTO dublinbikes.station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
                     VALUES ('{station['address'].replace("'", "''")}', {station['banking']}, {station['bike_stands']}, {station['bonus']}, '{station['contract_name'].replace("'", "''")}', '{station['name'].replace("'", "''")}', {station['number']}, {station['position']['lat']}, {station['position']['lng']}, '{station['status'].replace("'", "''")}')
                     """
-                    engine.execute(sql)
+                    db_manager.execute_sql(sql)
                 except Exception as e:
                     print(f"Error inserting station {station['number']}: {e}")
                     traceback.print_exc()
@@ -91,5 +96,4 @@ station_data = station_data_handler.get_station_info()
 
 # Inserting station data into the database
 if station_data:
-    engine = create_engine(f"mysql+pymysql://{USER}@{URL}:{PORT}/{DB}", echo=True)
-    station_data_handler.insert_station_data(engine, station_data)
+    station_data_handler.insert_station_data(db_manager, station_data)
