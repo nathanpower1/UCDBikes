@@ -38,7 +38,7 @@ class StationDataHandler:
             print(f"Error fetching station information: {e}")
             traceback.print_exc()
             return None
-
+    
     def insert_station_data(self, db_manager, station_data):
         db_manager.create_table("station", [
             "address VARCHAR(256)",
@@ -54,7 +54,7 @@ class StationDataHandler:
         ])
 
         if station_data:
-            for station in station_data.get('stations', []):
+            for station in station_data:
                 try:
                     sql = f"""
                     INSERT INTO dublinbikes.station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
