@@ -25,7 +25,7 @@ class DatabaseManager:
             if isinstance(sql, str):
                 conn.execute(sql)
             else:
-                conn.execute(sql.compile())
+                conn.execute(sql)
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
