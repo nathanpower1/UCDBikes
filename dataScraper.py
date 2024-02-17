@@ -20,8 +20,11 @@ class DatabaseManager:
         table.create(self.engine, checkfirst=True)
         return table
             
-    def execute_sql(self, sql):
-        self.engine.execute(sql)
+    def execute_sql(self, statement, data=None):
+        if data is None:
+            self.connection.execute(statement)
+        else:
+            self.connection.execute(statement, data)
 
 
 class StationDataHandler:
