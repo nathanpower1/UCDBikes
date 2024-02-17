@@ -25,9 +25,9 @@ class DatabaseManager:
         logging.info(f"Table {table_name} created successfully.")
         print(f"Table {table_name} created successfully.")
             
-    def execute_sql(self, sql):
+    def execute_sql(self, sql, values):
         try:
-            self.connection.execute(sql)
+            self.engine.execute(sql, values)
             logging.info("SQL command executed successfully.")
         except Exception as e:
             logging.error(f"Error executing SQL command: {e}")
@@ -82,9 +82,9 @@ class StationDataHandler:
                 lat = data.get('position').get('lat')
                 lng = data.get('position').get('lng')
                 status = data.get('status')
-
-                sql = f"INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES ('{address}', {banking}, {bike_stands}, {bonus}, '{contract}', '{name}', {number}, {lat}, {lng}, '{status}');"
-                db_manager.execute_sql(sql)
+                sql = "INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
+                db_manager.execute_sql(sql, values)
                 print(f"Data inserted successfully for station {data.get('number')}")
 
 # Define your database connection details
