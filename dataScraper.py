@@ -89,7 +89,7 @@ class StationDataHandler:
                 sql = text("""INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
                         VALUES (:address, :banking, :bike_stands, :bonus, :contract_name, :name, :number, :position_lat, :position_lng, :status)
                     """)
-                DatabaseManager.engine.execute(sql, address=address, banking=banking, bike_stands=bike_stands, bonus=bonus, contract_name=contract,
+                db_manager.execute_sql(sql, address=address, banking=banking, bike_stands=bike_stands, bonus=bonus, contract_name=contract,
                 name=name, number=number, position_lat=lat, position_lng=lng, status=status)
                 print(f"Data inserted successfully for station {data.get('number')}")
 
