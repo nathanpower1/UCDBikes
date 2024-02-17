@@ -25,16 +25,13 @@ class DatabaseManager:
         logging.info(f"Table {table_name} created successfully.")
         print(f"Table {table_name} created successfully.")
             
-    def execute_sql(self, sql, values=None):
-            for res in self.engine.execute("SHOW VARIABLES;"):
-                print(res)
-        
-            if values is None:
-                # If values are not provided, execute the SQL statement directly
-                self.connection.execute(sql)
-            else:
-                # If values are provided, execute the SQL statement with parameterized values
-                self.connection.execute(sql, values)
+    def execute_sql(self, sql):
+        try:
+            self.connection.execute(sql)
+            logging.info("SQL command executed successfully.")
+        except Exception as e:
+            logging.error(f"Error executing SQL command: {e}")
+            print(f"Error executing SQL command: {e}")
 
         
 
@@ -86,11 +83,11 @@ class StationDataHandler:
                 lng = data.get('position').get('lng')
                 status = data.get('status')
 
-                sql = text("""INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
-                        VALUES (:address, :banking, :bike_stands, :bonus, :contract_name, :name, :number, :position_lat, :position_lng, :status)
-                    """)
-                db_manager.execute_sql(sql, address=address, banking=banking, bike_stands=bike_stands, bonus=bonus, contract_name=contract,
-                name=name, number=number, position_lat=lat, position_lng=lng, status=status)
+                sql = f"""
+                    INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
+                    VALUES ('{address}', {banking}, {bike_stands}, {bonus}, '{contract}', '{name}', {number}, {lat}, {lng}, '{status}')
+                """
+                db_manager.execute_sql(sql)
                 print(f"Data inserted successfully for station {data.get('number')}")
 
 # Define your database connection details
