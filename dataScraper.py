@@ -1,6 +1,6 @@
 import simplejson as json
 import sqlalchemy as sqla
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, Text
 import pandas as pd
 import traceback
 import requests
@@ -85,9 +85,11 @@ class StationDataHandler:
                 lng = data.get('position').get('lng')
                 status = data.get('status')
 
-                db_manager.execute_sql(sql = f"""INSERT INTO station (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
-                VALUES ('{address}', {banking}, {bike_stands}, {bonus}, '{contract}', '{name}', {number}, {lat}, {lng}, '{status}')
-                """)
+                sql = text("""INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
+                        VALUES (:address, :banking, :bike_stands, :bonus, :contract_name, :name, :number, :position_lat, :position_lng, :status)
+                    """)
+                DatabaseManager.engine.execute(sql, address=address, banking=banking, bike_stands=bike_stands, bonus=bonus, contract_name=contract,
+                name=name, number=number, position_lat=lat, position_lng=lng, status=status)
                 print(f"Data inserted successfully for station {data.get('number')}")
 
 # Define your database connection details
