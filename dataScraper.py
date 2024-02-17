@@ -24,7 +24,8 @@ class DatabaseManager:
         table.create(self.engine, checkfirst=True)
         logging.info(f"Table {table_name} created successfully.")
         print(f"Table {table_name} created successfully.")
-            
+    
+    #potentially irrelevant        
     def execute_sql(self, sql, values):
         try:
             self.connection.execute(sql, values)
@@ -70,7 +71,7 @@ class StationDataHandler:
         db_manager.create_table("station", columns)
 
         if station_data:
-            # Assuming station_data is a list of dictionaries
+            
             for data in station_data:
 
                 address = data.get('address')
@@ -85,25 +86,28 @@ class StationDataHandler:
                 status = data.get('status')
 
                 values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
+                #Values are correctly pulled from the API
                 print(values)
+
+                #Issue with executing code below
                 db_manager.engine.execute("INSERT INTO station VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
                 print(f"Station {name} inserted successfully.")
 
-# Define your database connection details
+# Database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
 PORT = "3306"
 DB = "dublinbikes"
 USER = "admin"
 PASSWORD = "boldlynavigatingnature"
 
-# Create a DatabaseManager instance to manage database operations
+
 db_manager = DatabaseManager(URL, PORT, DB, USER, PASSWORD)
 
-# Define your API contract and key
+# API connection details
 contract = 'dublin'
 api_key = '954118b06527f2a603d5abd3c315876b16221c14'
 
-# Create a StationDataHandler instance to handle station data operations
+
 station_data_handler = StationDataHandler(contract, api_key)
 
 # Fetching station information from the API
