@@ -16,7 +16,7 @@ class DatabaseManager:
         self.db = db
         self.user = user
         self.password = password
-        self.engine = create_engine(f"mysql+pymysql://{user}:{password}@{url}:{port}/{db}", echo=True)
+        self.engine = create_engine(f"mysql://{user}:{password}@{url}:{port}/{db}", echo=True)
         self.metadata = MetaData()
         self.connection = self.engine.connect()
         
