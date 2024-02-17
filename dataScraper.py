@@ -41,37 +41,37 @@ class StationDataHandler:
             return None
     
     def insert_station_data(self, db_manager, station_data):
-    columns = [
-        Column('address', String(256)),
-        Column('banking', Integer),
-        Column('bike_stands', Integer),
-        Column('bonus', Integer),
-        Column('contract_name', String(256)),
-        Column('name', String(256)),
-        Column('number', Integer),
-        Column('position_lat', Float),
-        Column('position_lng', Float),
-        Column('status', String(256))
-    ]
-    table = db_manager.create_table("station", columns)
+        columns = [
+            Column('address', String(256)),
+            Column('banking', Integer),
+            Column('bike_stands', Integer),
+            Column('bonus', Integer),
+            Column('contract_name', String(256)),
+            Column('name', String(256)),
+            Column('number', Integer),
+            Column('position_lat', Float),
+            Column('position_lng', Float),
+            Column('status', String(256))
+        ]
+        table = db_manager.create_table("station", columns)
 
-    if station_data:
-        for data in station_data:
-            address = data.get('address', '')
-            banking = 1 if data.get('banking', False) else 0
-            bike_stands = data.get('totalStands', {}).get('capacity', 0)
-            bonus = 1 if data.get('bonus', False) else 0
-            contract_name = data.get('contractName', '')
-            name = data.get('name', '')
-            number = data.get('number', 0)
-            position_lat = data.get('position', {}).get('latitude', 0.0)
-            position_lng = data.get('position', {}).get('longitude', 0.0)
-            status = data.get('status', '')
-            
-            db_manager.execute_sql(
-                f"INSERT INTO {table.name} (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES "
-                f"('{address}', {banking}, {bike_stands}, {bonus}, '{contract_name}', '{name}', {number}, {position_lat}, {position_lng}, '{status}')"
-            )
+        if station_data:
+            for data in station_data:
+                address = data.get('address', '')
+                banking = 1 if data.get('banking', False) else 0
+                bike_stands = data.get('totalStands', {}).get('capacity', 0)
+                bonus = 1 if data.get('bonus', False) else 0
+                contract_name = data.get('contractName', '')
+                name = data.get('name', '')
+                number = data.get('number', 0)
+                position_lat = data.get('position', {}).get('latitude', 0.0)
+                position_lng = data.get('position', {}).get('longitude', 0.0)
+                status = data.get('status', '')
+                
+                db_manager.execute_sql(
+                    f"INSERT INTO {table.name} (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES "
+                    f"('{address}', {banking}, {bike_stands}, {bonus}, '{contract_name}', '{name}', {number}, {position_lat}, {position_lng}, '{status}')"
+                )
 
 
 # Define your database connection details
