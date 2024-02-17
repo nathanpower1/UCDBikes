@@ -74,8 +74,20 @@ class StationDataHandler:
         if station_data:
             # Assuming station_data is a list of dictionaries
             for data in station_data:
-                vals = data.get('address'), int(data.get('banking')), data.get('bike_stands'), int(data.get('bonus')), data.get('contract_name'), data.get('name'), data.get('number'), data.get('position').get('lat'), data.get('position').get('lng'), data.get('status')
-                db_manager.execute_sql("insert into station values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", vals)
+                address = data.get('address')
+                banking =  int(data.get('banking'))
+                bike_stands = data.get('bike_stands')
+                bonus = int(data.get('bonus'))
+                contract = data.get('contract_name')
+                name = data.get('name')
+                number = data.get('number')
+                lat = data.get('position').get('lat')
+                lng = data.get('position').get('lng')
+                status = data.get('status')
+
+                db_manager.execute_sql(sql = f"""INSERT INTO station (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
+                VALUES ('{address}', {banking}, {bike_stands}, {bonus}, '{contract}', '{name}', {number}, {lat}, {lng}, '{status}')
+                """)
                 print(f"Data inserted successfully for station {data.get('number')}")
 
 # Define your database connection details
