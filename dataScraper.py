@@ -72,6 +72,7 @@ class StationDataHandler:
         if station_data:
             # Assuming station_data is a list of dictionaries
             for data in station_data:
+
                 address = data.get('address')
                 banking =  int(data.get('banking'))
                 bike_stands = data.get('bike_stands')
@@ -82,10 +83,10 @@ class StationDataHandler:
                 lat = data.get('position').get('lat')
                 lng = data.get('position').get('lng')
                 status = data.get('status')
-                sql = "INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
                 values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
-                db_manager.execute_sql(sql, values)
-                print(f"Data inserted successfully for station {data.get('number')}")
+                db_manager.execute_sql("INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
+                print(f"Station {name} inserted successfully.")
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
