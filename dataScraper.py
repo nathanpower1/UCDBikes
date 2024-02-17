@@ -70,26 +70,24 @@ class StationDataHandler:
         db_manager.create_table("station", columns)
 
         if station_data:
-    # Assuming station_data is a list of dictionaries
+            # Assuming station_data is a list of dictionaries
             for data in station_data:
-                # Iterate over each key-value pair in the data dictionary
-                for key, value in data.items():
-                    try:
-                        if key == 'position':
-                            lat = value.get('lat')
-                            lng = value.get('lng')
-                            values = (lat, lng)
-                            print(f"Inserting position: {values}")
-                            db_manager.execute_sql("INSERT INTO station (position_lat, position_lng) VALUES (%s, %s)", values)
-                        else:
-                            print(f"Inserting {key}: {value}")
-                            db_manager.execute_sql(f"INSERT INTO station ({key}) VALUES (%s)", (value,))
-                    except Exception as e:
-                        print(f"Error inserting {key}: {e}")
 
-                # Print success message for the current station
-                print(f"Station {data.get('name')} inserted successfully.")
+                address = data.get('address')
+                banking =  int(data.get('banking'))
+                bike_stands = data.get('bike_stands')
+                bonus = int(data.get('bonus'))
+                contract = data.get('contract_name')
+                name = data.get('name')
+                number = data.get('number')
+                lat = data.get('position').get('lat')
+                lng = data.get('position').get('lng')
+                status = data.get('status')
 
+                values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
+                print(values)
+                #db_manager.execute_sql("INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
+                #print(f"Station {name} inserted successfully.")
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
