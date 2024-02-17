@@ -12,14 +12,11 @@ class DatabaseManager:
         self.password = password
         self.engine = create_engine(f"mysql+pymysql://{user}:{password}@{url}:{port}/{db}", echo=True)
         
-    def create_database(self):
-        with self.engine.connect() as conn:
-            conn.execute(f"CREATE DATABASE IF NOT EXISTS {self.db};")
-        
     def create_table(self, table_name, columns):
         columns_str = ', '.join(columns)
+        sql = f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});"
         with self.engine.connect() as conn:
-            conn.execute(f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});")
+            conn.execute(sql)
             
     def execute_sql(self, sql):
         with self.engine.connect() as conn:
@@ -76,13 +73,6 @@ PASSWORD = "boldlynavigatingnature"
 
 # Create a DatabaseManager instance to manage database operations
 db_manager = DatabaseManager(URL, PORT, DB, USER, PASSWORD)
-db_manager.create_database()
-db_manager.create_table("availability", [
-    "number INTEGER",
-    "available_bikes INTEGER",
-    "available_bike_stands INTEGER",
-    "last_update INTEGER"
-])
 
 # Define your API contract and key
 contract = 'dublin'
@@ -97,3 +87,5 @@ station_data = station_data_handler.get_station_info()
 # Inserting station data into the database
 if station_data:
     station_data_handler.insert_station_data(db_manager, station_data)
+
+
