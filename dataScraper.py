@@ -23,18 +23,11 @@ class DatabaseManager:
         table = Table(table_name, self.metadata, *columns)
         table.create(self.engine, checkfirst=True)
         logging.info(f"Table {table_name} created successfully.")
-        return table
+        print(f"Table {table_name} created successfully.")
             
-    def execute_sql(self, statement, data=None):
-        try:
-            if data is None:
-                self.connection.execute(statement)
-            else:
-                self.connection.execute(statement, data)
-            logging.info("SQL statement executed successfully.")
-        except Exception as e:
-            logging.error(f"Error executing SQL statement: {e}")
-            traceback.print_exc()
+    def execute_sql(self, statement):
+        self.engine.execute(statement)
+        
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
@@ -45,11 +38,14 @@ class StationDataHandler:
     def get_station_info(self):
         try:
             response = requests.get(self.stations_url)
-            response.raise_for_status()
-            return response.json()
-        except Exception as e:
-            logging.error(f"Error fetching station information: {e}")
-            traceback.print_exc()
+            if response.status_code == 200:
+                json.loads(response.text)
+                return json.loads(response.text)
+            else:
+                print(f"Failed to fetch data. Status code: {response.status_code}")
+                return None
+        except requests.exceptions.RequestException as e:
+            print(f"An error occurred: {e}")
             return None
     
     def insert_station_data(self, db_manager, station_data):
@@ -65,30 +61,14 @@ class StationDataHandler:
             Column('position_lng', Float),
             Column('status', String(256))
         ]
-        table = db_manager.create_table("station", columns)
+        db_manager.create_table("station", columns)
 
         if station_data:
             # Assuming station_data is a list of dictionaries
             for data in station_data:
-                try:
-                    db_manager.execute_sql(
-                        table.insert(),
-                        {
-                            'address': data['address'],
-                            'banking': data['banking'],
-                            'bike_stands': data['bike_stands'],
-                            'bonus': data['bonus'],
-                            'contract_name': data['contract_name'],
-                            'name': data['name'],
-                            'number': data['number'],
-                            'position_lat': data['position']['lat'],
-                            'position_lng': data['position']['lng'],
-                            'status': data['status']
-                        }
-                    )
-                except KeyError as e:
-                    logging.error(f"KeyError occurred: {e}. Data: {data}")
-                    traceback.print_exc()
+                vals = data.get('address'), int(data.get('banking')), data.get('bike_stands'), int(data.get('bonus')), data.get('contract_name'), data.get('name'), data.get('number'), data.get('position').get('lat'), data.get('position').get('lng'), data.get('status')
+                db_manager.execute_sql("insert into station values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", vals)
+                print(f"Data inserted successfully for station {data.get('number')}")
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
