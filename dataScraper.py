@@ -86,8 +86,8 @@ class StationDataHandler:
 
                 values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
                 print(values)
-                #db_manager.execute_sql("INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
-                #print(f"Station {name} inserted successfully.")
+                db_manager.execute_sql("INSERT INTO station VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
+                print(f"Station {name} inserted successfully.")
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
