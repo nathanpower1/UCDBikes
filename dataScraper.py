@@ -56,9 +56,11 @@ class StationDataHandler:
         table = db_manager.create_table("station", columns)
 
         if station_data:
-            df = pd.DataFrame(station_data['stations'])
-            df.columns = df.columns.str.lower()
-            df.to_sql(table.name, con=db_manager.engine, if_exists='append', index=False)
+            # Assuming station_data is a list of dictionaries
+            for data in station_data:
+                df = pd.DataFrame(data['stations'])
+                df.columns = df.columns.str.lower()
+                df.to_sql(table.name, con=db_manager.engine, if_exists='append', index=False)
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
