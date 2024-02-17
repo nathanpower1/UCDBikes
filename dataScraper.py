@@ -1,5 +1,6 @@
 import sqlalchemy as sqla
 from sqlalchemy import create_engine
+from sqlalchemy import text
 import traceback
 import requests
 
@@ -16,7 +17,7 @@ class DatabaseManager:
         columns_str = ', '.join(columns)
         sql = f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});"
         with self.engine.connect() as conn:
-            conn.execute(sql)
+            conn.execute(text(sql))
             
     def execute_sql(self, sql):
         with self.engine.connect() as conn:
