@@ -1,14 +1,12 @@
 import json
 import mysql.connector
 import sqlalchemy as sqla
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, Text
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
 import pandas as pd
 import traceback
 import requests
 import logging
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+from sqlalchemy.sql import text
 
 class DatabaseManager:
     def __init__(self, url, port, db, user, password):
@@ -17,7 +15,7 @@ class DatabaseManager:
         self.db = db
         self.user = user
         self.password = password
-        self.engine = create_engine(f"mysql+mysqlconnector://{user}:{password}@{url}:{port}/{db}", echo=True)
+        self.engine = create_engine(f"mysql+mysqldb://{user}:{password}@{url}:{port}/{db}", echo=True)
         self.metadata = MetaData()
         self.connection = self.engine.connect()
         
@@ -28,6 +26,8 @@ class DatabaseManager:
         print(f"Table {table_name} created successfully.")
             
     def execute_sql(self, sql, values=None):
+            for res in self.engine.execute("SHOW VARIABLES;"):
+                print(res)
         
             if values is None:
                 # If values are not provided, execute the SQL statement directly
