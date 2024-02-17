@@ -83,10 +83,7 @@ class StationDataHandler:
                 lng = data.get('position').get('lng')
                 status = data.get('status')
 
-                sql = f"""
-                    INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
-                    VALUES ('{address}', {banking}, {bike_stands}, {bonus}, '{contract}', '{name}', {number}, {lat}, {lng}, '{status}');
-                """
+                sql = f"INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES ('{address}', {banking}, {bike_stands}, {bonus}, '{contract}', '{name}', {number}, {lat}, {lng}, '{status}');"
                 db_manager.execute_sql(sql)
                 print(f"Data inserted successfully for station {data.get('number')}")
 
