@@ -1,3 +1,4 @@
+import simplejson as json
 import sqlalchemy as sqla
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
 import pandas as pd
