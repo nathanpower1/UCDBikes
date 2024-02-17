@@ -1,4 +1,6 @@
-import simplejson as json
+import dbinfo
+import json
+import mysql.connector
 import sqlalchemy as sqla
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, Text
 import pandas as pd
@@ -16,7 +18,7 @@ class DatabaseManager:
         self.db = db
         self.user = user
         self.password = password
-        self.engine = create_engine(f"mysql://{user}:{password}@{url}:{port}/{db}", echo=True)
+        self.engine = create_engine(f"mysql+mysqlconnector://{user}:{password}@{url}:{port}/{db}", echo=True)
         self.metadata = MetaData()
         self.connection = self.engine.connect()
         
