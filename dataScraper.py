@@ -1,4 +1,3 @@
-import dbinfo
 import json
 import mysql.connector
 import sqlalchemy as sqla
