@@ -1,6 +1,6 @@
 import sqlalchemy as sqla
-from sqlalchemy import create_engine
-from sqlalchemy import text
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
+import pandas as pd
 import traceback
 import requests
 
@@ -12,12 +12,13 @@ class DatabaseManager:
         self.user = user
         self.password = password
         self.engine = create_engine(f"mysql+pymysql://{user}:{password}@{url}:{port}/{db}", echo=True)
+        self.metadata = MetaData()
+        self.connection = self.engine.connect()
         
     def create_table(self, table_name, columns):
-        columns_str = ', '.join(columns)
-        sql = f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});"
-        with self.engine.connect() as conn:
-            conn.execute(text(sql))
+        table = Table(table_name, self.metadata, *columns)
+        table.create(self.engine, checkfirst=True)
+        return table
             
     def execute_sql(self, sql):
         with self.engine.connect() as conn:
@@ -40,30 +41,24 @@ class StationDataHandler:
             return None
     
     def insert_station_data(self, db_manager, station_data):
-        db_manager.create_table("station", [
-            "address VARCHAR(256)",
-            "banking INTEGER",
-            "bike_stands INTEGER",
-            "bonus INTEGER",
-            "contract_name VARCHAR(256)",
-            "name VARCHAR(256)",
-            "number INTEGER",
-            "position_lat REAL",
-            "position_lng REAL",
-            "status VARCHAR(256)"
-        ])
+        columns = [
+            Column('address', String(256)),
+            Column('banking', Integer),
+            Column('bike_stands', Integer),
+            Column('bonus', Integer),
+            Column('contract_name', String(256)),
+            Column('name', String(256)),
+            Column('number', Integer),
+            Column('position_lat', Float),
+            Column('position_lng', Float),
+            Column('status', String(256))
+        ]
+        table = db_manager.create_table("station", columns)
 
         if station_data:
-            for station in station_data:
-                try:
-                    sql = f"""
-                    INSERT INTO dublinbikes.station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status)
-                    VALUES ('{station['address'].replace("'", "''")}', {station['banking']}, {station['bike_stands']}, {station['bonus']}, '{station['contract_name'].replace("'", "''")}', '{station['name'].replace("'", "''")}', {station['number']}, {station['position']['lat']}, {station['position']['lng']}, '{station['status'].replace("'", "''")}')
-                    """
-                    db_manager.execute_sql(sql)
-                except Exception as e:
-                    print(f"Error inserting station {station['number']}: {e}")
-                    traceback.print_exc()
+            df = pd.DataFrame(station_data['stations'])
+            df.columns = df.columns.str.lower()
+            df.to_sql(table.name, con=db_manager.engine, if_exists='append', index=False)
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
