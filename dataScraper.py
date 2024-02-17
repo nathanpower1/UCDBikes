@@ -81,8 +81,8 @@ class StationDataHandler:
                             'contract_name': data['contract_name'],
                             'name': data['name'],
                             'number': data['number'],
-                            'position_lat': data['position']['latitude'],
-                            'position_lng': data['position']['longitude'],
+                            'position_lat': data['position']['lat'],
+                            'position_lng': data['position']['lng'],
                             'status': data['status']
                         }
                     )
