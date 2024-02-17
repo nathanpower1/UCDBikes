@@ -3,6 +3,10 @@ from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, 
 import pandas as pd
 import traceback
 import requests
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 class DatabaseManager:
     def __init__(self, url, port, db, user, password):
@@ -18,14 +22,19 @@ class DatabaseManager:
     def create_table(self, table_name, columns):
         table = Table(table_name, self.metadata, *columns)
         table.create(self.engine, checkfirst=True)
+        logging.info(f"Table {table_name} created successfully.")
         return table
             
     def execute_sql(self, statement, data=None):
-        if data is None:
-            self.connection.execute(statement)
-        else:
-            self.connection.execute(statement, data)
-
+        try:
+            if data is None:
+                self.connection.execute(statement)
+            else:
+                self.connection.execute(statement, data)
+            logging.info("SQL statement executed successfully.")
+        except Exception as e:
+            logging.error(f"Error executing SQL statement: {e}")
+            traceback.print_exc()
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
@@ -39,7 +48,7 @@ class StationDataHandler:
             response.raise_for_status()
             return response.json()
         except Exception as e:
-            print(f"Error fetching station information: {e}")
+            logging.error(f"Error fetching station information: {e}")
             traceback.print_exc()
             return None
     
@@ -61,9 +70,9 @@ class StationDataHandler:
         if station_data:
             # Assuming station_data is a list of dictionaries
             for data in station_data:
-                db_manager.execute_sql(
-                    table.insert(),
-                    [
+                try:
+                    db_manager.execute_sql(
+                        table.insert(),
                         {
                             'address': data['address'],
                             'banking': data['banking'],
@@ -72,13 +81,14 @@ class StationDataHandler:
                             'contract_name': data['contract_name'],
                             'name': data['name'],
                             'number': data['number'],
-                            'position_lat': data['position']['lat'],
-                            'position_lng': data['position']['lng'],
+                            'position_lat': data['position']['latitude'],
+                            'position_lng': data['position']['longitude'],
                             'status': data['status']
                         }
-                    ]
-                )
-
+                    )
+                except KeyError as e:
+                    logging.error(f"KeyError occurred: {e}. Data: {data}")
+                    traceback.print_exc()
 
 # Define your database connection details
 URL = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
@@ -103,5 +113,6 @@ station_data = station_data_handler.get_station_info()
 # Inserting station data into the database
 if station_data:
     station_data_handler.insert_station_data(db_manager, station_data)
+
 
 
