@@ -34,6 +34,7 @@ class StationDataHandler:
         try:
             response = requests.get(self.stations_url)
             response.raise_for_status()
+            print(response.json())
             return response.json()
         except Exception as e:
             print(f"Error fetching station information: {e}")
