@@ -22,7 +22,10 @@ class DatabaseManager:
             
     def execute_sql(self, sql):
         with self.engine.connect() as conn:
-            conn.execute(sql)
+            if isinstance(sql, str):
+                conn.execute(sql)
+            else:
+                conn.execute(sql.compile())
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
