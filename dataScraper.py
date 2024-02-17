@@ -27,7 +27,7 @@ class DatabaseManager:
             
     def execute_sql(self, sql, values):
         try:
-            self.engine.execute(sql, values)
+            self.connection.execute(sql, values)
             logging.info("SQL command executed successfully.")
         except Exception as e:
             logging.error(f"Error executing SQL command: {e}")
