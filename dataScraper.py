@@ -86,7 +86,7 @@ class StationDataHandler:
 
                 values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
                 print(values)
-                db_manager.execute_sql("INSERT INTO station VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
+                db_manager.engine.execute("INSERT INTO station VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
                 print(f"Station {name} inserted successfully.")
 
 # Define your database connection details
