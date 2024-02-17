@@ -21,11 +21,8 @@ class DatabaseManager:
         return table
             
     def execute_sql(self, sql):
-        with self.engine.connect() as conn:
-            if isinstance(sql, str):
-                conn.execute(sql)
-            else:
-                conn.execute(sql)
+        self.engine.execute(sql)
+
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
@@ -59,21 +56,24 @@ class StationDataHandler:
         table = db_manager.create_table("station", columns)
 
         if station_data:
+            # Assuming station_data is a list of dictionaries
             for data in station_data:
-                address = data.get('address', '')
-                banking = 1 if data.get('banking', False) else 0
-                bike_stands = data.get('totalStands', {}).get('capacity', 0)
-                bonus = 1 if data.get('bonus', False) else 0
-                contract_name = data.get('contractName', '')
-                name = data.get('name', '')
-                number = data.get('number', 0)
-                position_lat = data.get('position', {}).get('latitude', 0.0)
-                position_lng = data.get('position', {}).get('longitude', 0.0)
-                status = data.get('status', '')
-                
                 db_manager.execute_sql(
-                    f"INSERT INTO {table.name} (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES "
-                    f"('{address}', {banking}, {bike_stands}, {bonus}, '{contract_name}', '{name}', {number}, {position_lat}, {position_lng}, '{status}')"
+                    table.insert(),
+                    [
+                        {
+                            'address': data['address'],
+                            'banking': data['banking'],
+                            'bike_stands': data['bike_stands'],
+                            'bonus': data['bonus'],
+                            'contract_name': data['contract_name'],
+                            'name': data['name'],
+                            'number': data['number'],
+                            'position_lat': data['position']['latitude'],
+                            'position_lng': data['position']['longitude'],
+                            'status': data['status']
+                        }
+                    ]
                 )
 
 
