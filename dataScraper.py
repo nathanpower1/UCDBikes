@@ -26,8 +26,12 @@ class DatabaseManager:
         logging.info(f"Table {table_name} created successfully.")
         print(f"Table {table_name} created successfully.")
             
-    def execute_sql(self, statement):
-        self.engine.execute(statement)
+    def execute_sql(self, sql, values=None):
+        if values is None:
+            self.engine.execute(sql)
+        else:
+            self.engine.execute(sql, values)
+
         
 
 class StationDataHandler:
