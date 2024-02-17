@@ -27,10 +27,13 @@ class DatabaseManager:
         print(f"Table {table_name} created successfully.")
             
     def execute_sql(self, sql, values=None):
-        if values is None:
-            self.engine.execute(sql)
-        else:
-            self.engine.execute(sql, values)
+        
+            if values is None:
+                # If values are not provided, execute the SQL statement directly
+                self.connection.execute(sql)
+            else:
+                # If values are provided, execute the SQL statement with parameterized values
+                self.connection.execute(sql, values)
 
         
 
