@@ -13,15 +13,13 @@ class DatabaseManager:
         self.engine = create_engine(f"mysql+pymysql://{user}:{password}@{url}:{port}/{db}", echo=True)
         
     def create_database(self):
-        sql = f"CREATE DATABASE IF NOT EXISTS {self.db};"
         with self.engine.connect() as conn:
-            conn.execute(sql)
+            conn.execute(f"CREATE DATABASE IF NOT EXISTS {self.db};")
         
     def create_table(self, table_name, columns):
         columns_str = ', '.join(columns)
-        sql = f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});"
         with self.engine.connect() as conn:
-            conn.execute(sql)
+            conn.execute(f"CREATE TABLE IF NOT EXISTS {self.db}.{table_name} ({columns_str});")
             
     def execute_sql(self, sql):
         with self.engine.connect() as conn:
