@@ -106,8 +106,21 @@ station_table_columns = [
     "status VARCHAR(256)"
 ]
 
+availability_table_columns = [
+    "number INT NOT NULL",
+    "last_update DATETIME NOT NULL",
+    "available_bikes INT",
+    "available_bike_stands INT",
+    "status VARCHAR(128)",
+    "PRIMARY KEY (number, last_update)"
+]
+
+
+
 # Creating the station table
 db_manager.create_table("station", station_table_columns)
+
+db_manager.create_table("availability", availability_table_columns)
 
 # Inserting station data into the database
 if station_data:
