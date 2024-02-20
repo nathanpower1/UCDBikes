@@ -35,6 +35,15 @@ class DatabaseManager:
             self.connection.rollback()
             logging.error(f"Error executing insert: {e}")
             print(f"Error executing insert: {e}")
+    def record_exists(self, table_name, conditions):
+        
+        query = f"SELECT COUNT(*) FROM {table_name} WHERE {' AND '.join([f'{column} = %s' for column in conditions.keys()])}"
+        values = tuple(conditions.values())
+
+        self.cursor.execute(query, values)
+        result = self.cursor.fetchone()[0]
+
+        return result > 0
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
