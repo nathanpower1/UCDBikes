@@ -55,25 +55,33 @@ class StationDataHandler:
             return None
     
     def insert_station_data(self, db_manager, station_data):
-        if station_data:
-            for data in station_data:
-                address = data.get('address')
-                banking = int(data.get('banking'))
-                bike_stands = data.get('bike_stands')
-                bonus = int(data.get('bonus'))
-                contract = data.get('contract_name')
-                name = data.get('name')
-                number = data.get('number')
-                lat = data.get('position').get('lat')
-                lng = data.get('position').get('lng')
-                status = data.get('status')
+        # Check if the station table is empty
+        db_manager.cursor.execute("SELECT COUNT(*) FROM station")
+        row_count = db_manager.cursor.fetchone()[0]
 
-                values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
-                insert_query = "INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-                
-                # Inserting data into the database
-                db_manager.execute_insert(insert_query, values)
-                print(f"Station {name} inserted successfully.")
+        if row_count == 0:  # Table is empty, proceed with insertion
+            if station_data:
+                for data in station_data:
+                    address = data.get('address')
+                    banking = int(data.get('banking'))
+                    bike_stands = data.get('bike_stands')
+                    bonus = int(data.get('bonus'))
+                    contract = data.get('contract_name')
+                    name = data.get('name')
+                    number = data.get('number')
+                    lat = data.get('position').get('lat')
+                    lng = data.get('position').get('lng')
+                    status = data.get('status')
+
+                    values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
+                    insert_query = "INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                    
+                    # Inserting data into the database
+                    db_manager.execute_insert(insert_query, values)
+                    print(f"Station {name} inserted successfully.")
+        else:
+            print("The station table already has data. Skipping insertion.")
+
 
 # Database connection details
 HOST = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
