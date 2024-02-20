@@ -90,7 +90,7 @@ class StationDataHandler:
                 print(values)
 
                 #Issue with executing code below
-                db_manager.engine.execute("INSERT INTO station VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
+                db_manager.execute_sql("INSERT INTO station VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", values)
                 print(f"Station {name} inserted successfully.")
 
 # Database connection details
