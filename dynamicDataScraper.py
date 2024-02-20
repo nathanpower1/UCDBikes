@@ -4,13 +4,6 @@ import mysql.connector
 import requests
 from datetime import datetime
 
-# Function to fetch availability data
-def fetch_availability_data():
-    # Fetch availability data from the API or other source
-    # For example:
-    response = requests.get("https://api.example.com/availability")
-    data = response.json()
-    return data
 
 # Function to insert availability data into the database
 def insert_availability_data(db_manager, availability_data):
