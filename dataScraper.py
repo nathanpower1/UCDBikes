@@ -139,7 +139,7 @@ availability_table_columns = [
     "available_bike_stands INT",
     "status VARCHAR(128)",
     "PRIMARY KEY (number, last_update)"
-    "timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+    "timestamp INT NOT NULL"
 ]
 
 
