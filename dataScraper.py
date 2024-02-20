@@ -81,6 +81,24 @@ class StationDataHandler:
                     print(f"Station {name} inserted successfully.")
         else:
             print("The station table already has data. Skipping insertion.")
+    
+    def insert_availability_data(self, db_manager, availability_data):
+        #add data to availavility table every 5 minutes using crontab
+        if availability_data:
+            for data in availability_data:
+                number = data.get('number')
+                last_update = data.get('last_update')
+                available_bikes = data.get('available_bikes')
+                available_bike_stands = data.get('available_bike_stands')
+                status = data.get('status')
+
+                values = (number, last_update, available_bikes, available_bike_stands, status)
+                insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES (%s, %s, %s, %s, %s)"
+                
+                # Inserting data into the database
+                db_manager.execute_insert(insert_query, values)
+                print(f"Availability data for station {number} inserted successfully.")
+        
 
 
 # Database connection details
@@ -121,6 +139,7 @@ availability_table_columns = [
     "available_bike_stands INT",
     "status VARCHAR(128)",
     "PRIMARY KEY (number, last_update)"
+    "timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
 ]
 
 
