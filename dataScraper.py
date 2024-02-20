@@ -134,13 +134,15 @@ station_table_columns = [
 
 availability_table_columns = [
     "number INT NOT NULL",
-    "last_update DATETIME NOT NULL",
+    "last_update INT NOT NULL",
     "available_bikes INT",
     "available_bike_stands INT",
     "status VARCHAR(128)",
-    "PRIMARY KEY (number, last_update)",
-    "timestamp INT NOT NULL"
+    "timestamp INT NOT NULL",
+    f"FOREIGN KEY (number) REFERENCES station(number)",
+    "PRIMARY KEY (number, last_update)"
 ]
+
 
 
 
