@@ -18,7 +18,7 @@ def insert_availability_data(db_manager, availability_data):
             unix_timestamp = int(datetime.now().timestamp())
 
             values = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
-            insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp) VALUES (%s, %s, %s, %s, %s, %s)"
+            insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status, timestamp) VALUES (%s, %s, %s, %s, %s, %s)"
             
             # Inserting data into the database
             db_manager.execute_insert(insert_query, values)
