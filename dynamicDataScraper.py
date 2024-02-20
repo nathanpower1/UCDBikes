@@ -17,12 +17,17 @@ def insert_availability_data(db_manager, availability_data):
 
             unix_timestamp = int(datetime.now().timestamp())
 
-            values = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
-            insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status, timestamp) VALUES (%s, %s, %s, %s, %s, %s)"
-            
-            # Inserting data into the database
-            db_manager.execute_insert(insert_query, values)
-            print(f"Availability data for station {number} inserted successfully.")
+            # Check if the record already exists
+            if db_manager.record_exists('availability', {'number': number, 'last_update': last_update}):
+                print(f"Availability data for station {number} and last update {last_update} already exists. Skipping insertion.")
+            else:
+                values = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
+                insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status, timestamp) VALUES (%s, %s, %s, %s, %s, %s)"
+                
+                # Inserting data into the database
+                db_manager.execute_insert(insert_query, values)
+                print(f"Availability data for station {number} inserted successfully.")
+
 
 
 # Database connection details
