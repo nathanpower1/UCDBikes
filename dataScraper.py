@@ -35,6 +35,7 @@ class DatabaseManager:
             self.connection.rollback()
             logging.error(f"Error executing insert: {e}")
             print(f"Error executing insert: {e}")
+    
     def record_exists(self, table_name, conditions):
         
         query = f"SELECT COUNT(*) FROM {table_name} WHERE {' AND '.join([f'{column} = %s' for column in conditions.keys()])}"
