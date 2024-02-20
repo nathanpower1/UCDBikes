@@ -140,7 +140,7 @@ availability_table_columns = [
     "status VARCHAR(128)",
     "timestamp INT NOT NULL",
     f"FOREIGN KEY (number) REFERENCES station(number)",
-    "PRIMARY KEY (number, last_update)"
+    "PRIMARY KEY (number)"
 ]
 
 
