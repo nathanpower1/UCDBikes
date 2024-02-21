@@ -34,7 +34,7 @@ except requests.exceptions.RequestException as e:
 if stationData:
     for data in stationData:
         number = data.get('number')
-        last_update = data.get('last_update')
+        last_update = int(data.get('last_update'))
         available_bikes = data.get('available_bikes')
         available_bike_stands = data.get('available_bike_stands')
         status = data.get('status')
