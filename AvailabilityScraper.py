@@ -37,12 +37,14 @@ if stationData:
     for data in stationData:
         number = data.get('number')
         last_update = int(data.get('last_update'))
-        print(last_update)
         available_bikes = data.get('available_bikes')
         available_bike_stands = data.get('available_bike_stands')
         status = data.get('status')
         unix_timestamp = int(datetime.now().timestamp())
+        
+        # Define values tuple here
         values = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
+        
         select_query = "SELECT * FROM availability WHERE number = %s AND last_update = %s"
         cursor.execute(select_query, (number, last_update))
         existing_entry = cursor.fetchone()
@@ -60,6 +62,7 @@ if stationData:
             connection.rollback()
             logging.error(f"Error executing insert: {e}")
             print(f"Error executing insert: {e}")
+
 
 
 
