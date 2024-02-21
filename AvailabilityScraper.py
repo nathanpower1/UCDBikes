@@ -12,8 +12,6 @@ USER = "admin"
 PASSWORD = "boldlynavigatingnature"
 DATABASE = "dublinbikes"
 
-database = DatabaseManager(HOST, USER, PASSWORD, DATABASE)
-
 connection = mysql.connector.connect(
             host=HOST,
             user=USER,
