@@ -1,9 +1,11 @@
-
 import requests
 import json
 import mysql.connector
 from datetime import datetime
 import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)  # Set logging level to INFO
 
 HOST = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
 USER = "admin"
@@ -35,7 +37,6 @@ if stationData:
     for data in stationData:
         number = data.get('number')
         last_update = int(data.get('last_update'))
-        print(last_update)
         available_bikes = data.get('available_bikes')
         available_bike_stands = data.get('available_bike_stands')
         status = data.get('status')
@@ -47,6 +48,8 @@ if stationData:
         if existing_entry:
             logging.info(f"Entry with number {number} and last_update {last_update} already exists. Skipping insertion.")
             continue  # Skip insertion and move to the next iteration
+        else:
+            logging.info(f"No existing entry found for number {number} and last_update {last_update}. Proceeding with insertion.")
         insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status, timestamp) VALUES (%s, %s, %s, %s, %s, %s)"
         try:
             cursor.execute(insert_query, values)
@@ -56,6 +59,7 @@ if stationData:
             connection.rollback()
             logging.error(f"Error executing insert: {e}")
             print(f"Error executing insert: {e}")
+
 
 
 
