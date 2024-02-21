@@ -36,15 +36,6 @@ class DatabaseManager:
             logging.error(f"Error executing insert: {e}")
             print(f"Error executing insert: {e}")
     
-    def record_exists(self, table_name, conditions):
-        
-        query = f"SELECT COUNT(*) FROM {table_name} WHERE {' AND '.join([f'{column} = %s' for column in conditions.keys()])}"
-        values = tuple(conditions.values())
-
-        self.cursor.execute(query, values)
-        result = self.cursor.fetchone()[0]
-
-        return result > 0
 
 class StationDataHandler:
     def __init__(self, contract, api_key):
@@ -92,24 +83,6 @@ class StationDataHandler:
         else:
             print("The station table already has data. Skipping insertion.")
     
-    def insert_availability_data(self, db_manager, availability_data):
-        #add data to availavility table every 5 minutes using crontab
-        if availability_data:
-            for data in availability_data:
-                number = data.get('number')
-                last_update = data.get('last_update')
-                available_bikes = data.get('available_bikes')
-                available_bike_stands = data.get('available_bike_stands')
-                status = data.get('status')
-
-                values = (number, last_update, available_bikes, available_bike_stands, status)
-                insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES (%s, %s, %s, %s, %s)"
-                
-                # Inserting data into the database
-                db_manager.execute_insert(insert_query, values)
-                print(f"Availability data for station {number} inserted successfully.")
-        
-
 
 # Database connection details
 HOST = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
@@ -149,11 +122,8 @@ availability_table_columns = [
     "available_bike_stands INT",
     "status VARCHAR(128)",
     "timestamp INT NOT NULL",
-    f"FOREIGN KEY (number) REFERENCES station(number)",
     "PRIMARY KEY (number, last_update)"
 ]
-
-
 
 
 # Creating the station table
