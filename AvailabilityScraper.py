@@ -43,7 +43,7 @@ if stationData:
         unix_timestamp = int(datetime.now().timestamp())
         
         # Define values tuple here
-        values = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
+        availabilityData = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
         
         select_query = "SELECT * FROM availability WHERE number = %s AND last_update = %s"
         cursor.execute(select_query, (number, last_update))
@@ -55,7 +55,7 @@ if stationData:
             logging.info(f"No existing entry found for number {number} and last_update {last_update}. Proceeding with insertion.")
         insert_query = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status, timestamp) VALUES (%s, %s, %s, %s, %s, %s)"
         try:
-            cursor.execute(insert_query, values)
+            cursor.execute(insert_query, availabilityData)
             connection.commit()
             logging.info("Insert executed successfully.")
         except mysql.connector.Error as e:
