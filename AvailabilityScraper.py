@@ -11,6 +11,7 @@ HOST = "dublinbikes.c1ywqa2sojjb.eu-west-1.rds.amazonaws.com"
 USER = "admin"
 PASSWORD = "boldlynavigatingnature"
 DATABASE = "dublinbikes"
+count = 0
 
 connection = mysql.connector.connect(
             host=HOST,
@@ -64,6 +65,52 @@ if stationData:
             print(f"Error executing insert: {e}")
 
 
+if count % 12 == 0:
+    #checks if there is any changes to the static station data every hour, 
+    #this checks the station numbers in our SQL table, against the numbers pulled from the API. 
+    #If there is a number missing from the MySQL that is seen in the API, then we add a row. 
+    #If there is a number in MySQL but missing from the API information, then we remove that row.
+    cursor.execute("SELECT number FROM station")
+    station_numbers = cursor.fetchall()
+    station_numbers = [x[0] for x in station_numbers]
+    api_station_numbers = [x['number'] for x in stationData]
+    missing_numbers = list(set(api_station_numbers) - set(station_numbers))
+    extra_numbers = list(set(station_numbers) - set(api_station_numbers))
+    for number in missing_numbers:
+        for data in stationData:
+            if data['number'] == number:
+                address = data.get('address')
+                banking = int(data.get('banking'))
+                bike_stands = data.get('bike_stands')
+                bonus = int(data.get('bonus'))
+                contract = data.get('contract_name')
+                name = data.get('name')
+                number = data.get('number')
+                lat = data.get('position').get('lat')
+                lng = data.get('position').get('lng')
+                status = data.get('status')
+                values = (address, banking, bike_stands, bonus, contract, name, number, lat, lng, status)
+                insert_query = "INSERT INTO station (address, banking, bike_stands, bonus, contract_name, name, number, position_lat, position_lng, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                try:
+                    cursor.execute(insert_query, values)
+                    connection.commit()
+                    logging.info(f"Station {name} inserted successfully.")
+                except mysql.connector.Error as e:
+                    connection.rollback()
+                    logging.error(f"Error executing insert: {e}")
+                    print(f"Error executing insert: {e}")
+    for number in extra_numbers:
+        delete_query = "DELETE FROM station WHERE number = %s"
+        try:
+            cursor.execute(delete_query, (number,))
+            connection.commit()
+            logging.info(f"Station {number} deleted successfully.")
+        except mysql.connector.Error as e:
+            connection.rollback()
+            logging.error(f"Error executing delete: {e}")
+            print(f"Error executing delete: {e}")
+
+count += 1
 
 
 
