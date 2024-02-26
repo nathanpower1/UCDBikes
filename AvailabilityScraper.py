@@ -24,6 +24,8 @@ cursor = connection.cursor()
 contract = 'dublin'
 api_key = '954118b06527f2a603d5abd3c315876b16221c14'
 stations_url = f"https://api.jcdecaux.com/vls/v1/stations?contract={contract}&apiKey={api_key}"
+weather_api_key = '53cca80e47157e1ee9b5778f95c90c41'
+weather_api = f"https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={weather_api_key}"
 
 try:
     response = requests.get(stations_url)
@@ -70,6 +72,7 @@ if count % 12 == 0:
     #this checks the station numbers in our SQL table, against the numbers pulled from the API. 
     #If there is a number missing from the MySQL that is seen in the API, then we add a row. 
     #If there is a number in MySQL but missing from the API information, then we remove that row.
+    print("Checking for changes in static station data.")
     cursor.execute("SELECT number FROM station")
     station_numbers = cursor.fetchall()
     station_numbers = [x[0] for x in station_numbers]
