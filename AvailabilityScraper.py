@@ -114,6 +114,7 @@ if count % 12 == 0:
             print(f"Error executing delete: {e}")
 
 count += 1
+print(f"Count: {count}")
 
 
 
