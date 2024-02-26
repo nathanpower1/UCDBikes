@@ -26,6 +26,7 @@ stations_url = f"https://api.jcdecaux.com/vls/v1/stations?contract={contract}&ap
 try:
     response = requests.get(stations_url)
     if response.status_code == 200:
+        print("Data fetched successfully.")
         stationData = json.loads(response.text)
     else:
         print(f"Failed to fetch data. Status code: {response.status_code}")
@@ -42,6 +43,7 @@ if stationData:
     for number in missing_numbers:
         for data in stationData:
             if data['number'] == number:
+                print(f"Station {number} missing from database. Inserting...")
                 address = data.get('address')
                 banking = int(data.get('banking'))
                 bike_stands = data.get('bike_stands')
@@ -63,6 +65,7 @@ if stationData:
                     logging.error(f"Error executing insert: {e}")
                     print(f"Error executing insert: {e}")
     for number in extra_numbers:
+        print(f"Station {number} not found in API data. Deleting...")
         delete_query = "DELETE FROM station WHERE number = %s"
         try:
             cursor.execute(delete_query, (number,))
@@ -75,3 +78,4 @@ if stationData:
 
 cursor.close()
 connection.close()
+print("Process complete.")
