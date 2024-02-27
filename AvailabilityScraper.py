@@ -80,11 +80,33 @@ try:
     response = requests.get(weather_api)
     if response.status_code == 200:
         weatherData =  json.loads(response.text)
-        rain = weatherData.get('rain')
     else:
         print(f"Failed to fetch data. Status code: {response.status_code}")
 except requests.exceptions.RequestException as e:
     print(f"An error occurred: {e}")
 
 # Add weather data to database
+#weather = 'weather': [{'id': 800, 'main': 'Clear'}
+#temp = 'main': {'temp': 282.15, 'feels_like': 277.89, 'temp_min': 282.15, 'temp_max': 282.15, 'pressure': 1022, 'humidity': 87}
+#wind = 'wind': {'speed': 3.6, 'deg': 240}
+#rain = 'rain': {'1h': 0.25}
+    
+if weatherData:
+    temp = weatherData.get('main').get('temp')
+    wind_speed = weatherData.get('wind').get('speed')
+    rain = weatherData.get('rain').get('1h') if weatherData.get('rain') else 0
+    main = weatherData.get('weather')[0].get('main')
+    #use unix timestamp from above
+    weatherData = (temp, wind_speed, rain, main, unix_timestamp)
+    insert_query = "INSERT INTO weather (temp, wind_speed, rain, main, timestamp) VALUES (%s, %s, %s, %s, %s)"
 
+    try:
+        cursor.execute(insert_query, weatherData)
+        connection.commit()
+        logging.info("Weather data inserted successfully.")
+    except mysql.connector.Error as e:
+        connection.rollback()
+        logging.error(f"Error executing insert: {e}")
+        print(f"Error executing insert: {e}")
+
+cursor.close()
