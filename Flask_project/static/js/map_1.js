@@ -1,42 +1,18 @@
 // Initialize and add the map
 let map;
-//  async function loadJSON(){
-//   fetch('/get_json_data')
-//       .then(response => {
-//           if (!response.ok) {
-//               throw new Error('Network response was not ok');
-//           }
-//           return response.json();
-//       })
-//       .then(data => {
-//           // Log the received JSON data
-//           // You can use the data received here
-//           const bikeStations = [];
-//           for (let key in data) {
-//             // code block to be executed
-//             const position = [{lat: data[key].latitude,lng: data[key].longitude},data[key].name];
-//             bikeStations.push(position);
-//           }
-//           //console.log(bikeStations);
-//           return bikeStations;
-          
-//       })
-//       .catch(error => {
-//           console.error('There was a problem with the fetch operation:', error);
-//       });
-//  }
 
+//async load JSON static data
  async function loadJSON() {
   try {
-      const response = await fetch('/get_json_data');
+      const response = await fetch('/get_static_data');
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }
       const data = await response.json();
-
+      console.log("Test console log")
       const bikeStations = [];
       for (let key in data) {
-          const position = [{ lat: data[key].latitude, lng: data[key].longitude}, data[key].name ];
+          const position = [{ lat: parseFloat(data[key].position_lat), lng: parseFloat(data[key].position_lng)}, data[key].name, data[key].number ];
           bikeStations.push(position);
       }
 
@@ -48,15 +24,33 @@ let map;
   }
 }
 
-
+//async load JSON static data
+async function loadstationJSON(station_number) {
+  try {
+    console.log('/get_station_occupancy/'+station_number)
+    const response = await fetch('/get_station_occupancy/'+station_number);
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    
+    const station_data = data;
+    console.log(station_data);
+    return station_data;
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    // If an error occurs, return a default empty array
+    return [];
+  }
+}
 
 async function initMap() {
+  
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.35026632919465, lng: -6.260428242778603 }; 
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
-
 
   // The map, centered at The Spire
   map = new Map(document.getElementById("map"), {
@@ -68,21 +62,9 @@ async function initMap() {
   // info windows for markers
  // Create an info window to share between markers.
 
+ //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
     .then(bikeStations => {
-      
-        // You can use the bikeStations data here
-    
-
-//  const bikeStationss = [
-//   [ {lat: 53.350140, lng: -6.260180}, "O'Connell Street"],
-//   [ {lat: 53.343389, lng: -6.256586}, "Trinity College"],
-//   [{lat: 53.336005, lng: -6.259727}, "St. Stephen's Green"],
-//   [ {lat: 53.345214, lng: -6.265287},  "Temple Bar"],
-//   [{lat: 53.343805, lng: -6.266235}, "Dublin Castle"]
-// ];
-// const x = JSON.stringify(bikeStationss);
-// document.getElementById('table_js').innerHTML = x
 
 // Create an info window to share between markers.
 const infoWindow = new google.maps.InfoWindow();
@@ -90,11 +72,11 @@ const infoBox = document.getElementById('info-box');
 
 // Create the markers.
 
-bikeStations.forEach(([position, title], i) => {
+bikeStations.forEach(([position, title, number], i) => {
   const marker = new google.maps.Marker({
     position,
     map:map,
-    title: `${i + 1}. ${title}`,
+    title: `${number}`,
     optimized: false,
     icon: {
       url: "../static/images/bicycle-bike.svg",
@@ -104,15 +86,32 @@ bikeStations.forEach(([position, title], i) => {
 
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
+    loadstationJSON(parseInt(marker.title))
+    .then(station_data =>{
+    console.log('Data received:', station_data);
     infoWindow.close();
-    infoWindow.setContent(marker.getTitle());
+    infoWindow.setContent(
+    '<p>Station title: ' + marker.title + '</p>' +
+    '<p>Station Number: ' + station_data[0].number + '</p>' +
+    '<p>Station Name: ' + station_data[0].name + '</p>' +
+    '<p>Bikes Available: ' + station_data[0].available_bikes + '</p>' +
+    '<p>Bikes Stations: ' + station_data[0].available_bike_stands + '</p>'
+    );
     infoWindow.open(marker.getMap(), marker);
+  })
   });
 
   marker.addListener('click', () => {
+    loadstationJSON(5)
+    .then(station_data =>{
+    
     infoBox.innerHTML = '<h2>Marker Information</h2>' +
                         '<p>Marker Name: ' + marker.getTitle() + '</p>' +
+                        //'<p>station_data: ' + station_data[0].name + station_data[0].available_bikes +'</p>' +
                         '<p>Location: Latitude ' + marker.getPosition().lat() + ', Longitude ' + marker.getPosition().lng() + '</p>';
+  })
+
+    
 });
 });
 
