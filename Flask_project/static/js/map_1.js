@@ -59,6 +59,9 @@ async function initMap() {
     mapId: "992d9c838bb18c39",
   });
 
+  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
+    "marker",
+  );
   // info windows for markers
  // Create an info window to share between markers.
 
@@ -72,16 +75,14 @@ const infoBox = document.getElementById('info-box');
 
 // Create the markers.
 
+
+
 bikeStations.forEach(([position, title, number], i) => {
-  const marker = new google.maps.Marker({
+  const marker = new AdvancedMarkerElement({
     position,
-    map:map,
-    title: `${number}`,
-    optimized: false,
-    icon: {
-      url: "../static/images/bicycle-bike.svg",
-      scaledSize:new google.maps.Size(50,50)
-    }
+    map,
+    title: `${i + 1}. ${title}`,
+    content: pin.element,
   });
 
   // Add a click listener for each marker, and set up the info window.
