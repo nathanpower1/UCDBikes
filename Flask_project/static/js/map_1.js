@@ -1,3 +1,5 @@
+import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclusterer@2.3.1";
+//const markerCluster = new MarkerClusterer({ markers, map });
 // Initialize and add the map
 let map;
 
@@ -50,7 +52,8 @@ async function initMap() {
   const center_dublin = { lat: 53.35026632919465, lng: -6.260428242778603 }; 
   // Request needed libraries.
   //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
+  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   // The map, centered at The Spire
   map = new Map(document.getElementById("map"), {
@@ -59,9 +62,6 @@ async function initMap() {
     mapId: "992d9c838bb18c39",
   });
 
-  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
-    "marker",
-  );
   // info windows for markers
  // Create an info window to share between markers.
 
@@ -70,25 +70,36 @@ loadJSON()
     .then(bikeStations => {
 
 // Create an info window to share between markers.
-const infoWindow = new google.maps.InfoWindow();
-const infoBox = document.getElementById('info-box');
+const infoWindow = new InfoWindow;
+const infoBox = document.getElementById('infobox');
 
+//const glyphImg = document.createElement("img");
 // Create the markers.
+//glyphImg.src =
+//  "../static/images/bicycle-bike.svg";
 
-
+//const glyphSvgPinElement = new PinElement({scale: 0.001,
+//  glyph: glyphImg,
+//});
 
 bikeStations.forEach(([position, title, number], i) => {
   const marker = new AdvancedMarkerElement({
     position,
-    map,
-    title: `${i + 1}. ${title}`,
-    content: pin.element,
+    map:map,
+    title: `${number}`//,
+    //content: glyphSvgPinElement.element
+    //optimized: false,
+    //icon: {
+    //  url: "../static/images/bicycle-bike.svg",
+    //  scaledSize:new google.maps.Size(50,50)
+    //}
   });
 
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
+    infoBox.innerHTML = '<h2>Marker Information  this is the info displayed in the info boxa</h2>';
     console.log('Data received:', station_data);
     infoWindow.close();
     infoWindow.setContent(
@@ -98,23 +109,24 @@ bikeStations.forEach(([position, title, number], i) => {
     '<p>Bikes Available: ' + station_data[0].available_bikes + '</p>' +
     '<p>Bikes Stations: ' + station_data[0].available_bike_stands + '</p>'
     );
-    infoWindow.open(marker.getMap(), marker);
+    infoWindow.open(marker.map, marker);
   })
   });
-
-  marker.addListener('click', () => {
-    loadstationJSON(5)
-    .then(station_data =>{
+ // new MarkerClusterer({ bikeStations, map });
+//   marker.addListener('click', () => {
+//     loadstationJSON(5)
+//     .then(station_data =>{
     
-    infoBox.innerHTML = '<h2>Marker Information</h2>' +
-                        '<p>Marker Name: ' + marker.getTitle() + '</p>' +
-                        //'<p>station_data: ' + station_data[0].name + station_data[0].available_bikes +'</p>' +
-                        '<p>Location: Latitude ' + marker.getPosition().lat() + ', Longitude ' + marker.getPosition().lng() + '</p>';
-  })
+//     infoBox.innerHTML = '<h2>Marker Information</h2>' +
+//                         '<p>Marker Name: ' + marker.title + '</p>' +
+//                         //'<p>station_data: ' + station_data[0].name + station_data[0].available_bikes +'</p>' +
+//                         '<p>Location: Latitude ' + marker.position.lat() + ', Longitude ' + marker.position().lng() + '</p>';
+//   })
 
     
+// });
 });
-});
+
 
 })
 .catch(error => {
