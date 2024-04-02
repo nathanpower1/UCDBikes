@@ -99,7 +99,13 @@ bikeStations.forEach(([position, title, number], i) => {
   marker.addListener("click", () => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
-    infoBox.innerHTML = '<h2>Marker Information  this is the info displayed in the info boxa</h2>';
+      
+    infoBox.innerHTML = '<h2>Marker Information  this is the info displayed in the info boxa</h2>'+'<p>Station title: ' + marker.title + '</p>' +
+    '<p>Station Number: ' + station_data[0].number + '</p>' +
+    '<p>Station Name: ' + station_data[0].name + '</p>' +
+    '<p>Bikes Available: ' + station_data[0].available_bikes + '</p>' +
+    '<p>Bikes Stations: ' + station_data[0].available_bike_stands + '</p>';
+
     console.log('Data received:', station_data);
     infoWindow.close();
     infoWindow.setContent(
