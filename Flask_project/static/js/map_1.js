@@ -117,7 +117,6 @@ const markers = bikeStations.map(({ position, title }, i) => {
     );
     infoWindow.open(marker.map, marker);
 
-    return marker
   })
   });
  // new MarkerClusterer({ bikeStations, map });
@@ -133,7 +132,7 @@ const markers = bikeStations.map(({ position, title }, i) => {
 
     
 // });
-
+  return marker
 });
 
 // Add a marker clusterer to manage the markers.
