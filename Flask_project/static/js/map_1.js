@@ -3,6 +3,7 @@ import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclust
 // Initialize and add the map
 let map;
 let infoWindow;
+let markers = []
 
 //async load JSON static data
  async function loadJSON() {
@@ -50,7 +51,7 @@ async function loadstationJSON(station_number) {
 async function initMap() {
   
   // The location of center of map (The Spire)
-  const center_dublin = { lat: 53.35026632919465, lng: -6.260428242778603 }; 
+  const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 
   // Request needed libraries.
   //@ts-ignore
   const { Map, InfoWindow } = await google.maps.importLibrary("maps");
@@ -132,6 +133,8 @@ bikeStations.forEach(([position, title, number], i) => {
     //}
   });
 
+  markers.push(marker);
+
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
     loadstationJSON(parseInt(marker.title))
@@ -175,6 +178,9 @@ bikeStations.forEach(([position, title, number], i) => {
 .catch(error => {
     console.error('Error loading JSON:', error);
 });
+
+// Create a MarkerClusterer object
+new MarkerClusterer({ markers, map });
 }
 
 
