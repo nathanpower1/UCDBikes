@@ -58,7 +58,7 @@ async function initMap() {
 
   // The map
   map = new Map(document.getElementById("map"), {
-    zoom: 14,
+    zoom: 13,
     center: center_dublin,
     mapId: "992d9c838bb18c39",
   });
