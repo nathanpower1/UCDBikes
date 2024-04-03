@@ -82,7 +82,7 @@ const infoBox = document.getElementById('infobox');
 //  glyph: glyphImg,
 //});
 
-const markers = bikeStations.map(({ position, title }, i) => {
+bikeStations.forEach(([position, title, number], i) => {
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
@@ -113,10 +113,9 @@ const markers = bikeStations.map(({ position, title }, i) => {
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
     '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
-    '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>'
+    '<p><strong> Bikes Stations: </strong>' + station_data[0].available_bike_stands + '</p>'
     );
     infoWindow.open(marker.map, marker);
-
   })
   });
  // new MarkerClusterer({ bikeStations, map });
@@ -132,20 +131,13 @@ const markers = bikeStations.map(({ position, title }, i) => {
 
     
 // });
-  return marker;
 });
 
-// Add a marker clusterer to manage the markers.
-new MarkerClusterer({ markers, map });
-
- 
 
 })
 .catch(error => {
     console.error('Error loading JSON:', error);
 });
-
-
 }
 
 initMap();
