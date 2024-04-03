@@ -8,19 +8,20 @@
    float: left;
  }
 
- .info-container {
-  position: sticky;
-  display: flex;
-  height: 100%;
+ .info-column {
+   background-color: #93cb52;
+   padding: 50px;
+   border-radius: 10px;
 }
 
 #infobox {
 
-  float: left;
-  height: 100%;
-  width: 30%;
-  background-color: #93cb52;
-  padding: 20px;
+   float: left;
+   height: 100%;
+   width: 30%;
+   background-color: #4f4e4e;
+   padding: 10px;
+   flex-direction: column;
 }
 
 /* Styling foR Geolaction Button*/ 
