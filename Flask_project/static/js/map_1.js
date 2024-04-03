@@ -65,14 +65,14 @@ async function initMap() {
 
 
     // Current Location Finder
-    const locationButton = document.createElement("button");
+   /* const locationButton = document.createElement("button");
 
     locationButton.textContent = "Pan to Current Location";
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
 
     infoWindow = new InfoWindow;
-    
+
     locationButton.addEventListener("click", () => {
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
@@ -97,7 +97,7 @@ async function initMap() {
         handleLocationError(false, infoWindow, map.getCenter());
       }
     });
-  
+  */
 
   // info windows for markers
  // Create an info window to share between markers.
@@ -178,7 +178,7 @@ bikeStations.forEach(([position, title, number], i) => {
 }
 
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+/*function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(
     browserHasGeolocation
@@ -188,7 +188,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 
   
-}
+} */
 
 
 
