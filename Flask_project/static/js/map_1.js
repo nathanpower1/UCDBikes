@@ -62,8 +62,7 @@ async function initMap() {
     mapId: "992d9c838bb18c39",
   });
 
-  infoWindow = new google.maps.InfoWindow();
-  
+
     // Current Location Finder
     const locationButton = document.createElement("button");
 
