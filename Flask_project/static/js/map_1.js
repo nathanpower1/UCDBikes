@@ -158,6 +158,9 @@ bikeStations.forEach(([position, title, number], i) => {
     infoWindow.open(marker.map, marker);
   })
   });
+
+  // Create a MarkerClusterer object
+new MarkerClusterer({ markers, map });
  // new MarkerClusterer({ bikeStations, map });
 //   marker.addListener('click', () => {
 //     loadstationJSON(5)
@@ -179,8 +182,7 @@ bikeStations.forEach(([position, title, number], i) => {
     console.error('Error loading JSON:', error);
 });
 
-// Create a MarkerClusterer object
-new MarkerClusterer({ markers, map });
+
 }
 
 
