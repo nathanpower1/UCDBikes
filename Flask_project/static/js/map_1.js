@@ -100,20 +100,20 @@ bikeStations.forEach(([position, title, number], i) => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
       
-    infoBox.innerHTML = '<h2>Marker Information  this is the info displayed in the info boxa</h2>'+'<p>Station title: ' + marker.title + '</p>' +
-    '<p>Station Number: ' + station_data[0].number + '</p>' +
-    '<p>Station Name: ' + station_data[0].name + '</p>' +
-    '<p>Bikes Available: ' + station_data[0].available_bikes + '</p>' +
-    '<p>Bikes Stations: ' + station_data[0].available_bike_stands + '</p>';
+    infoBox.innerHTML = '<h2><strong> Marker Information  this is the info displayed in the info box <strong> </h2>'+'<p></strong> Station title: </strong> ' + marker.title + '</p>' +
+    '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
+    '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
+    '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
+    '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>';
 
     console.log('Data received:', station_data);
     infoWindow.close();
     infoWindow.setContent(
-    '<p>Station title: ' + marker.title + '</p>' +
-    '<p>Station Number: ' + station_data[0].number + '</p>' +
-    '<p>Station Name: ' + station_data[0].name + '</p>' +
-    '<p>Bikes Available: ' + station_data[0].available_bikes + '</p>' +
-    '<p>Bikes Stations: ' + station_data[0].available_bike_stands + '</p>'
+    '<p><strong> Station title: </strong> ' + marker.title + '</p>' +
+    '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
+    '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
+    '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
+    '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>'
     );
     infoWindow.open(marker.map, marker);
   })
