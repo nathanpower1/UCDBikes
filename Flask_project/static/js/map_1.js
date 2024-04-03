@@ -82,7 +82,7 @@ const infoBox = document.getElementById('infobox');
 //  glyph: glyphImg,
 //});
 
-bikeStations.map(({ position, title }, i) => {
+const markers = bikeStations.map(({ position, title }, i) => {
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
