@@ -141,7 +141,7 @@ bikeStations.forEach(([position, title, number], i) => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
       
-    infoColumn.innerHTML = '<h2><strong> Marker Information  this is the info displayed in the info box <strong> </h2>'+'<p></strong> Station title: </strong> ' + marker.title + '</p>' +
+    infoColumn.innerHTML = '<h2><strong> Station Information: <strong> </h2>'+'<p></strong> Station title: </strong> ' + marker.title + '</p>' +
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
     '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
