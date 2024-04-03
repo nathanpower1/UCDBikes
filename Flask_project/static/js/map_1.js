@@ -2,6 +2,7 @@ import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclust
 //const markerCluster = new MarkerClusterer({ markers, map });
 // Initialize and add the map
 let map;
+let infoWindow;
 
 //async load JSON static data
  async function loadJSON() {
@@ -57,7 +58,7 @@ async function initMap() {
 
   // The map, centered at The Spire
   map = new Map(document.getElementById("map"), {
-    zoom: 13,
+    zoom: 14,
     center: center_dublin,
     mapId: "992d9c838bb18c39",
   });
@@ -69,6 +70,9 @@ async function initMap() {
     locationButton.textContent = "Pan to Current Location";
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+
+    infoWindow = new InfoWindow;
+    
     locationButton.addEventListener("click", () => {
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
