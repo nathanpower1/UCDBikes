@@ -160,7 +160,17 @@ bikeStations.forEach(([position, title, number], i) => {
   });
 
   // Create a MarkerClusterer object
-new MarkerClusterer({ markers, map });
+new MarkerClusterer({ markers, map }, {
+  imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+  gridSize: 60, // Adjust the size of the clusters
+  maxZoom: 15, // Specify the maximum zoom level at which clusters are displayed
+  styles: [{
+    textColor: 'white',
+    url: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m1.png',
+    height: 53,
+    width: 53
+  }]
+});
  // new MarkerClusterer({ bikeStations, map });
 //   marker.addListener('click', () => {
 //     loadstationJSON(5)
