@@ -82,7 +82,7 @@ const infoBox = document.getElementById('infobox');
 //  glyph: glyphImg,
 //});
 
-bikeStations.forEach(([position, title, number], i) => {
+const markers = bikeStations.map(({ position, title }, i) => {
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
@@ -133,11 +133,16 @@ bikeStations.forEach(([position, title, number], i) => {
 // });
 });
 
+ // Add a marker clusterer to manage the markers.
+ new MarkerClusterer({ markers, map });
+ 
 
 })
 .catch(error => {
     console.error('Error loading JSON:', error);
 });
+
+
 }
 
 initMap();
