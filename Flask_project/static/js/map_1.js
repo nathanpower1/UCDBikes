@@ -134,7 +134,7 @@ const markers = bikeStations.map(({ position, title }, i) => {
 });
 
  // Add a marker clusterer to manage the markers.
- new MarkerClusterer({ markers, map });
+ //new MarkerClusterer({ markers, map });
  
 
 })
