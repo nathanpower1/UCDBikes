@@ -25,7 +25,14 @@
     
     <!--The div element for the map -->
     <div id="map"></div>
-    <div id="infobox"></div>
+    <div id="infobox">
+      <p><strong>Marker Information:</strong> This is the info displayed in the info box</p>
+      <p><strong>Station title:</strong> </p>
+      <p><strong>Station Number:</strong> </p>
+      <p><strong>Station Name:</strong> </p>
+      <p><strong>Bikes Available:</strong> </p>
+      <p><strong>Bike Stations:</strong> </p>
+    </div>
     <!-- prettier-ignore -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="module" src="{{ url_for('static', filename='js/map_1.js') }}"></script>
