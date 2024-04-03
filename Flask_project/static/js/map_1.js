@@ -49,14 +49,14 @@ async function loadstationJSON(station_number) {
 
 async function initMap() {
   
-  // The location of center of map (The Spire)
-  const center_dublin = { lat: 53.35026632919465, lng: -6.260428242778603 }; 
+  // The location of center of map (Ha'penny Bridge) 53.346304,-6.2521344
+  const center_dublin = { lat: 53.346304, lng: -6.2521344 }; 
   // Request needed libraries.
   //@ts-ignore
   const { Map, InfoWindow } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
-  // The map, centered at The Spire
+  // The map
   map = new Map(document.getElementById("map"), {
     zoom: 14,
     center: center_dublin,
