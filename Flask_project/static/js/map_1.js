@@ -110,7 +110,7 @@ loadJSON()
 // Create an info window to share between markers.
 const infoWindow = new InfoWindow;
 const infoBox = document.getElementById('infobox');
-const infoColumn = document.querySelector('.info-column');
+const infoColumn = document.querySelector('.info-column-station');
 
 //const glyphImg = document.createElement("img");
 // Create the markers.
