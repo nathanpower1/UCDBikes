@@ -82,7 +82,7 @@ const infoBox = document.getElementById('infobox');
 //  glyph: glyphImg,
 //});
 
-const markers = bikeStations.map(({ position, title }, i) => {
+bikeStations.map(({ position, title }, i) => {
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
@@ -116,6 +116,8 @@ const markers = bikeStations.map(({ position, title }, i) => {
     '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>'
     );
     infoWindow.open(marker.map, marker);
+
+    return marker
   })
   });
  // new MarkerClusterer({ bikeStations, map });
@@ -131,10 +133,11 @@ const markers = bikeStations.map(({ position, title }, i) => {
 
     
 // });
-// Add a marker clusterer to manage the markers.
-new MarkerClusterer({ markers, map });
 
 });
+
+// Add a marker clusterer to manage the markers.
+new MarkerClusterer({ markers, map });
 
  
 
