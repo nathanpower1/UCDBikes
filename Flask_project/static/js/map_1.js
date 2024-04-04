@@ -145,7 +145,29 @@ async function initMap() {
  //print weatherdata to console
 loadweatherJSON().then(weatherData =>console.log(weatherData))
 
-loadaveragesJSON(1).then(averages_data =>console.log(averages_data))
+loadaveragesJSON(1)
+.then(averages_data =>{
+  const ctx = document.getElementById('myChart');
+  console.log(averages_data)      
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange','cyan'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+})
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
