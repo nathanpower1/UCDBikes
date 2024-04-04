@@ -39,6 +39,8 @@ def map_generator(number):
 
 @app.route('/get_station_averages/<number>')
 def get_json_averages(number):
+    print(number)
+    print("call dublinbikes.update_averages({number});")
     try:
         data = sql_puller.sql_data(f"call dublinbikes.update_averages({number});")
         return data
