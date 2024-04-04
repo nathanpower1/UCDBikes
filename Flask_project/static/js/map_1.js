@@ -152,7 +152,7 @@ loadaveragesJSON(1)
   const array = [];
 
   for (let i = day*7; i <= day*7 + 6; i++) {
-    const position = [averages_data[i].AVG_available];
+    const position = averages_data[i].AVG_available;
     array.push(position);
   }
   console.log(array)
@@ -167,7 +167,7 @@ loadaveragesJSON(1)
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange','cyan'],
       datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: array,
         borderWidth: 1
       }]
     },
