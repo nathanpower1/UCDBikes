@@ -36,12 +36,7 @@ async function loadaveragesJSON(station_number) {
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
-    const data = await response.json();
-    const averagesData = [];
-    for (let key in data) {
-      const position = [data[key]];
-      averagesData.push(position);
-  }
+    const averagesData = await response.json();
     //console.log(station_data);
     return averagesData;
   } catch (error) {
