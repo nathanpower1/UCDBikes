@@ -37,10 +37,13 @@ async function loadaveragesJSON(station_number) {
         throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    
-    const averages_data = data;
+    const averagesData = [];
+    for (let key in data) {
+      const position = [data[key]];
+      averagesData.push(position);
+  }
     //console.log(station_data);
-    return averages_data;
+    return averagesData;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
     // If an error occurs, return a default empty array
