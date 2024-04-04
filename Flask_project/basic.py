@@ -39,11 +39,11 @@ def map_generator(number):
 
 @app.route('/get_station_averages/<number>')
 def get_json_averages(number):
-    print(number)
-    print(f"call dublinbikes.update_averages({number});")
+    #print(number)
+    #print(f"call dublinbikes.update_averages({number});")
     
     try:
-        data = sql_puller.sql_data(f"call dublinbikes.update_averages({number});")
+        data = sql_puller.sql_data(f"SELECT * FROM dublinbikes.averages WHERE number = {number};")
         return data
     except Exception as e:
         return str(e), 500
@@ -56,11 +56,9 @@ def get_json_data():
     except Exception as e:
         return str(e), 500
     
-
-    
 @app.route('/get_station_occupancy/<number>')
 def get_json_station(number):
-    print(f"call dublinbikes.station_data({number});")
+    #print(f"call dublinbikes.station_data({number});")
     try:
         data = sql_puller.sql_data(f"call dublinbikes.station_data({number});")
         return data
