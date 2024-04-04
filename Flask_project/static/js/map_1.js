@@ -164,7 +164,7 @@ loadaveragesJSON(1)
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange','cyan'],
+      labels: ['mon', 'tue', 'wed', 'thrs', 'fri', 'sat','sun'],
       datasets: [{
         label: '# of Votes',
         data: array,
