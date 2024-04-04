@@ -41,8 +41,8 @@ async function loadweatherJSON() {
            const position = [data[key]];
            weatherData.push(position);
        }
-       console.log('station_data');
-       console.log(station_data);
+       console.log('weather_data');
+       console.log(weatherData);
       return weatherData;
   } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
