@@ -125,7 +125,11 @@ bikeStations.forEach(([position, title, number], i) => {
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
-    title: `${number}`//,
+    title: `${number}`,
+    icon: {
+      url: "./static/images/bicycle-bike-red.png", // Replace with the URL of your image
+      scaledSize: new google.maps.Size(30, 30), // Adjust size as needed
+    },//,
     //content: glyphSvgPinElement.element
     //optimized: false,
     //icon: {
