@@ -126,9 +126,9 @@ bikeStations.forEach(([position, title, number], i) => {
     position,
     map:map,
     title: `${number}`,
-    icon: {
-      url: "./images/bicycle-bike-red.png" // Replace with the URL of your image // Adjust size as needed
-    },//,
+    //icon: {
+      //url: "./images/bicycle-bike-red.png" // Replace with the URL of your image // Adjust size as needed
+   // },//,
     //content: glyphSvgPinElement.element
     //optimized: false,
     //icon: {
