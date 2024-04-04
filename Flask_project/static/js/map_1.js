@@ -28,6 +28,26 @@ let markers = []
   }
 }
 
+//async load JSON static data
+async function loadaveragesJSON(station_number) {
+  try {
+    console.log('/get_station_averages/'+station_number)
+    const response = await fetch('/get_station_averages/'+station_number);
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    
+    const averages_data = data;
+    //console.log(station_data);
+    return averages_data;
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    // If an error occurs, return a default empty array
+    return [];
+  }
+}
+
 async function loadweatherJSON() {
   try {
       const response = await fetch('/get_current_weather');
@@ -126,6 +146,8 @@ async function initMap() {
  // Create an info window to share between markers.
  //print weatherdata to console
 loadweatherJSON().then(weatherData =>console.log(weatherData))
+
+loadaveragesJSON(1).then(averages_data =>console.log(averages_data))
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
