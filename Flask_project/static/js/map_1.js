@@ -155,9 +155,6 @@ loadaveragesJSON(1)
     const position = averages_data[i].AVG_available;
     array.push(position);
   }
-  console.log(array)
-
-
 
   const ctx = document.getElementById('myChart');
   console.log(averages_data)      
@@ -166,7 +163,7 @@ loadaveragesJSON(1)
     data: {
       labels: ['mon', 'tue', 'wed', 'thrs', 'fri', 'sat','sun'],
       datasets: [{
-        label: '# of Votes',
+        label: '# of Available Bikes',
         data: array,
         borderWidth: 1
       }]
