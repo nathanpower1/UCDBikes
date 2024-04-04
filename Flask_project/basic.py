@@ -38,7 +38,7 @@ def map_generator(number):
 #sql_puller.sql_data takes a sting which calls the correct stored procedure from the sql database
 
 @app.route('/get_station_averages/<number>')
-def get_json_station(number):
+def get_json_averages(number):
     try:
         data = sql_puller.sql_data(f"call dublinbikes.update_averages({number});")
         return data
@@ -73,7 +73,7 @@ def get_dynamic_json_data():
         return str(e), 500
     
 @app.route('/get_current_weather')
-def get_json_data():
+def get_json_weather():
     try:
         data = sql_puller.sql_data("call dublinbikes.current_weather();")
         return data
