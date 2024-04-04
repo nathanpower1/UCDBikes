@@ -123,8 +123,8 @@ async function initMap() {
 
   // info windows for markers
  // Create an info window to share between markers.
-loadweatherJSON()
-    .then(data =>console.log(data))
+//loadweatherJSON()
+ //   .then(data =>console.log(data))
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
