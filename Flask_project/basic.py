@@ -43,7 +43,7 @@ def get_json_averages(number):
     print(f"call dublinbikes.update_averages({number});")
     
     try:
-        data = sql_puller.sql_data(f"call dublinbikes.update_averages(1);")
+        data = sql_puller.sql_data(f"call dublinbikes.update_averages({number});")
         return data
     except Exception as e:
         return str(e), 500
