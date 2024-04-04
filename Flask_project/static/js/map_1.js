@@ -147,6 +147,18 @@ loadweatherJSON().then(weatherData =>console.log(weatherData))
 
 loadaveragesJSON(1)
 .then(averages_data =>{
+  const d = new Date();
+  let day = d.getDay()
+  const array = [];
+
+  for (let i = day*7; i <= day*7 + 6; i++) {
+    const position = [averages_data[i].AVG_available];
+    array.push(position);
+  }
+  console.log(array)
+
+
+
   const ctx = document.getElementById('myChart');
   console.log(averages_data)      
   new Chart(ctx, {
