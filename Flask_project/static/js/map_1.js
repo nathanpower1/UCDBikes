@@ -28,6 +28,27 @@ let markers = []
   }
 }
 
+async function loadweatherJSON() {
+  try {
+      const response = await fetch('/get_current_weather');
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log("Test console log")
+      // const weatherData = [];
+      // for (let key in data) {
+      //     const position = [{ lat: parseFloat(data[key].position_lat), lng: parseFloat(data[key].position_lng)}, data[key].name, data[key].number ];
+      //     weatherData.push(position);
+      // }
+      return data;
+  } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+      // If an error occurs, you might want to return a default value or handle it in some way
+      return [];
+  }
+}
+
 //async load JSON static data
 async function loadstationJSON(station_number) {
   try {
@@ -102,9 +123,12 @@ async function initMap() {
 
   // info windows for markers
  // Create an info window to share between markers.
+loadweatherJSON()
+    .then(data =>console.log(data))
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
+    
     .then(bikeStations => {
 
 // Create an info window to share between markers.
