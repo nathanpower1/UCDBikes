@@ -144,7 +144,7 @@ async function initMap() {
   // info windows for markers
  // Create an info window to share between markers.
  //print weatherdata to console
-//loadweatherJSON().then(weatherData => console.log(weatherData))
+loadweatherJSON().then(weatherData => console.log(weatherData))
 
 // Load weather data and update the webpage
 loadweatherJSON().then(weatherData => {
