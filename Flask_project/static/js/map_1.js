@@ -160,7 +160,7 @@ loadweatherJSON().then(weatherData => {
   if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
     const weatherObject = weatherData[0][0];
     document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherObject.main;
-    document.getElementById('temperature').textContent = 'Temperature: ' + Math.round(weatherObject.temp - 273.15) + 'Celsius';
+    document.getElementById('temperature').textContent = 'Temperature: ' + Math.round(weatherObject.temp - 273.15) + ' Celsius';
     document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherObject.wind_speed + 'm/s';
     document.getElementById('rain').textContent = 'Rain: ' + weatherObject.rain;
   }
