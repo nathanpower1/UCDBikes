@@ -59,7 +59,7 @@ async function loadweatherJSON() {
            const position = [data[key]];
            weatherData.push(position);
        }
-      return weatherDatadata;
+      return weatherData;
        
       //return weatherData;
   } catch (error) {
