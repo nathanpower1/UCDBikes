@@ -55,12 +55,13 @@ async function loadweatherJSON() {
       const data = await response.json();
       
        const weatherData = [];
-       for (let key in data) {
-           const position = [data[key]];
-           weatherData.push(position);
-       }
+       //for (let key in data) {
+       //    const position = [data[key]];
+       //    weatherData.push(position);
+      // }
+      return data;
        
-      return weatherData;
+      //return weatherData;
   } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
       // If an error occurs, you might want to return a default value or handle it in some way
@@ -143,7 +144,17 @@ async function initMap() {
   // info windows for markers
  // Create an info window to share between markers.
  //print weatherdata to console
-loadweatherJSON().then(weatherData =>console.log(weatherData))
+//loadweatherJSON().then(weatherData => console.log(weatherData))
+
+// Load weather data and update the webpage
+loadweatherJSON().then(weatherData => {
+  if (weatherData) {
+      // Update HTML elements with weather information
+      document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherData.main;
+      document.getElementById('temperature').textContent = 'Temperature: ' + weatherData.temp + ' Kelvin';
+      document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherData.wind_speed + ' m/s';
+  }
+});
 
 loadaveragesJSON(1)
 .then(averages_data =>{
