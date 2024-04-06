@@ -147,14 +147,25 @@ async function initMap() {
 loadweatherJSON().then(weatherData => console.log(weatherData))
 
 // Load weather data and update the webpage
-loadweatherJSON().then(weatherData => {
-  if (weatherData) {
+//loadweatherJSON().then(weatherData => {
+ // if (weatherData) {
       // Update HTML elements with weather information
-      document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherData.main;
-      document.getElementById('temperature').textContent = 'Temperature: ' + weatherData.temp + ' Kelvin';
-      document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherData.wind_speed + ' m/s';
+  //    document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherData.main;
+  //    document.getElementById('temperature').textContent = 'Temperature: ' + weatherData.temp + ' Kelvin';
+   //   document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherData.wind_speed + ' m/s';
+ // }
+//});
+
+loadweatherJSON().then(weatherData => {
+  if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
+    const weatherObject = weatherData[0][0];
+    document.getElementById('temperature').textContent = 'Temperature: ' + weatherObject.temp + 'K';
+    document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherObject.wind_speed + 'm/s';
+    document.getElementById('rain').textContent = 'Rain: ' + weatherObject.rain;
+    document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherObject.main;
   }
 });
+
 
 loadaveragesJSON(1)
 .then(averages_data =>{
