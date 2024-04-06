@@ -55,11 +55,11 @@ async function loadweatherJSON() {
       const data = await response.json();
       
        const weatherData = [];
-       //for (let key in data) {
-       //    const position = [data[key]];
-       //    weatherData.push(position);
-      // }
-      return data;
+       for (let key in data) {
+           const position = [data[key]];
+           weatherData.push(position);
+       }
+      return weatherDatadata;
        
       //return weatherData;
   } catch (error) {
