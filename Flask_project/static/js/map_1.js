@@ -370,8 +370,22 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   })
   });
 
+   // Create the bike image element
+   const clusterImg = document.createElement('img');
+
+   clusterImg.src = '../static/images/'+ 'bicycle-bike-cluster.png';
+
+  const renderer = {
+    render({ position }) {
+        const cluster = new AdvancedMarkerElement({
+            position,
+            content: clusterImg, // You can set the content to be the count
+        });
+        return cluster;
+    }
+};
   // Create a MarkerClusterer object
-new MarkerClusterer({ markers, map });
+new MarkerClusterer({ markers, map, renderer });
 });
 
 
