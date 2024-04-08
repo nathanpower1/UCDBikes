@@ -19,6 +19,7 @@ let bikeImgSrc;
       const bikeStations = [];
       for (let key in data) {
           const position = [{ lat: parseFloat(data[key].position_lat), lng: parseFloat(data[key].position_lng)}, data[key].name, data[key].number ];
+          const av_bikes = [data[key].available_bikes]
           bikeStations.push(position);
       }
 
@@ -222,21 +223,21 @@ const infoColumn = document.querySelector('.info-column-station');
 //  glyph: glyphImg,
 //});
 
-bikeStations.forEach(([position, title, number, available_bikes], i) => {
+bikeStations.forEach(([position, title, number, av_bikes], i) => {
   
   
   
   
   //   // Determine the image source based on available bikes
-  console.log("Available bikes:", available_bikes);
+  console.log("Available bikes:", av_bikes);
   // Determine the image source based on available bikes
-  if (available_bikes <= 5) {
+  if (av_bikes <= 5) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
     console.log("Setting marker to red");
-  } else if (available_bikes >= 6 && available_bikes <= 10) {
+  } else if (av_bikes >= 6 && av_bikes <= 10) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-orange.png';
     console.log("Setting marker to orange");
-  } else if (available_bikes >= 11 && available_bikes <= 19) {
+  } else if (av_bikes >= 11 && av_bikes <= 19) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
     console.log("Setting marker to yellow");
   } else {
