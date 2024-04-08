@@ -235,7 +235,7 @@ bikeStations.forEach(([position, title, number, available_bikes], i) => {
     } else if (11 <= available_bikes <= 19) {
       bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
     } else {
-      bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
+      bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
     } 
   
     // Create the bike image element
@@ -244,7 +244,7 @@ bikeStations.forEach(([position, title, number, available_bikes], i) => {
       //  url: "../static/images/bicycle-bike.svg",
       //  scaledSize:new google.maps.Size(50,50)
       //}
-    bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
+   // bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
