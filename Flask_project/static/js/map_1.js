@@ -242,7 +242,7 @@ bikeStations.forEach(([position, title, number], i) => {
   marker.addListener("click", () => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
-      loadaveragesJSON(station_data[0].number)
+      loadaveragesJSON(parseInt(marker.title))
       .then(averages_data =>{
         const d = new Date();
         let day = d.getDay()
