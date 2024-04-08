@@ -253,7 +253,21 @@ bikeStations.forEach(([position, title, number], i) => {
           const position = averages_data[i].AVG_available;
           array.push(position);
         }
-      
+        const xData= ['2024-08-12T00:00:00','2024-08-12T01:00:00','2024-08-12T02:00:00','2024-08-12T03:00:00',
+        '2024-08-12T04:00:00','2024-08-12T05:00:00','2024-08-12T06:00:00','2024-08-12T07:00:00',
+        '2024-08-12T08:00:00','2024-08-12T09:00:00','2024-08-12T10:00:00','2024-08-12T11:00:00',
+        '2024-08-12T12:00:00','2024-08-12T13:00:00','2024-08-12T14:00:00','2024-08-12T15:00:00',
+        '2024-08-12T16:00:00','2024-08-12T17:00:00','2024-08-12T18:00:00','2024-08-12T19:00:00',
+        '2024-08-12T20:00:00','2024-08-12T21:00:00','2024-08-12T22:00:00','2024-08-12T23:00:00',];
+        const yData = array;
+
+        const data_1 = xData.map((x, i) => {
+          return {
+            x: x,
+            y: yData[i]
+          };
+        });
+        console.log(data_1);
         const ctx = document.getElementById('myChart');
         if (myChart != undefined) {
           myChart.destroy();
@@ -261,16 +275,23 @@ bikeStations.forEach(([position, title, number], i) => {
           myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
-                    ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
+            //labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
+            //        ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
             datasets: [{
               label: '# of Available Bikes',
-              data: array,
+              //data: array,
+              data: [data_1],
               borderWidth: 1
             }]
           },
           options: {
             scales: {
+              x: {
+                type: 'time',
+                time: {
+                  unit: 'hour'
+                }
+              }
               y: {
                 beginAtZero: true
               }
@@ -280,7 +301,7 @@ bikeStations.forEach(([position, title, number], i) => {
         
       })
 
-    infoColumn.innerHTML = '<h2><strong> Station Information: <strong> </h2>' +
+    infoColumn.innerHTML = '<h2><strong> Station Information: </strong> </h2>' +
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
     '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
@@ -290,7 +311,7 @@ bikeStations.forEach(([position, title, number], i) => {
     infoWindow.close();
     infoWindow.setContent(
     //'<p><strong> Station title: </strong> ' + marker.title + '</p>' +
-    '<h2><strong> Station Information: <strong> </h2>' +
+    '<h2><strong> Station Information: </strong> </h2>' +
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
     '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
