@@ -4,6 +4,7 @@ import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclust
 let map;
 let infoWindow;
 let markers = []
+let myChart;
 
 //async load JSON static data
  async function loadJSON() {
@@ -260,7 +261,7 @@ bikeStations.forEach(([position, title, number], i) => {
           console.log("The chart should be destroyed");
           myChart.destroy();
         }
-          var myChart = new Chart(ctx, {
+          myChart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
