@@ -372,19 +372,6 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
 
   // Create a MarkerClusterer object
 new MarkerClusterer({ markers, map });
- // new MarkerClusterer({ bikeStations, map });
-//   marker.addListener('click', () => {
-//     loadstationJSON(5)
-//     .then(station_data =>{
-    
-//     infoBox.innerHTML = '<h2>Marker Information</h2>' +
-//                         '<p>Marker Name: ' + marker.title + '</p>' +
-//                         //'<p>station_data: ' + station_data[0].name + station_data[0].available_bikes +'</p>' +
-//                         '<p>Location: Latitude ' + marker.position.lat() + ', Longitude ' + marker.position().lng() + '</p>';
-//   })
-
-    
-// });
 });
 
 
