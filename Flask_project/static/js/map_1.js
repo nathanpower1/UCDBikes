@@ -256,7 +256,7 @@ bikeStations.forEach(([position, title, number], i) => {
       //  url: "../static/images/bicycle-bike.svg",
       //  scaledSize:new google.maps.Size(50,50)
       //}
-    //bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
+    bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
