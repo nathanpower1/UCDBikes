@@ -268,36 +268,48 @@ bikeStations.forEach(([position, title, number], i) => {
             y: yData[i]
           };
         });
-        console.log(data_1);
+        // document.getElementById('fullwidthdiv').innerHTML = data_1[1].x +"_ _ _ _ _"+data_1[1].y
         const ctx = document.getElementById('myChart');
-        if (myChart != undefined) {
-          myChart.destroy();
-        }
-          myChart = new Chart(ctx, {
+        
+          new Chart(ctx, {
           type: 'bar',
           data: {
             //labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
-            //        ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
+            //       ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
             datasets: [{
-              label: '# of Available Bikes',
+              label: 'Average Available Bikes',
               //data: array,
               data: data_1,
-              borderWidth: 1
-            }]
+              borderWidth: .1,
+              barThickness: 'flex'
+            },
+          {
+            label:"Current Station Availability",
+            data: [{x:new Date('2024-08-12T20:30:00'),y:28}],
+            borderWidth: 0.1,
+            barThickness: 'flex',
+            maxBarThickness: 20
+          }]
           },
           options: {
-            scales: {
-              x: {
-                type: 'time',
-                time: {
-                  unit: 'hour'
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'hour',
+                            displayFormats: {
+                                hour: 'HH:mm'
+                            },
+                            stepSize: 1
+                        },
+                        stacked: true,
+                        offset: true // Allow bars to overlap
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-              },
-              y: {
-                beginAtZero: true
-              }
             }
-          }
         });
         
       })
