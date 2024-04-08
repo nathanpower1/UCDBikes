@@ -15,7 +15,7 @@ let bikeImgSrc;
           throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      
+      console.log(data);
       const bikeStations = [];
       for (let key in data) {
           const position = [{ lat: parseFloat(data[key].position_lat), lng: parseFloat(data[key].position_lng)}, data[key].name, data[key].number ];
