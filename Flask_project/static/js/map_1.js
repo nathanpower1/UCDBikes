@@ -223,25 +223,40 @@ const infoColumn = document.querySelector('.info-column-station');
 //});
 
 bikeStations.forEach(([position, title, number], i) => {
+  loadstationJSON(parseInt(number))
+   .then(station_data => {
+        // Determine the image source based on available bikes
+        if (station_data[0].available_bikes >= 10) {
+           bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
+        } else if (station_data[0].available_bikes >= 5) {
+           bikeImgSrc = '../static/images/'+'bicycle-bike-orange.png';
+        } else {
+            bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
+        }
+
+        // Create the bike image element
+        const bikeImg = document.createElement('img');
+        bikeImg.src = bikeImgSrc;
+
   
   
   
   //   // Determine the image source based on available bikes
-  //   if (availableBikes >= 10) {
-  //    bikeImgSrc = 'bicycle-bike-green.png';
-  //   } else if (availableBikes >= 5) {
-  //    bikeImgSrc = 'bicycle-bike-yellow.png';
-  //  } else {
-  //    bikeImgSrc = 'bicycle-bike-red.png';
-  //  }
+    // if (availableBikes >= 10) {
+      //bikeImgSrc = 'bicycle-bike-green.png';
+    // } else if (availableBikes >= 5) {
+    //  bikeImgSrc = 'bicycle-bike-yellow.png';
+   // } else {
+    //  bikeImgSrc = 'bicycle-bike-red.png';
+   // } 
   
     // Create the bike image element
-    const bikeImg = document.createElement('img');
+   // const bikeImg = document.createElement('img');
     //icon: {
       //  url: "../static/images/bicycle-bike.svg",
       //  scaledSize:new google.maps.Size(50,50)
       //}
-    bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
+    //bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
@@ -375,7 +390,7 @@ new MarkerClusterer({ markers, map });
 .catch(error => {
     console.error('Error loading JSON:', error);
 });
-
+    });
 
 }
 
