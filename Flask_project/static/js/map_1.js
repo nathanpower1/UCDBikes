@@ -173,7 +173,7 @@ loadaveragesJSON(1)
   let day = d.getDay()
   const array = [];
 
-  for (let i = day*7; i <= day*7 + 6; i++) {
+  for (let i = day*24; i <= day*24 + 23; i++) {
     const position = averages_data[i].AVG_available;
     array.push(position);
   }
@@ -183,7 +183,8 @@ loadaveragesJSON(1)
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['mon', 'tue', 'wed', 'thrs', 'fri', 'sat','sun'],
+      labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
+              ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
       datasets: [{
         label: '# of Available Bikes',
         data: array,
