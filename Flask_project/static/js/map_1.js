@@ -291,7 +291,7 @@ bikeStations.forEach(([position, title, number], i) => {
                 time: {
                   unit: 'hour'
                 }
-              }
+              },
               y: {
                 beginAtZero: true
               }
