@@ -245,7 +245,7 @@ bikeStations.forEach(([position, title, number], i) => {
       loadaveragesJSON(parseInt(marker.title))
       .then(averages_data =>{
         const d = new Date();
-        let day = d.getDay()
+        let day = d.getDay();
         const array = [];
       
         for (let i = day*24; i <= day*24 + 23; i++) {
@@ -254,8 +254,10 @@ bikeStations.forEach(([position, title, number], i) => {
         }
       
         const ctx = document.getElementById('myChart');
-        console.log(averages_data)    
+        console.log(averages_data);
+        console.log((myChart));
         if (myChart != undefined) {
+          console.log("The chart should be destroyed");
           myChart.destroy();
         }
           var myChart = new Chart(ctx, {
