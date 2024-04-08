@@ -235,7 +235,7 @@ bikeStations.forEach(([position, title, number], i) => {
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
-    bikeImg.src = 'https://drive.google.com/file/d/1hf_V4sAhlEUQ57Y8O3uRhQi7CIeYOIwr/view?usp=drive_link';
+    bikeImg.src = 'static/images/bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
