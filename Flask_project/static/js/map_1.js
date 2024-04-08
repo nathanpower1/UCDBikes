@@ -18,10 +18,10 @@ let bikeImgSrc;
       console.log(data);
       const bikeStations = [];
       for (let key in data) {
-          const position = [{ lat: parseFloat(data[key].position_lat), lng: parseFloat(data[key].position_lng)}, data[key].name, data[key].number ];
-          const av_bikes = [data[key].available_bikes]
+          const position = [{ lat: parseFloat(data[key].position_lat), lng: parseFloat(data[key].position_lng)}, data[key].name, data[key].number,data[key].available_bikes ];
+          //const av_bikes = [data[key].available_bikes]
           bikeStations.push(position);
-          bikeStations.push(av_bikes);
+         // bikeStations.push(av_bikes);
       }
 
       return bikeStations;
