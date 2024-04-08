@@ -1,4 +1,4 @@
-import { initMap } from "./initMap";
+import { initMap } from "./js/initMap";//{{ url_for('static', filename='js/map_1.js') }}
 //const markerCluster = new MarkerClusterer({ markers, map });
 // Initialize and add the map
 export let map;
