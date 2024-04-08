@@ -222,14 +222,16 @@ const infoColumn = document.querySelector('.info-column-station');
 //  glyph: glyphImg,
 //});
 
-bikeStations.forEach(([position, title, number, available_bikes], i) => {
+Object.keys.apply(bikeStations).forEach(key => {
+  const {position, title, number, available_bikes} = bikeStations[key];
   
   
   
   
   //   // Determine the image source based on available bikes
-  console.log("Available bikes:", available_bikes[0]);
+  console.log("Available bikes:", available_bikes);
   // Determine the image source based on available bikes
+  let bikeImgSrc;
   if (available_bikes <= 5) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
     console.log("Setting marker to red");
