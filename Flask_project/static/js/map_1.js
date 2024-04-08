@@ -5,6 +5,7 @@ let map;
 let infoWindow;
 let markers = []
 let myChart;
+let bikeImgSrc;
 
 //async load JSON static data
  async function loadJSON() {
@@ -222,20 +223,25 @@ const infoColumn = document.querySelector('.info-column-station');
 //});
 
 bikeStations.forEach(([position, title, number], i) => {
-  //let bikeImgSrc;
   
-    // Determine the image source based on available bikes
-    //if (availableBikes >= 10) {
-    //  bikeImgSrc = 'bicycle-bike-green.png';
-    //} else if (availableBikes >= 5) {
-    //  bikeImgSrc = 'bicycle-bike-yellow.png';
-   // } else {
-   //   bikeImgSrc = 'bicycle-bike-red.png';
+  
+  
+  //   // Determine the image source based on available bikes
+  //   if (availableBikes >= 10) {
+  //    bikeImgSrc = 'bicycle-bike-green.png';
+  //   } else if (availableBikes >= 5) {
+  //    bikeImgSrc = 'bicycle-bike-yellow.png';
+  //  } else {
+  //    bikeImgSrc = 'bicycle-bike-red.png';
   //  }
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
-    bikeImg.src = 'static/images/bicycle-bike-green.png';
+    //icon: {
+      //  url: "../static/images/bicycle-bike.svg",
+      //  scaledSize:new google.maps.Size(50,50)
+      //}
+    bikeImg.src = '../static/images/'+'bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
@@ -260,6 +266,9 @@ bikeStations.forEach(([position, title, number], i) => {
           const position = averages_data[i].AVG_available;
           array.push(position);
         }
+        if (myChart != undefined){
+          myChart.destroy();
+        }
         console.log(array);
         const xData = [new Date('2024-08-12T00:00:00'), new Date('2024-08-12T01:00:00'), new Date('2024-08-12T02:00:00'), new Date('2024-08-12T03:00:00'),
                   new Date('2024-08-12T04:00:00'), new Date('2024-08-12T05:00:00'), new Date('2024-08-12T06:00:00'), new Date('2024-08-12T07:00:00'),
@@ -275,14 +284,11 @@ bikeStations.forEach(([position, title, number], i) => {
             y: yData[i]
           };
         });
-        // document.getElementById('fullwidthdiv').innerHTML = data_1[1].x +"_ _ _ _ _"+data_1[1].y
         const ctx = document.getElementById('myChart');
         
-          new Chart(ctx, {
+          myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            //labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
-            //       ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
             datasets: [{
               label: 'Average Available Bikes',
               //data: array,
@@ -292,10 +298,10 @@ bikeStations.forEach(([position, title, number], i) => {
             },
           {
             label:"Current Station Availability",
-            data: [{x:new Date('2024-08-12T20:30:00'),y:28}],
+            data: [{x:d,y:28}],
             borderWidth: 0.1,
             barThickness: 'flex',
-            maxBarThickness: 20
+            maxBarThickness: 14
           }]
           },
           options: {
