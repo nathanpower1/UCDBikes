@@ -222,19 +222,19 @@ const infoColumn = document.querySelector('.info-column-station');
 //  glyph: glyphImg,
 //});
 
-bikeStations.forEach(([position, title, number], i) => {
+bikeStations.forEach(([position, title, number, available_bikes], i) => {
   
   
   
   
   //   // Determine the image source based on available bikes
-    // if (availableBikes >= 10) {
-      //bikeImgSrc = 'bicycle-bike-green.png';
-    // } else if (availableBikes >= 5) {
-    //  bikeImgSrc = 'bicycle-bike-yellow.png';
-   // } else {
-    //  bikeImgSrc = 'bicycle-bike-red.png';
-   // } 
+     if (availableBikes >= 10) {
+      bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
+     } else if (availableBikes >= 5) {
+      bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
+    } else {
+      bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
+    } 
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
