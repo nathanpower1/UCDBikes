@@ -4,6 +4,7 @@ import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclust
 let map;
 let infoWindow;
 let markers = []
+let myChart;
 
 //async load JSON static data
  async function loadJSON() {
@@ -167,38 +168,39 @@ loadweatherJSON().then(weatherData => {
 });
 
 
-loadaveragesJSON(1)
-.then(averages_data =>{
-  const d = new Date();
-  let day = d.getDay()
-  const array = [];
+// loadaveragesJSON(1)
+// .then(averages_data =>{
+//   const d = new Date();
+//   let day = d.getDay()
+//   const array = [];
 
-  for (let i = day*7; i <= day*7 + 6; i++) {
-    const position = averages_data[i].AVG_available;
-    array.push(position);
-  }
+//   for (let i = day*24; i <= day*24 + 23; i++) {
+//     const position = averages_data[i].AVG_available;
+//     array.push(position);
+//   }
 
-  const ctx = document.getElementById('myChart');
-  console.log(averages_data)      
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['mon', 'tue', 'wed', 'thrs', 'fri', 'sat','sun'],
-      datasets: [{
-        label: '# of Available Bikes',
-        data: array,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-})
+//   const ctx = document.getElementById('myChart');
+//   console.log(averages_data)      
+//   new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//       labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
+//               ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
+//       datasets: [{
+//         label: '# of Available Bikes',
+//         data: array,
+//         borderWidth: 1
+//       }]
+//     },
+//     options: {
+//       scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//     }
+//   });
+// })
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
@@ -232,8 +234,66 @@ bikeStations.forEach(([position, title, number], i) => {
   marker.addListener("click", () => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
+      loadaveragesJSON(parseInt(marker.title))
+      .then(averages_data =>{
+        const d = new Date();
+        let day = d.getDay();
+        const array = [];
       
-    infoColumn.innerHTML = '<h2><strong> Station Information: <strong> </h2>' +
+        for (let i = day*24; i <= day*24 + 23; i++) {
+          const position = averages_data[i].AVG_available;
+          array.push(position);
+        }
+        console.log(array);
+        const xData = [new Date('2024-08-12T00:00:00'), new Date('2024-08-12T01:00:00'), new Date('2024-08-12T02:00:00'), new Date('2024-08-12T03:00:00'),
+                  new Date('2024-08-12T04:00:00'), new Date('2024-08-12T05:00:00'), new Date('2024-08-12T06:00:00'), new Date('2024-08-12T07:00:00'),
+                  new Date('2024-08-12T08:00:00'), new Date('2024-08-12T09:00:00'), new Date('2024-08-12T10:00:00'), new Date('2024-08-12T11:00:00'),
+                  new Date('2024-08-12T12:00:00'), new Date('2024-08-12T13:00:00'), new Date('2024-08-12T14:00:00'), new Date('2024-08-12T15:00:00'),
+                  new Date('2024-08-12T16:00:00'), new Date('2024-08-12T17:00:00'), new Date('2024-08-12T18:00:00'), new Date('2024-08-12T19:00:00'),
+                  new Date('2024-08-12T20:00:00'), new Date('2024-08-12T21:00:00'), new Date('2024-08-12T22:00:00'), new Date('2024-08-12T23:00:00')];
+                  const yData = array;
+
+        const data_1 = xData.map((x, i) => {
+          return {
+            x: x,
+            y: yData[i]
+          };
+        });
+        console.log(data_1);
+        const ctx = document.getElementById('myChart');
+        if (myChart != undefined) {
+          myChart.destroy();
+        }
+          myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            //labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
+            //        ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
+            datasets: [{
+              label: '# of Available Bikes',
+              //data: array,
+              data: data_1,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              x: {
+                type: 'time',
+                time: {
+                  unit: 'hour'
+                }
+              },
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+        
+      })
+
+    infoColumn.innerHTML = '<h2><strong> Station Information: </strong> </h2>' +
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
     '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
@@ -243,7 +303,7 @@ bikeStations.forEach(([position, title, number], i) => {
     infoWindow.close();
     infoWindow.setContent(
     //'<p><strong> Station title: </strong> ' + marker.title + '</p>' +
-    '<h2><strong> Station Information: <strong> </h2>' +
+    '<h2><strong> Station Information: </strong> </h2>' +
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
     '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
