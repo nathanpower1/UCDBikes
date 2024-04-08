@@ -11,12 +11,11 @@
  .myChart{
    height: 100%;
    width: 100%;
-   background-color: white;
  }
 
  .info-column {
    background-color: #93cb52;
-   padding: 0px;
+   padding-right: 5px;
    border-radius: 10px;
    margin-bottom: 10px;
 }

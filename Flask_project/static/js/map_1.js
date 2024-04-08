@@ -223,7 +223,7 @@ const infoColumn = document.querySelector('.info-column-station');
 //});
 
 bikeStations.forEach(([position, title, number], i) => {
-  console.log(bikeStations);
+  
   
   
   //   // Determine the image source based on available bikes
@@ -301,7 +301,7 @@ bikeStations.forEach(([position, title, number], i) => {
             data: [{x:new Date('2024-08-12T20:30:00'),y:28}],
             borderWidth: 0.1,
             barThickness: 'flex',
-            maxBarThickness: 20
+            maxBarThickness: 14
           }]
           },
           options: {
