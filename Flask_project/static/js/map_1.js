@@ -167,39 +167,39 @@ loadweatherJSON().then(weatherData => {
 });
 
 
-loadaveragesJSON(1)
-.then(averages_data =>{
-  const d = new Date();
-  let day = d.getDay()
-  const array = [];
+// loadaveragesJSON(1)
+// .then(averages_data =>{
+//   const d = new Date();
+//   let day = d.getDay()
+//   const array = [];
 
-  for (let i = day*24; i <= day*24 + 23; i++) {
-    const position = averages_data[i].AVG_available;
-    array.push(position);
-  }
+//   for (let i = day*24; i <= day*24 + 23; i++) {
+//     const position = averages_data[i].AVG_available;
+//     array.push(position);
+//   }
 
-  const ctx = document.getElementById('myChart');
-  console.log(averages_data)      
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
-              ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
-      datasets: [{
-        label: '# of Available Bikes',
-        data: array,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-})
+//   const ctx = document.getElementById('myChart');
+//   console.log(averages_data)      
+//   new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//       labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
+//               ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
+//       datasets: [{
+//         label: '# of Available Bikes',
+//         data: array,
+//         borderWidth: 1
+//       }]
+//     },
+//     options: {
+//       scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//     }
+//   });
+// })
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
@@ -242,7 +242,40 @@ bikeStations.forEach(([position, title, number], i) => {
   marker.addListener("click", () => {
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
+      loadaveragesJSON(1)
+      .then(averages_data =>{
+        const d = new Date();
+        let day = d.getDay()
+        const array = [];
       
+        for (let i = day*24; i <= day*24 + 23; i++) {
+          const position = averages_data[i].AVG_available;
+          array.push(position);
+        }
+      
+        const ctx = document.getElementById('myChart');
+        console.log(averages_data)      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
+                    ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
+            datasets: [{
+              label: '# of Available Bikes',
+              data: array,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      })
+
     infoColumn.innerHTML = '<h2><strong> Station Information: <strong> </h2>' +
     '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
