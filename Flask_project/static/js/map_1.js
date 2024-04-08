@@ -224,15 +224,6 @@ bikeStations.forEach(([position, title, number], i) => {
     position,
     map:map,
     title: `${number}`,
-    //icon: {
-      //url: "./images/bicycle-bike-red.png" // Replace with the URL of your image // Adjust size as needed
-   // },//,
-    //content: glyphSvgPinElement.element
-    //optimized: false,
-    //icon: {
-    //  url: "../static/images/bicycle-bike.svg",
-    //  scaledSize:new google.maps.Size(50,50)
-    //}
   });
 
   markers.push(marker);
