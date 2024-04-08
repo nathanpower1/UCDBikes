@@ -5,6 +5,7 @@ let map;
 let infoWindow;
 let markers = []
 let myChart;
+let bikeImgSrc;
 
 //async load JSON static data
  async function loadJSON() {
@@ -222,7 +223,8 @@ const infoColumn = document.querySelector('.info-column-station');
 //});
 
 bikeStations.forEach(([position, title, number], i) => {
-  let bikeImgSrc;
+  console.log(bikeStations);
+  
   
     // Determine the image source based on available bikes
     if (availableBikes >= 10) {
@@ -264,6 +266,9 @@ bikeStations.forEach(([position, title, number], i) => {
           const position = averages_data[i].AVG_available;
           array.push(position);
         }
+        if (myChart != undefined){
+          myChart.destroy();
+        }
         console.log(array);
         const xData = [new Date('2024-08-12T00:00:00'), new Date('2024-08-12T01:00:00'), new Date('2024-08-12T02:00:00'), new Date('2024-08-12T03:00:00'),
                   new Date('2024-08-12T04:00:00'), new Date('2024-08-12T05:00:00'), new Date('2024-08-12T06:00:00'), new Date('2024-08-12T07:00:00'),
@@ -281,7 +286,7 @@ bikeStations.forEach(([position, title, number], i) => {
         });
         const ctx = document.getElementById('myChart');
         
-          new Chart(ctx, {
+          myChart = new Chart(ctx, {
           type: 'bar',
           data: {
             datasets: [{
