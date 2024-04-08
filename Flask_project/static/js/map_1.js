@@ -255,10 +255,7 @@ bikeStations.forEach(([position, title, number], i) => {
         }
       
         const ctx = document.getElementById('myChart');
-        console.log(averages_data);
-        console.log((myChart));
         if (myChart != undefined) {
-          console.log("The chart should be destroyed");
           myChart.destroy();
         }
           myChart = new Chart(ctx, {
