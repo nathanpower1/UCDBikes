@@ -255,9 +255,10 @@ bikeStations.forEach(([position, title, number], i) => {
       
         const ctx = document.getElementById('myChart');
         console.log(averages_data)    
-        var myChart  = new Chart();
-        myChart.destroy();
-          myChart = new Chart(ctx, {
+        if (myChart != undefined) {
+          myChart.destroy();
+        }
+          var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
