@@ -271,18 +271,24 @@ bikeStations.forEach(([position, title, number], i) => {
           myChart.destroy();
         }
         
-        const xData = [];
-        for(let asx; asx<23; asx++){
-          p = new Date().setHours(asx,0,0);
-          xData.push(p);
-        }
+        // const xData = [];
+        // for(let asx; asx<23; asx++){
+        //   p = new Date().setHours(asx,0,0);
+        //   xData.push(p);
+        // }
         //  xData = [new Date('2024-08-12T00:00:00'), new Date('2024-08-12T01:00:00'), new Date('2024-08-12T02:00:00'), new Date('2024-08-12T03:00:00'),
         //           new Date('2024-08-12T04:00:00'), new Date('2024-08-12T05:00:00'), new Date('2024-08-12T06:00:00'), new Date('2024-08-12T07:00:00'),
         //           new Date('2024-08-12T08:00:00'), new Date('2024-08-12T09:00:00'), new Date('2024-08-12T10:00:00'), new Date('2024-08-12T11:00:00'),
         //           new Date('2024-08-12T12:00:00'), new Date('2024-08-12T13:00:00'), new Date('2024-08-12T14:00:00'), new Date('2024-08-12T15:00:00'),
         //           new Date('2024-08-12T16:00:00'), new Date('2024-08-12T17:00:00'), new Date('2024-08-12T18:00:00'), new Date('2024-08-12T19:00:00'),
         //           new Date('2024-08-12T20:00:00'), new Date('2024-08-12T21:00:00'), new Date('2024-08-12T22:00:00'), new Date('2024-08-12T23:00:00')];
-                  const yData = array;
+        const xData = [new Date().setHours(0,0,0), new Date().setHours(1,0,0), new Date().setHours(2,0,0), new Date().setHours(3,0,0),
+          new Date().setHours(4,0,0), new Date().setHours(5,0,0), new Date().setHours(6,0,0), new Date().setHours(7,0,0),
+          new Date().setHours(8,0,0), new Date().setHours(9,0,0), new Date().setHours(10,0,0), new Date().setHours(11,0,0),
+          new Date().setHours(12,0,0), new Date().setHours(13,0,0), new Date().setHours(14,0,0), new Date().setHours(15,0,0),
+          new Date().setHours(16,0,0), new Date().setHours(17,0,0), new Date().setHours(18,0,0), new Date().setHours(19,0,0),
+          new Date().setHours(20,0,0), new Date().setHours(21,0,0), new Date().setHours(22,0,0), new Date().setHours(23,0,0)]          
+        const yData = array;
 
         const data_1 = xData.map((x, i) => {
           return {
