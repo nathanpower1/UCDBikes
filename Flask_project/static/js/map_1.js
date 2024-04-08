@@ -228,15 +228,15 @@ bikeStations.forEach(([position, title, number, available_bikes], i) => {
   
   
   //   // Determine the image source based on available bikes
-     if (available_bikes <= 5) {
-      bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
-     } else if (6 <= available_bikes <= 10) {
-      bikeImgSrc = '../static/images/'+'bicycle-bike-orange.png';
-    } else if (11 <= available_bikes <= 19) {
-      bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
-    } else {
-      bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
-    } 
+  if (available_bikes <= 5) {
+    bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
+  } else if (available_bikes >= 6 && available_bikes <= 10) {
+    bikeImgSrc = '../static/images/'+'bicycle-bike-orange.png';
+  } else if (available_bikes >= 11 && available_bikes <= 19) {
+    bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
+  } else {
+    bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
+  }
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
