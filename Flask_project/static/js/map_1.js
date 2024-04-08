@@ -222,10 +222,26 @@ const infoColumn = document.querySelector('.info-column-station');
 //});
 
 bikeStations.forEach(([position, title, number], i) => {
+  //let bikeImgSrc;
+  
+    // Determine the image source based on available bikes
+    //if (availableBikes >= 10) {
+    //  bikeImgSrc = 'bicycle-bike-green.png';
+    //} else if (availableBikes >= 5) {
+    //  bikeImgSrc = 'bicycle-bike-yellow.png';
+   // } else {
+   //   bikeImgSrc = 'bicycle-bike-red.png';
+  //  }
+  
+    // Create the bike image element
+    const bikeImg = document.createElement('img');
+    bikeImg.src = 'static\images\bicycle-bike-green.png';
+
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
     title: `${number}`,
+    content: bikeImg,
   });
 
   markers.push(marker);
