@@ -222,19 +222,26 @@ const infoColumn = document.querySelector('.info-column-station');
 //});
 
 bikeStations.forEach(([position, title, number], i) => {
+  //let bikeImgSrc;
+  
+    // Determine the image source based on available bikes
+    //if (availableBikes >= 10) {
+    //  bikeImgSrc = 'bicycle-bike-green.png';
+    //} else if (availableBikes >= 5) {
+    //  bikeImgSrc = 'bicycle-bike-yellow.png';
+   // } else {
+   //   bikeImgSrc = 'bicycle-bike-red.png';
+  //  }
+  
+    // Create the bike image element
+    const bikeImg = document.createElement('img');
+    bikeImg.src = 'https://drive.google.com/file/d/1hf_V4sAhlEUQ57Y8O3uRhQi7CIeYOIwr/view?usp=drive_link';
+
   const marker = new AdvancedMarkerElement({
     position,
     map:map,
     title: `${number}`,
-    //icon: {
-      //url: "./images/bicycle-bike-red.png" // Replace with the URL of your image // Adjust size as needed
-   // },//,
-    //content: glyphSvgPinElement.element
-    //optimized: false,
-    //icon: {
-    //  url: "../static/images/bicycle-bike.svg",
-    //  scaledSize:new google.maps.Size(50,50)
-    //}
+    content: bikeImg,
   });
 
   markers.push(marker);
