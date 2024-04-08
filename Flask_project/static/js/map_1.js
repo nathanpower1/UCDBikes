@@ -228,7 +228,7 @@ bikeStations.forEach(([position, title, number, available_bikes], i) => {
   
   
   //   // Determine the image source based on available bikes
-  console.log("Available bikes:", available_bikes);
+  console.log("Available bikes:", available_bikes[i]);
   // Determine the image source based on available bikes
   if (available_bikes <= 5) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
