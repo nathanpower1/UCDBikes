@@ -235,7 +235,7 @@ bikeStations.forEach(([position, title, number, available_bikes], i) => {
     } else if (11 <= available_bikes <= 19) {
       bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
     } else {
-      bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
+      bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
     } 
   
     // Create the bike image element
