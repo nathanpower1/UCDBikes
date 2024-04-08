@@ -298,7 +298,7 @@ bikeStations.forEach(([position, title, number], i) => {
             },
           {
             label:"Current Station Availability",
-            data: [{x:new Date('2024-08-12T20:30:00'),y:28}],
+            data: [{x:d,y:28}],
             borderWidth: 0.1,
             barThickness: 'flex',
             maxBarThickness: 14
