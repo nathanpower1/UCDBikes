@@ -281,7 +281,7 @@ bikeStations.forEach(([position, title, number], i) => {
             datasets: [{
               label: '# of Available Bikes',
               //data: array,
-              data: [data_1],
+              data: data_1,
               borderWidth: 1
             }]
           },
