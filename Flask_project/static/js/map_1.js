@@ -313,7 +313,7 @@ bikeStations.forEach(([position, title, number], i) => {
             },
           {
             label:"Current Station Availability",
-            data: [{x:d,y:28}],
+            data: [{x:d,y:station_data[0].available_bikes}],
             borderWidth: 0.1,
             barThickness: 'flex',
             maxBarThickness: 14
