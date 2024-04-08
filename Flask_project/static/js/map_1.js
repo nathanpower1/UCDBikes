@@ -235,7 +235,7 @@ bikeStations.forEach(([position, title, number], i) => {
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
-    bikeImg.src = 'bicycle-bike-green.png';
+    bikeImg.src = 'https://e7.pngegg.com/pngimages/733/57/png-clipart-road-bike-illustration-cycling-club-road-bicycle-racing-bicycle-pedals-cycling-icon-bicycle-bike-biking-cycling-miscellaneous-text-thumbnail.png';
 
   const marker = new AdvancedMarkerElement({
     position,
