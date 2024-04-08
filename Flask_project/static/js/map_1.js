@@ -255,7 +255,7 @@ bikeStations.forEach(([position, title, number], i) => {
       
         const ctx = document.getElementById('myChart');
         console.log(averages_data)    
-        var myChart  
+        var myChart  = new Chart();
         myChart.destroy();
           myChart = new Chart(ctx, {
           type: 'bar',
