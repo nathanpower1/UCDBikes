@@ -232,15 +232,15 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   //   // Determine the image source based on available bikes
   console.log("Available bikes:", av_bikes);
   // Determine the image source based on available bikes
-  if (av_bikes <= 5) {
+  if (av_bikes = 0) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
     console.log("Setting marker to red");
-  } else if (av_bikes >= 6 && av_bikes <= 10) {
+  } else if (av_bikes >= 1 && av_bikes <= 10) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-orange.png';
     console.log("Setting marker to orange");
-  } else if (av_bikes >= 11 && av_bikes <= 19) {
-    bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
-    console.log("Setting marker to yellow");
+  //} else if (av_bikes >= 11 && av_bikes <= 19) {
+  //  bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
+   // console.log("Setting marker to yellow");
   } else {
     bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
     console.log("Setting marker to green");
