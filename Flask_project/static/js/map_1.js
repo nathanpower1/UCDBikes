@@ -269,7 +269,7 @@ bikeStations.forEach(([position, title, number], i) => {
         if (myChart != undefined){
           myChart.destroy();
         }
-        console.log(array);
+        
         const xData = [];
         for(let asx; asx<23; asx++){
           p = new Date().setHours(asx,0,0);
@@ -289,6 +289,7 @@ bikeStations.forEach(([position, title, number], i) => {
             y: yData[i]
           };
         });
+        console.log(data_1);
         const ctx = document.getElementById('myChart');
         
           myChart = new Chart(ctx, {
