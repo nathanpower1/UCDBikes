@@ -228,9 +228,9 @@ bikeStations.forEach(([position, title, number, available_bikes], i) => {
   
   
   //   // Determine the image source based on available bikes
-     if (availableBikes >= 10) {
+     if (available_bikes >= 10) {
       bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
-     } else if (availableBikes >= 5) {
+     } else if (available_bikes >= 5) {
       bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
     } else {
       bikeImgSrc = '../static/images/'+'bicycle-bike-red.png';
