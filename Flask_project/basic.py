@@ -51,7 +51,7 @@ def get_json_averages(number):
 @app.route('/get_static_data')
 def get_json_data():
     try:
-        data = sql_puller.sql_data("call dublinbikes.static_data();")
+        data = sql_puller.sql_data("call dublinbikes.station_data_total();")
         return data
     except Exception as e:
         return str(e), 500
