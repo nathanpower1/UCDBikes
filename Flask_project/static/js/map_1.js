@@ -235,7 +235,11 @@ bikeStations.forEach(([position, title, number], i) => {
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
-    bikeImg.src = '../images/bicycle-bike-green.png';
+    //icon: {
+      //  url: "../static/images/bicycle-bike.svg",
+      //  scaledSize:new google.maps.Size(50,50)
+      //}
+    bikeImg.src = '../static/images/bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
