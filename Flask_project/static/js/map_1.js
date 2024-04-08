@@ -235,7 +235,7 @@ bikeStations.forEach(([position, title, number], i) => {
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
-    bikeImg.src = 'static/images/bicycle-bike-green.png';
+    bikeImg.src = '../images/bicycle-bike-green.png';
 
   const marker = new AdvancedMarkerElement({
     position,
@@ -275,14 +275,11 @@ bikeStations.forEach(([position, title, number], i) => {
             y: yData[i]
           };
         });
-        // document.getElementById('fullwidthdiv').innerHTML = data_1[1].x +"_ _ _ _ _"+data_1[1].y
         const ctx = document.getElementById('myChart');
         
           new Chart(ctx, {
           type: 'bar',
           data: {
-            //labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
-            //       ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
             datasets: [{
               label: 'Average Available Bikes',
               //data: array,
