@@ -255,6 +255,7 @@ bikeStations.forEach(([position, title, number], i) => {
       
         const ctx = document.getElementById('myChart');
         console.log(averages_data)      
+        if (myChart) {    myChart.destroy();  }
         var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -274,7 +275,7 @@ bikeStations.forEach(([position, title, number], i) => {
             }
           }
         });
-        myChart.destroy();
+        
       })
 
     infoColumn.innerHTML = '<h2><strong> Station Information: <strong> </h2>' +
