@@ -241,7 +241,7 @@ bikeStations.forEach(([position, title, number], i) => {
     position,
     map:map,
     title: `${number}`,
-    content: bikeImg,
+    //content: bikeImg,
   });
 
   markers.push(marker);
