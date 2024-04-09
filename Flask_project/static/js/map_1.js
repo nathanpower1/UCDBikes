@@ -402,12 +402,15 @@ new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
 
 }
 
+
 // Define the placeMarkerAndPanTo function
 let currentMarker;
 
 // Define the placeMarkerAndPanTo function
 async function placeMarkerAndPanTo(latLng, map) {
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  loadJSON()
+    
+    .then(bikeStations => {
 
   // Remove existing marker if it exists
   if (currentMarker) {
@@ -451,6 +454,8 @@ async function placeMarkerAndPanTo(latLng, map) {
 
   // Pan the map to the marker's position
   map.panTo(latLng);
+})
+
 }
 
 // Define the placeMarkerAndPanTo function
