@@ -6,6 +6,8 @@ let infoWindow;
 let markers = []
 let myChart;
 let bikeImgSrc;
+let userMarker;
+let closestStationMarker;
 
 //async load JSON static data
  async function loadJSON() {
@@ -403,8 +405,6 @@ new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
 }
 
 
-// Define the placeMarkerAndPanTo function
-let currentMarker;
 
 // Define the placeMarkerAndPanTo function
 async function placeMarkerAndPanTo(latLng, map) {
@@ -418,19 +418,17 @@ async function placeMarkerAndPanTo(latLng, map) {
 
 
   // Remove existing marker if it exists
-  if (currentMarker) {
-    currentMarker.setMap(null);
+  if (userMarker) {
+    userMarker.setMap(null); //Remove current user marker
+    userMarker = null; //Reset userMarker Variable
   }
 
   // Create a new Advanced Marker
-  const marker = new AdvancedMarkerElement({
+  userMarker = new AdvancedMarkerElement({
     position: latLng,
     map: map,
   });
 
-
-  // Store the current marker
-  currentMarker = marker;
 
   // Find the closest station
   let closestStation = bikeStations[0];
@@ -451,6 +449,36 @@ async function placeMarkerAndPanTo(latLng, map) {
       closestStation = bikeStations[i];
     }
   }
+
+  // Remove existing closest station marker if it exists
+  if (closestStationMarker) {
+    closestStationMarker.setMap(null);
+  }
+// Create the bike image element with the appropriate image source
+let bikeImgSrc = 'bicycle-bike-closest.png'; // Default image source
+
+// Create the bike image element
+const bikeImg = document.createElement('img');
+bikeImg.src = bikeImgSrc;
+
+// Create a new Advanced Marker for the closest station with the updated marker image
+closestStationMarker = new AdvancedMarkerElement({
+  position: closestStation[0],
+  map: map,
+  content: bikeImg
+});
+
+  //bikeImgSrc = '../static/images/'+'bicycle-bike-closest.png';
+  
+    // Create the bike image element
+   // const bikeImg = document.createElement('img');
+   // bikeImg.src = bikeImgSrc;
+
+  //new AdvancedMarkerElement({
+  //  position: closestStation[0],
+  //  map: map,
+  //  content: bikeImg 
+ // });
 
   // Update the coordinates in the text box
   document.getElementById('Lat').textContent = 'Latitude:' +  latLng.lat().toFixed(6);
