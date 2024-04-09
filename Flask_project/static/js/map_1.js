@@ -484,6 +484,7 @@ async function placeMarkerAndPanTo(latLng, map) {
       closestStation = bikeStations[i];
     }
   }
+console.log(closestStation);
 
   // Remove existing closest station marker if it exists
   if (closestStationMarker) {
