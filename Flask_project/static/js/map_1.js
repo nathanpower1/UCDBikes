@@ -392,7 +392,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
     }
 };
   // Create a MarkerClusterer object
-new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
+// new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
 //new MarkerClusterer( markers, map, {
  /// gridSize: 75, // Adjust the grid size as needed
  // minimumClusterSize: 4, // Set the minimum number of markers in a cluster
