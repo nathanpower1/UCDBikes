@@ -455,7 +455,7 @@ async function placeMarkerAndPanTo(latLng, map) {
     closestStationMarker.setMap(null);
   }
 // Create the bike image element with the appropriate image source
-let bikeImgSrc = 'bicycle-bike-closest.png'; // Default image source
+let bikeImgSrc = '../static/images/'+'bicycle-bike-closest.png'; // Default image source
 
 // Create the bike image element
 const bikeImg = document.createElement('img');
