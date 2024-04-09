@@ -436,13 +436,13 @@ async function placeMarkerAndPanTo(latLng, map) {
   console.log(bikeStations[0]);
   let minDistance = google.maps.geometry.spherical.computeDistanceBetween(
     latLng,
-    bikeStations[0].position // Accessing the position of the first station
+    bikeStations[0][0] // Accessing the position of the first station
   );
 
   for (let i = 1; i < bikeStations.length; i++) {
     const distance = google.maps.geometry.spherical.computeDistanceBetween(
       latLng,
-      bikeStations[i].position // Accessing the position of the station
+      bikeStations[i][0] // Accessing the position of the station
     );
 
     if (distance < minDistance) {
@@ -454,7 +454,7 @@ async function placeMarkerAndPanTo(latLng, map) {
   // Update the coordinates in the text box
   document.getElementById('Lat').textContent = 'Latitude:' +  latLng.lat().toFixed(6);
   document.getElementById('Long').textContent = 'Longitude:' + latLng.lng().toFixed(6);
-  document.getElementById('Closest').textContent = 'Closest Station:' + closestStation.name + '(' + minDistance.toFixed(2) +' meters away)';
+  document.getElementById('Closest').textContent = 'Closest Station:' + closestStation[1] + '(' + minDistance.toFixed(2) +' meters away)';
 
   // Pan the map to the marker's position
   map.panTo(latLng);
