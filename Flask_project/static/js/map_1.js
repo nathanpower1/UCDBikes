@@ -90,15 +90,15 @@ async function updateWeatherAndDateInfo() {
   });
   if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
      // Display temperature and conditions in the weather info container
-     weatherInfoContainer.innerHTML = `Temperature: ${Math.round(weatherObject.temp - 273.15)}°C, Conditions: ${weatherObject.main}`;
-
+     document.getElementById('weather-info').textContent = 'Temperature: '+ Math.round(weatherObject.temp - 273.15) +'°C' + 'Conditions: ' + weatherObject.main;
+     
      // Get today's date
      const today = new Date();
      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
      const formattedDate = today.toLocaleDateString('en-US', options);
      
      // Display today's date in the date info container
-     dateInfoContainer.innerHTML = formattedDate;
+     document.getElementById('date-info').textContent = formattedDate;
   } else {
      // Display error message if weather data couldn't be fetched
      weatherInfoContainer.innerHTML = 'Weather information not available';
