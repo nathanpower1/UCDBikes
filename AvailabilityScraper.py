@@ -115,3 +115,4 @@ table_reload_query = "call dublinbikes.update_station_data_table();"
 cursor.execute(table_reload_query)
 logging.info(f"SQL excecuted {table_reload_query}")
 cursor.close()
+connection.close()
