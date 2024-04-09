@@ -2,6 +2,45 @@
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
+
+ #legend {
+   position: absolute;
+   top: 80px;
+   right: 20px;
+   background-color: #fff;
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   z-index: 1000; /* Ensure the legend is above the map */
+ }
+ 
+ #legend h2 {
+   margin-bottom: 10px;
+   font-size: 16px;
+ }
+ 
+ #legend ul {
+   list-style: none;
+   padding: 0;
+ }
+ 
+ #legend li {
+   margin-bottom: 5px;
+ }
+ 
+ /* Define marker colors in the legend */
+ .marker {
+   width: 20px;
+   height: 20px;
+   display: inline-block;
+   border-radius: 50%;
+   margin-right: 5px;
+ }
+ 
+ .blue {
+   background-color: blue;
+ }
+ 
  #map {
    height: 100%;
    width: 70%;
