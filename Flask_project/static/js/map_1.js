@@ -195,6 +195,7 @@ loadweatherJSON().then(weatherData => console.log(weatherData))
  // }
 //});
 
+/*
 loadweatherJSON().then(weatherData => {
   if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
     const weatherObject = weatherData[0][0];
@@ -204,7 +205,7 @@ loadweatherJSON().then(weatherData => {
     document.getElementById('rain').textContent = 'Rain: ' + weatherObject.rain;
   }
 });
-
+ */
 
 // loadaveragesJSON(1)
 // .then(averages_data =>{
