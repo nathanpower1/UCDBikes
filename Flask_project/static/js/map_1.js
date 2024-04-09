@@ -83,7 +83,7 @@ async function updateWeatherAndDateInfo() {
   if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
     const weatherObject = weatherData[0][0];
      // Display temperature and conditions in the weather info container
-     document.getElementById('weather-info').textContent = 'Temperature: '+ Math.round(weatherObject.temp - 273.15) +'°C' + 'Conditions: ' + weatherObject.main;
+     document.getElementById('weather-info').textContent = 'Temperature: '+ Math.round(weatherObject.temp - 273.15) +'°C' + ' Conditions: ' + weatherObject.main;
      console.log("Weather")
      // Get today's date
      const today = new Date();
