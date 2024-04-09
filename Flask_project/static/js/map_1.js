@@ -109,6 +109,11 @@ async function initMap() {
     mapId: "992d9c838bb18c39",
   });
 
+   // Add event listener for map click
+   map.addListener("click", (e) => {
+    placeMarkerAndPanTo(e.latLng, map);
+  });
+
 
     // Current Location Finder
    /* const locationButton = document.createElement("button");
@@ -397,6 +402,32 @@ new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
 
 }
 
+// Define the placeMarkerAndPanTo function
+let currentMarker;
+
+async function placeMarkerAndPanTo(latLng, map) {
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+  // Remove existing marker if it exists
+  if (currentMarker) {
+    currentMarker.setMap(null);
+  }
+
+  // Create a new Advanced Marker
+  const marker = new AdvancedMarkerElement({
+    position: latLng,
+    map: map,
+  });
+
+  // Store the current marker
+  currentMarker = marker;
+
+  // Update the coordinates in the text box
+  document.getElementById("coordinates").innerText = `Latitude: ${latLng.lat().toFixed(6)}, Longitude: ${latLng.lng().toFixed(6)}`;
+
+  // Pan the map to the marker's position
+  map.panTo(latLng);
+}
 
 /*function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
