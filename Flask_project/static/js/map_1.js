@@ -75,6 +75,40 @@ async function loadweatherJSON() {
   }
 }
 
+// Function to update weather and date information in the HTML
+async function updateWeatherAndDateInfo() {
+  const dateInfoContainer = document.getElementById('date-info');
+  const weatherInfoContainer = document.getElementById('weather-info');
+  loadweatherJSON().then(weatherData => {
+    if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
+      const weatherObject = weatherData[0][0];
+      document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherObject.main;
+      document.getElementById('temperature').textContent = 'Temperature: ' + Math.round(weatherObject.temp - 273.15) + ' Celsius';
+      document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherObject.wind_speed + 'm/s';
+      document.getElementById('rain').textContent = 'Rain: ' + weatherObject.rain;
+    }
+  });
+  if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
+     // Display temperature and conditions in the weather info container
+     weatherInfoContainer.innerHTML = `Temperature: ${Math.round(weatherObject.temp - 273.15)}°C, Conditions: ${weatherObject.main}`;
+
+     // Get today's date
+     const today = new Date();
+     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+     const formattedDate = today.toLocaleDateString('en-US', options);
+     
+     // Display today's date in the date info container
+     dateInfoContainer.innerHTML = formattedDate;
+  } else {
+     // Display error message if weather data couldn't be fetched
+     weatherInfoContainer.innerHTML = 'Weather information not available';
+     dateInfoContainer.innerHTML = '';
+  }
+}
+
+// Call the function to update weather and date information
+updateWeatherAndDateInfo();
+
 //async load JSON static data
 async function loadstationJSON(station_number) {
   try {
