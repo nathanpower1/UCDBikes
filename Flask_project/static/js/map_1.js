@@ -479,7 +479,7 @@ async function placeMarkerAndPanTo(latLng, map) {
       bikeStations[i][0] // Accessing the position of the station
     );
 
-    if (distance < minDistance) {
+    if (distance < minDistance && bikeStations[i][3] > 0) {
       minDistance = distance;
       closestStation = bikeStations[i];
     }
