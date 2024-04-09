@@ -396,8 +396,8 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
 new MarkerClusterer( markers, map, {
   gridSize: 75, // Adjust the grid size as needed
   minimumClusterSize: 4, // Set the minimum number of markers in a cluster
-  maxZoom: 10, // Set the maximum zoom level for clustering
-  zoomOnClick: true // Enable zooming when clicking on a cluster
+  maxZoom: 16, // Set the maximum zoom level for clustering
+ // zoomOnClick: true // Enable zooming when clicking on a cluster
 });;
 });
 
