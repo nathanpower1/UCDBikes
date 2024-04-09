@@ -35,6 +35,13 @@
    vertical-align: middle;
  }
  
+
+ #map {
+   height: 100%;
+   width: 70%;
+   float: left;
+ }
+
  /* CSS styles for weather information */
 #weather-info {
    color: #ffffff;
@@ -82,12 +89,14 @@
    margin-bottom: 10px;
 }
 
-#map {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 70%; /* Adjust the width as needed */
-  height: 100%; /* Set the height to 100% to cover the entire viewport */
+#infobox {
+
+   float: left;
+   height: 100%;
+   width: 30%;
+   background-color: #4f4e4e;
+   padding: 10px;
+   flex-direction: column;
 }
 
 /* Styling foR Geolaction Button*/ 
