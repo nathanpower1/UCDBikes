@@ -20,6 +20,13 @@
    margin-bottom: 10px;
 }
 
+.coordinates {
+   background-color: #93cb52;
+   padding: 50px;
+   border-radius: 10px;
+   margin-bottom: 10px;
+}
+
 .info-column-chart {
    background-color: #93cb52;
    padding: 10px;
