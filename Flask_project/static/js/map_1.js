@@ -479,10 +479,19 @@ async function placeMarkerAndPanTo(latLng, map) {
     userMarker = null; //Reset userMarker Variable
   }
 
+  // Create the bike image element
+  const UserImg = document.createElement('img');
+  //icon: {
+    //  url: "../static/images/bicycle-bike.svg",
+    //  scaledSize:new google.maps.Size(50,50)
+    //}
+  UserImg.src = '../static/images/'+'player.png';;
+
   // Create a new Advanced Marker
   userMarker = new AdvancedMarkerElement({
     position: latLng,
     map: map,
+    content: UserImg
   });
 
 
