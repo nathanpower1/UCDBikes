@@ -425,7 +425,8 @@ async function placeMarkerAndPanTo(latLng, map) {
   currentMarker = marker;
 
   // Find the closest station
-  //let closestStation = bikeStations[0];
+  let closestStation = bikeStations[0];
+  console.log(bikeStations[0]);
   //let minDistance = google.maps.geometry.spherical.computeDistanceBetween(
   //  latLng,
   //  bikeStations[0].position // Accessing the position of the first station
