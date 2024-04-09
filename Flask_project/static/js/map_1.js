@@ -80,24 +80,45 @@ async function updateWeatherAndDateInfo() {
   const dateInfoContainer = document.getElementById('date-info');
   const weatherInfoContainer = document.getElementById('weather-info');
   loadweatherJSON().then(weatherData => {
-  if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
-    const weatherObject = weatherData[0][0];
-     // Display temperature and conditions in the weather info container
-     document.getElementById('weather-info').textContent = 'Temperature: '+ Math.round(weatherObject.temp - 273.15) +'°C' + ' Conditions: ' + weatherObject.main;
-     console.log("Weather")
-     // Get today's date
-     const today = new Date();
-     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-     const formattedDate = today.toLocaleDateString('en-US', options);
-     
-     // Display today's date in the date info container
-     document.getElementById('date-info').textContent = formattedDate;
-  } else {
-     // Display error message if weather data couldn't be fetched
-     weatherInfoContainer.innerHTML = 'Weather information not available';
-     dateInfoContainer.innerHTML = '';
-  }
-});
+    if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
+      const weatherObject = weatherData[0][0];
+      // Display temperature and conditions in the weather info container
+      weatherInfoContainer.textContent = 'Temperature: ' + Math.round(weatherObject.temp - 273.15) + '°C' + ' Conditions: ' + weatherObject.main;
+      
+      // Get today's date
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = today.toLocaleDateString('en-US', options);
+      
+      // Display today's date in the date info container
+      dateInfoContainer.textContent = formattedDate;
+
+      // Add weather icons based on weather conditions
+      const weatherIcon = document.createElement('i');
+      weatherIcon.classList.add('fas'); // Assuming you're using FontAwesome
+      switch (weatherObject.main) {
+        case 'Clear':
+          weatherIcon.classList.add('fa-sun'); // Add sun icon for clear weather
+          break;
+        case 'Clouds':
+          weatherIcon.classList.add('fa-cloud'); // Add cloud icon for cloudy weather
+          break;
+        case 'Rain':
+          weatherIcon.classList.add('fa-cloud-showers-heavy'); // Add rain icon for rainy weather
+          break;
+        // Add more cases for other weather conditions as needed
+        default:
+          weatherIcon.classList.add('fa-question'); // Default icon for unknown weather conditions
+          break;
+      }
+      // Append the weather icon to the weather info container
+      weatherInfoContainer.appendChild(weatherIcon);
+    } else {
+      // Display error message if weather data couldn't be fetched
+      weatherInfoContainer.textContent = 'Weather information not available';
+      dateInfoContainer.textContent = '';
+    }
+  });
 }
 
 // Call the function to update weather and date information
