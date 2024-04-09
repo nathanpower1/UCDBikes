@@ -6,7 +6,7 @@
  #legend {
    position: absolute;
    top: 80px;
-   right: 20px;
+   right: 200px;
    background-color: #fff;
    padding: 10px;
    border-radius: 5px;
@@ -40,7 +40,7 @@
  .blue {
    background-color: blue;
  }
- 
+
  #map {
    height: 100%;
    width: 70%;
