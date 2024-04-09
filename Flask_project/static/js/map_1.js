@@ -386,7 +386,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
     render({ position }) {
         const cluster = new AdvancedMarkerElement({
             position,
-            content: clusterImg + '1', // You can set the content to be the count
+            content: clusterImg , // You can set the content to be the count
         });
         return cluster;
     }
