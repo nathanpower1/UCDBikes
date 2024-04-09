@@ -410,7 +410,7 @@ let currentMarker;
 async function placeMarkerAndPanTo(latLng, map) {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  
+
   loadJSON()
     
     .then(bikeStations => {
@@ -434,22 +434,22 @@ async function placeMarkerAndPanTo(latLng, map) {
   // Find the closest station
   let closestStation = bikeStations[0];
   console.log(bikeStations[0]);
-  //let minDistance = google.maps.geometry.spherical.computeDistanceBetween(
-  //  latLng,
-  //  bikeStations[0].position // Accessing the position of the first station
-  //);
+  let minDistance = google.maps.geometry.spherical.computeDistanceBetween(
+    latLng,
+    bikeStations[0].position // Accessing the position of the first station
+  );
 
-  //for (let i = 1; i < bikeStations.length; i++) {
-   // const distance = google.maps.geometry.spherical.computeDistanceBetween(
-  //    latLng,
-   //   bikeStations[i].position // Accessing the position of the station
-  //  );
+  for (let i = 1; i < bikeStations.length; i++) {
+    const distance = google.maps.geometry.spherical.computeDistanceBetween(
+      latLng,
+      bikeStations[i].position // Accessing the position of the station
+    );
 
-  //  if (distance < minDistance) {
-  //    minDistance = distance;
-  //    closestStation = bikeStations[i];
-  //  }
- // }
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestStation = bikeStations[i];
+    }
+  }
 
   // Update the coordinates in the text box
   document.getElementById('Lat').textContent = 'Latitude:' +  latLng.lat().toFixed(6);
