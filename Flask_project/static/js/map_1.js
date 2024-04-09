@@ -83,7 +83,7 @@ async function updateWeatherAndDateInfo() {
     if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
       const weatherObject = weatherData[0][0];
       // Display temperature and conditions in the weather info container
-      weatherInfoContainer.textContent = Math.round(weatherObject.temp - 273.15) + '°C  ' + weatherObject.main;
+      weatherInfoContainer.textContent = Math.round(weatherObject.temp - 273.15) + '°C  ' + weatherObject.main + '';
       
       // Get today's date
       const today = new Date();
@@ -112,7 +112,7 @@ async function updateWeatherAndDateInfo() {
           break;
       }
       // Append the weather icon to the weather info container
-      weatherInfoContainer.appendChild(''+ weatherIcon);
+      weatherInfoContainer.appendChild(weatherIcon);
     } else {
       // Display error message if weather data couldn't be fetched
       weatherInfoContainer.textContent = 'Weather information not available';
