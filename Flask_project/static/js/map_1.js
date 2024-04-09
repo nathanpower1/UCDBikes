@@ -405,6 +405,7 @@ new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
 // Define the placeMarkerAndPanTo function
 let currentMarker;
 
+// Define the placeMarkerAndPanTo function
 async function placeMarkerAndPanTo(latLng, map) {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
@@ -419,18 +420,67 @@ async function placeMarkerAndPanTo(latLng, map) {
     map: map,
   });
 
+
   // Store the current marker
   currentMarker = marker;
+
+  // Find the closest station
+  let closestStation = bikeStations[0];
+  let minDistance = google.maps.geometry.spherical.computeDistanceBetween(
+    latLng,
+    bikeStations[0].position // Accessing the position of the first station
+  );
+
+  for (let i = 1; i < bikeStations.length; i++) {
+    const distance = google.maps.geometry.spherical.computeDistanceBetween(
+      latLng,
+      bikeStations[i].position // Accessing the position of the station
+    );
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestStation = bikeStations[i];
+    }
+  }
 
   // Update the coordinates in the text box
   document.getElementById('Lat').textContent = 'Latitude:' +  latLng.lat().toFixed(6);
   document.getElementById('Long').textContent = 'Longitude:' + latLng.lng().toFixed(6);
+  document.getElementById('Closest').textContent = 'Closest Station:' + closestStation.name + '(' + minDistance.toFixed(2) +' meters away)';
+
+  // Pan the map to the marker's position
+  map.panTo(latLng);
+}
+
+// Define the placeMarkerAndPanTo function
+//let currentMarker;
+
+//async function placeMarkerAndPanTo(latLng, map) {
+ // const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+  // Remove existing marker if it exists
+ // if (currentMarker) {
+  //  currentMarker.setMap(null);
+ // }
+
+  // Create a new Advanced Marker
+ // const marker = new AdvancedMarkerElement({
+ //   position: latLng,
+ //   map: map,
+ // });
+
+  // Store the current marker
+ // currentMarker = marker;
+
+  // Update the coordinates in the text box
+ // document.getElementById('Lat').textContent = 'Latitude:' +  latLng.lat().toFixed(6);
+ // document.getElementById('Long').textContent = 'Longitude:' + latLng.lng().toFixed(6);
 //<h2><strong>User Location:</strong></h2>
 //<p id="Lat:"></p>
 //<p id="Long:"></p>
   // Pan the map to the marker's position
-  map.panTo(latLng);
-}
+ // map.panTo(latLng);
+//}
 
 /*function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
