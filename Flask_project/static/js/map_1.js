@@ -373,7 +373,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
    // Create the bike image element
    const clusterImg = document.createElement('img');
 
-   clusterImg.src = '../static/images/'+ 'bicycle-bike-cluster.png';
+   clusterImg.src = '../static/images/'+ 'cluster.png';
 
   const renderer = {
     render({ position }) {
