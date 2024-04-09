@@ -4,7 +4,7 @@
  */
 
  #legend {
-   position: sticky;
+   position: absolute;
    top: 80px;
    right: 35%;
    background-color: #fff;
