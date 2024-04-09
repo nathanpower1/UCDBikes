@@ -8,6 +8,20 @@
    float: left;
  }
 
+ /* CSS styles for weather information */
+#weather-info {
+   color: #ffffff;
+   font-size: 1.2rem;
+   margin-right: 20px; /* Adjust as needed */
+}
+
+#date-info {
+   color: #ffffff;
+   font-size: 1.2rem;
+   margin-right: 20px; /* Adjust as needed */
+}
+
+
  .myChart{
    height: 100%;
    width: 100%;
