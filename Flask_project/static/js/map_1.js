@@ -423,9 +423,9 @@ async function placeMarkerAndPanTo(latLng, map) {
   currentMarker = marker;
 
   // Update the coordinates in the text box
-  document.getElementById("coordinates").innerText = `Latitude: ${latLng.lat().toFixed(6)}, Longitude: ${latLng.lng().toFixed(6)}`;
-  document.getElementById('Lat').textContent = 'Latitude: ' + latLng.lat().toFixed(6);
-  document.getElementById('Long').textContent = 'Longitude: ' + latLng.lng().toFixed(6);
+  document.getElementById("coordinates").innerText = `User Location;`;
+  document.getElementById('Lat').innerText = `Latitude: ${latLng.lat().toFixed(6)}`;
+  document.getElementById('Long').innerText = `Longitude: ${latLng.lng().toFixed(6)}`;
 //<h2><strong>User Location:</strong></h2>
 //<p id="Lat:"></p>
 //<p id="Long:"></p>
