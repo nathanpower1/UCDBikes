@@ -87,7 +87,6 @@ async function updateWeatherAndDateInfo() {
       document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherObject.wind_speed + 'm/s';
       document.getElementById('rain').textContent = 'Rain: ' + weatherObject.rain;
     }
-  });
   if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
      // Display temperature and conditions in the weather info container
      document.getElementById('weather-info').textContent = 'Temperature: '+ Math.round(weatherObject.temp - 273.15) +'°C' + 'Conditions: ' + weatherObject.main;
@@ -104,6 +103,7 @@ async function updateWeatherAndDateInfo() {
      weatherInfoContainer.innerHTML = 'Weather information not available';
      dateInfoContainer.innerHTML = '';
   }
+});
 }
 
 // Call the function to update weather and date information
