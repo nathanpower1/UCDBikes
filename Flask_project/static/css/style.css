@@ -27,19 +27,14 @@
  #legend li {
    margin-bottom: 5px;
  }
- 
- /* Define marker colors in the legend */
- .marker {
+
+ .legend-marker {
    width: 20px;
    height: 20px;
-   display: inline-block;
-   border-radius: 50%;
    margin-right: 5px;
+   vertical-align: middle;
  }
  
- .blue {
-   background-color: blue;
- }
 
  #map {
    height: 100%;
