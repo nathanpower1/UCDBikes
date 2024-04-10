@@ -157,6 +157,9 @@ tr {
 tr:last-child {
    border-bottom: none; 
 }
+td {
+   padding: 10px 0;
+ }
 
 #lnglat_nmb_format{
    font-size: small;
