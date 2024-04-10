@@ -5,6 +5,14 @@
 #logo_small{
    font-size:x-small;
 }
+#Lat{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: small;
+}
+#Long{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: small;
+}
  #legend {
    position: absolute;
    top: 80px;
