@@ -163,6 +163,9 @@ tr:last-child {
 #lnglat_txt_format{
    font-size:medium;
 }
+#tadlediv{
+   float: right;
+}
 /* Styling foR Geolaction Button*/ 
 
 .custom-map-control-button {
