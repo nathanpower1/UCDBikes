@@ -143,6 +143,8 @@
 }
 table {
    border-collapse: collapse;
+   width: 30%;
+   margin-right: 20px;
  }
 
 tr {
