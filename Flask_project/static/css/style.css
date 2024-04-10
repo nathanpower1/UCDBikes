@@ -73,7 +73,7 @@
    margin-bottom: 10px;
 }
 
-.coordinates {
+.info-column-coordinates {
    background-color: #93cb52;
    padding: 50px;
    border-radius: 10px;
@@ -300,5 +300,6 @@ p{
    /*float: left;*/
    padding: 20px;
    box-sizing: border-box;
-   display: inline-block;
+   display: flex;
+   flex-direction: column;
 }
