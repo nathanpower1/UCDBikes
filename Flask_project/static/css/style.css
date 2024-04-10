@@ -68,21 +68,21 @@
 
  .info-column-weather {
    background-color: #93cb52;
-   padding: 50px;
+   /* padding: 50px; */
    border-radius: 10px;
    margin-bottom: 10px;
 }
 
 .info-column-coordinates {
    background-color: #93cb52;
-   padding: 50px;
+   /* padding: 50px; */
    border-radius: 10px;
    /* margin-bottom: 10px; */
 }
 
 .info-column-chart {
    background-color: #93cb52;
-   padding: 10px;
+   /* padding: 10px; */
    border-radius: 10px;
    /* margin-bottom: 10px; */
 }
@@ -295,11 +295,11 @@ p{
    padding: 0.75rem 0 0 0;
 }
 
-#info-box {
+/* #info-box {
    width: 30%;
-   /*float: left;*/
+   float: left;
    padding: 20px;
    box-sizing: border-box;
    display: flex;
    flex-direction: column;
-}
+} */
