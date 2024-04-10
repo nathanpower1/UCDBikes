@@ -97,7 +97,7 @@
    /* padding: 50px; */
    border-radius: 10px;
    /*margin-bottom: 10px;*/
-   flex:0 0 auto;
+   flex:1 1 content;
 }
 
 #infobox {
@@ -108,6 +108,7 @@
    background-color: #4f4e4e;
    padding: 10px;
    flex-direction: column;
+   overflow: scroll;
 }
 
 /* Styling foR Geolaction Button*/ 
