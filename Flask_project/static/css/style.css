@@ -138,7 +138,10 @@
    margin: auto;
 }
 #sidebar_title{
-   border-bottom: dashed rgba(0, 0, 0, 0.1);
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 40px 1px;
+   background-repeat: repeat-x;
 }
 #station_title{
    vertical-align: middle;
