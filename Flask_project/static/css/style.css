@@ -140,6 +140,7 @@
 #station_wrapper {
    display: flex;
    flex-direction: row;
+   float: right;
 }
 table {
    border-collapse: collapse;
