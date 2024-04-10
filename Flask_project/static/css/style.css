@@ -144,9 +144,8 @@
 table {
    border-collapse: collapse;
  }
- 
+
 tr {
-   background-color: #78aa40;
    border-bottom:1px solid black;
 }
 
@@ -154,7 +153,10 @@ tr:last-child {
    border-bottom: none; 
 }
 
-
+#lnglat_text_format{
+   font-size: small;
+   font-family: 'Courier New', Courier, monospace;
+}
 /* Styling foR Geolaction Button*/ 
 
 .custom-map-control-button {
