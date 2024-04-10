@@ -86,7 +86,7 @@
    background-color: #fff;
 
    /* padding: 50px; */
-   border-radius: 10px;
+   /* border-radius: 10px; */
    /* margin-bottom: 10px; */
    flex:0 0 auto;
    margin-bottom: 2px;
@@ -97,7 +97,7 @@
    display: flex;
    background-color: #fff;
    /* padding: 10px; */
-   border-radius: 10px;
+   /* border-radius: 10px; */
    /* margin-bottom: 10px; */
    /* flex-basis: auto; */
    flex:0 0 auto;
@@ -128,7 +128,7 @@
    height: 100%;
    width: 30%;
    background-color: #ffffff90;
-   padding: 10px;
+   /* padding: 10px; */
    flex-direction: column;
    overflow: scroll;
 }
