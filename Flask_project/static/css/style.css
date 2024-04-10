@@ -142,7 +142,8 @@
 #station_wrapper {
    display: flex;
    flex-direction: row;
-   float: right;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
 }
 table {
    border-collapse: collapse;
