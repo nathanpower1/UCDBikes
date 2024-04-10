@@ -89,6 +89,8 @@
    border-radius: 10px;
    /* margin-bottom: 10px; */
    flex:0 0 auto;
+   margin-bottom: 2px;
+
 }
 
 .info-column-chart {
@@ -100,14 +102,24 @@
    /* flex-basis: auto; */
    flex:0 0 auto;
    align-items: stretch;
+   margin-bottom: 2px;
+
 }
 
 .info-column-station {
    background-color: #fff;
    /* padding: 50px; */
-   border-radius: 10px;
-   /*margin-bottom: 10px;*/
+   /* border-radius: 10px; */
+   margin-bottom: 2px;
    flex:1 1 content;
+}
+.info-column-filler {
+   background-color: #fff;
+   /* padding: 50px; */
+   /* border-radius: 10px; */
+   /* margin-bottom: 2px; */
+   /* flex:1 1 content; */
+   height: 100%;
 }
 
 #infobox {
@@ -115,7 +127,7 @@
    float: left;
    height: 100%;
    width: 30%;
-   background-color: #fff;
+   background-color: #ffffff90;
    padding: 10px;
    flex-direction: column;
    overflow: scroll;
