@@ -76,6 +76,11 @@ if stationData:
             logging.error(f"Error executing delete: {e}")
             print(f"Error executing delete: {e}")
 
+table_reload_query = "call dublinbikes.update_averages_table();"
+
+cursor.execute(table_reload_query)
+logging.info(f"SQL excecuted {table_reload_query}")
+
 cursor.close()
 connection.close()
 print("Process complete.")

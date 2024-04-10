@@ -109,4 +109,10 @@ if weatherData:
         logging.error(f"Error executing insert: {e}")
         print(f"Error executing insert: {e}")
 
+# update the precalculated tables.  We do preprocessing in sql and store data for maps in smaller table to streamline
+# and increase performance
+table_reload_query = "call dublinbikes.update_station_data_table();"
+cursor.execute(table_reload_query)
+logging.info(f"SQL excecuted {table_reload_query}")
 cursor.close()
+connection.close()

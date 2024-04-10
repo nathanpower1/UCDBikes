@@ -37,28 +37,32 @@ def map_generator(number):
 #calls the database and returns the data for the static data
 #sql_puller.sql_data takes a sting which calls the correct stored procedure from the sql database
 
-#sql_dict = {"dynamic_data":"call dublinbikes.update_availability();",\
-#            "static_data":"call dublinbikes.static_data();"
-#            }
-
+@app.route('/get_station_averages/<number>')
+def get_json_averages(number):
+    #print(number)
+    #print(f"call dublinbikes.update_averages({number});")
+    
+    try:
+        data = sql_puller.sql_data(f"call dublinbikes.update_averages({number});")
+        return data
+    except Exception as e:
+        return str(e), 500
+    
 @app.route('/get_static_data')
 def get_json_data():
     try:
-        data = sql_puller.sql_data("call dublinbikes.static_data();")
+        data = sql_puller.sql_data("call dublinbikes.station_data_total();")
         return data
     except Exception as e:
         return str(e), 500
     
 @app.route('/get_station_occupancy/<number>')
 def get_json_station(number):
-    print("function station occupance begins with" ,number)
-    print(f"call dublinbikes.static_data({number});")
+    #print(f"call dublinbikes.station_data({number});")
     try:
         data = sql_puller.sql_data(f"call dublinbikes.station_data({number});")
-        print("abbout to return data")
         return data
     except Exception as e:
-        print()
         return str(e), 500
 
 #calls the database and returns the data for the dynamic data
@@ -66,6 +70,14 @@ def get_json_station(number):
 def get_dynamic_json_data():
     try:
         data = sql_puller.sql_data("call dublinbikes.update_availability();")
+        return data
+    except Exception as e:
+        return str(e), 500
+    
+@app.route('/get_current_weather')
+def get_json_weather():
+    try:
+        data = sql_puller.sql_data("call dublinbikes.current_weather();")
         return data
     except Exception as e:
         return str(e), 500

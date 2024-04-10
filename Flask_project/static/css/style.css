@@ -2,9 +2,124 @@
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
+
+ #legend {
+   position: absolute;
+   top: 80px;
+   right: 35%;
+   background-color: #fff;
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   z-index: 1000; /* Ensure the legend is above the map */
+ }
+ 
+ #legend h2 {
+   margin-bottom: 10px;
+   font-size: 16px;
+ }
+ 
+ #legend ul {
+   list-style: none;
+   padding: 0;
+ }
+ 
+ #legend li {
+   margin-bottom: 5px;
+ }
+
+ .legend-marker {
+   width: 20px;
+   height: 20px;
+   margin-right: 5px;
+   vertical-align: middle;
+ }
+ 
+
  #map {
-    height: 100%;
-  }
+   position: fixed;
+  top: 0;
+  left: 0;
+   height: 100%;
+   width: 70%;
+   float: left;
+ }
+
+ /* CSS styles for weather information */
+#weather-info {
+   color: #ffffff;
+   font-size: 1.2rem;
+   margin-right: 20px; /* Adjust as needed */
+}
+
+#date-info {
+   color: #ffffff;
+   font-size: 1.2rem;
+   margin-right: 20px; /* Adjust as needed */
+}
+
+
+ .myChart{
+   height: 100%;
+   width: 100%;
+ }
+
+ .info-column-weather {
+   background-color: #93cb52;
+   padding: 50px;
+   border-radius: 10px;
+   margin-bottom: 10px;
+}
+
+.coordinates {
+   background-color: #93cb52;
+   padding: 50px;
+   border-radius: 10px;
+   margin-bottom: 10px;
+}
+
+.info-column-chart {
+   background-color: #93cb52;
+   padding: 10px;
+   border-radius: 10px;
+   margin-bottom: 10px;
+}
+
+.info-column-station {
+   background-color: #93cb52;
+   padding: 50px;
+   border-radius: 10px;
+   margin-bottom: 10px;
+}
+
+#infobox {
+
+   float: left;
+   height: 100%;
+   width: 30%;
+   background-color: #4f4e4e;
+   padding: 10px;
+   flex-direction: column;
+}
+
+/* Styling foR Geolaction Button*/ 
+
+.custom-map-control-button {
+   background-color: #050800;
+   color: #ffffff;
+   border: 0;
+   border-radius: 2px;
+   box-shadow: 0 1px 4px -1px rgba(21, 251, 5, 0.3);
+   margin: 10px;
+   padding: 0 0.5em;
+   font: 400 18px Roboto, Arial, sans-serif;
+   overflow: hidden;
+   height: 40px;
+   cursor: pointer;
+ }
+ .custom-map-control-button:hover {
+   background:#78aa40;
+ }
   
   /* 
    * Optional: Makes the sample page fill the window. 
