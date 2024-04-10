@@ -82,11 +82,12 @@
 }
 
 .info-column-chart {
+   display: flex;
    background-color: #93cb52;
    /* padding: 10px; */
    border-radius: 10px;
    /* margin-bottom: 10px; */
-   flex-basis: auto;
+   /* flex-basis: auto; */
    align-self: stretch;
 }
 
