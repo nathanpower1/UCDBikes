@@ -137,6 +137,10 @@
    vertical-align: middle;
    margin: auto;
 }
+#station_title{
+   vertical-align: middle;
+   margin: auto;
+}
 #user_wrapper {
    display: flex;
    flex-direction: row;
