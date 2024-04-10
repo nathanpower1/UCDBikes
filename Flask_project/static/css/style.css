@@ -289,8 +289,9 @@ p{
 #main-footer{
    background-color: #333333;
    color: rgba(245, 245, 245, 0.815);
-   text-align: center;
+   display: flex;
    padding: 0.75rem 0;
+   font-size: smaller;
    
 }
 
