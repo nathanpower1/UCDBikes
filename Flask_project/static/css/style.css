@@ -66,12 +66,12 @@
    width: 100%;
  }
 
- .info-column-weather {
+ /* .info-column-weather {
    background-color: #93cb52;
-   /* padding: 50px; */
+   padding: 50px;
    border-radius: 10px;
    margin-bottom: 10px;
-}
+} */
 
 .info-column-coordinates {
    background-color: #93cb52;
@@ -89,7 +89,7 @@
 
 .info-column-station {
    background-color: #93cb52;
-   padding: 50px;
+   /* padding: 50px; */
    border-radius: 10px;
    /*margin-bottom: 10px;*/
 }
