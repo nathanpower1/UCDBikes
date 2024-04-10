@@ -32,10 +32,12 @@ with open('missing_timestamps_unique.pkl', 'rb') as f:
 lat = '53.3498'
 lon = '6.2603'
 APIKey = '53cca80e47157e1ee9b5778f95c90c41'
+APIKey2 = 'a155d66d86bdd268b15c6488321141e9'
+#0-700 done with APIKey
 
-for timestamp in missing_timestamps_unique[:700]:
+for timestamp in missing_timestamps_unique[-700:]:
 
-    weather_api = f'https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={timestamp}&appid={APIKey}'
+    weather_api = f'https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={timestamp}&appid={APIKey2}'
     try:
         response = requests.get(weather_api)
         if response.status_code == 200:
