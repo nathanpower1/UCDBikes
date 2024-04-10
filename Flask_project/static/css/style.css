@@ -297,7 +297,8 @@ p{
 
 #info-box {
    width: 30%;
-   float: left;
+   /*float: left;*/
    padding: 20px;
    box-sizing: border-box;
+   display: inline-block;
 }
