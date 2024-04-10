@@ -131,6 +131,7 @@
    /* padding: 10px; */
    flex-direction: column;
    overflow: scroll;
+   box-shadow: 0 1px 4px -1px rgba(21, 251, 5, 0.3);
 }
 
 /* Styling foR Geolaction Button*/ 
