@@ -123,6 +123,7 @@
 }
 
 #infobox {
+   display: flex;
    height: 100%;
    width: 30%;
    background-color: #ffffff90;
@@ -133,6 +134,7 @@
 }
 
 #user_wrapper {
+   display: flex;
    flex-direction: row;
 }
 /* Styling foR Geolaction Button*/ 
