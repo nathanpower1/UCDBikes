@@ -146,7 +146,7 @@
 table {
    border-spacing: 50px 0;
    border-collapse: collapse;
-   width: 30%;
+   width: 100%;
    margin-right: 20px;
  }
 
@@ -169,6 +169,7 @@ td {
    font-size:medium;
 }
 #tablediv{
+   width: 100%;
    float: right;
 }
 /* Styling foR Geolaction Button*/ 
