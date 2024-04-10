@@ -153,9 +153,12 @@ tr:last-child {
    border-bottom: none; 
 }
 
-#lnglat_txt_format{
+#lnglat_nmb_format{
    font-size: small;
    font-family: 'Courier New', Courier, monospace;
+}
+#lnglat_txt_format{
+   font-size:medium;
 }
 /* Styling foR Geolaction Button*/ 
 
