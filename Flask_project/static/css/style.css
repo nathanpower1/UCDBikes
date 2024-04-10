@@ -78,7 +78,7 @@
    /* padding: 50px; */
    border-radius: 10px;
    /* margin-bottom: 10px; */
-   flex-basis: 33%;
+   flex-basis: 100%;
 }
 
 .info-column-chart {
@@ -86,7 +86,7 @@
    /* padding: 10px; */
    border-radius: 10px;
    /* margin-bottom: 10px; */
-   flex-basis: 33%;
+   flex-basis: 100%;
 }
 
 .info-column-station {
