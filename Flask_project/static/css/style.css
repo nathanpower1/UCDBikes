@@ -142,11 +142,11 @@
    flex-direction: row;
 }
 
-table tr {
+tr {
    border-bottom:1px solid black;
 }
 
-table tr:last-child {
+tr:last-child {
    border-bottom: none; 
 }
 
