@@ -299,7 +299,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   //  bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
    // console.log("Setting marker to yellow");
   } else {
-    bikeImgSrc = '../static/images/'+'bicycle-bike-green.png';
+    bikeImgSrc = '../static/images/'+'bicycle-bike-green_resize.png';
     console.log("Setting marker to green");
   } 
   
