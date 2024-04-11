@@ -2,7 +2,17 @@
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
-
+#logo_small{
+   font-size:x-small;
+}
+#Lat{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: small;
+}
+#Long{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: small;
+}
  #legend {
    position: absolute;
    top: 80px;
@@ -64,51 +74,129 @@
    width: 100%;
  }
 
- .info-column-weather {
+ /* .info-column-weather {
    background-color: #93cb52;
    padding: 50px;
    border-radius: 10px;
    margin-bottom: 10px;
-}
+} */
 
-.coordinates {
-   background-color: #93cb52;
-   padding: 50px;
-   border-radius: 10px;
-   margin-bottom: 10px;
+.info-column-coordinates {
+   /* background-color: #93cb52; */
+   background-color: #fff;
+
+   /* padding: 50px; */
+   /* border-radius: 10px; */
+   /* margin-bottom: 10px; */
+   flex:0 0 auto;
+   margin-bottom: 1px;
+
 }
 
 .info-column-chart {
-   background-color: #93cb52;
-   padding: 10px;
-   border-radius: 10px;
-   margin-bottom: 10px;
+   display: flex;
+   background-color: #fff;
+   /* padding: 10px; */
+   /* border-radius: 10px; */
+   /* margin-bottom: 10px; */
+   /* flex-basis: auto; */
+   flex:0 0 auto;
+   align-items: stretch;
+   margin-bottom: 1px;
+
 }
 
 .info-column-station {
-   background-color: #93cb52;
-   padding: 50px;
-   border-radius: 10px;
-   margin-bottom: 10px;
+   background-color: #fff;
+   /* padding: 50px; */
+   /* border-radius: 10px; */
+   margin-bottom: 1px;
+   flex:1 1 content;
+}
+.info-column-filler {
+   background-color: #fff;
+   /* padding: 50px; */
+   /* border-radius: 10px; */
+   /* margin-bottom: 2px; */
+   /* flex:1 1 content; */
+   height: 100%;
 }
 
 #infobox {
-
-   float: left;
+   display: flex;
    height: 100%;
    width: 30%;
-   background-color: #4f4e4e;
-   padding: 10px;
+   background-color: #ffffff90;
+   /* padding: 10px; */
    flex-direction: column;
+   overflow: scroll;
+   box-shadow: 0 1px 4px -1px rgba(21, 251, 5, 0.3);
+}
+/*Styling for table in the first info box*/
+#user_title{
+   vertical-align: middle;
+   margin: auto;
+}
+#sidebar_title{
+   margin: auto;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+}
+#station_title{
+   vertical-align: middle;
+   margin: auto;
+}
+#user_wrapper {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 5px;
+}
+#station_wrapper {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: 5px;
+}
+table {
+   border-spacing: 50px 0;
+   border-collapse: collapse;
+   margin-right: 20px;
+ }
+
+tr {
+   border-bottom:1px solid rgba(0, 0, 0, 0.1);
 }
 
+tr:last-child {
+   border-bottom: none; 
+}
+td {
+   padding: 10px 0;
+ }
+
+#lnglat_nmb_format{
+   font-size: small;
+   font-family: 'Courier New', Courier, monospace;
+}
+#lnglat_txt_format{
+   font-size:medium;
+}
+#tablediv{
+   width: 30%;
+   float: right;
+}
 /* Styling foR Geolaction Button*/ 
 
 .custom-map-control-button {
    background-color: #050800;
    color: #ffffff;
    border: 0;
-   border-radius: 2px;
+   border-radius: 1px;
    box-shadow: 0 1px 4px -1px rgba(21, 251, 5, 0.3);
    margin: 10px;
    padding: 0 0.5em;
@@ -140,6 +228,7 @@
 
 body{
    font-family: 'Roboto', sans-serif;
+   background-color: #333333;
 }
 
 a{
@@ -287,14 +376,16 @@ p{
 /* Footer */
 #main-footer{
    background-color: #333333;
-   color: #ffffff;
+   color: rgba(245, 245, 245, 0.815);
    text-align: center;
-   padding: 0.75rem 0;
+   padding: 0.75rem 0 0 0;
 }
 
-#info-box {
+/* #info-box {
    width: 30%;
    float: left;
    padding: 20px;
    box-sizing: border-box;
-}
+   display: flex;
+   flex-direction: column;
+} */

@@ -547,8 +547,8 @@ closestStationMarker = new AdvancedMarkerElement({
  // });
 
   // Update the coordinates in the text box
-  document.getElementById('Lat').textContent = 'Latitude: ' +  latLng.lat().toFixed(6) ;
-  document.getElementById('Long').textContent = 'Longitude: ' + latLng.lng().toFixed(6);
+  document.getElementById('Lat').textContent =latLng.lat().toFixed(6) +' lat';
+  document.getElementById('Long').textContent =latLng.lng().toFixed(6)+' lng';
   document.getElementById('Closest').textContent = 'Closest Station: ' + closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
 
   // Pan the map to the marker's position
