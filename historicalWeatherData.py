@@ -33,11 +33,15 @@ lat = '53.3498'
 lon = '6.2603'
 APIKey = '53cca80e47157e1ee9b5778f95c90c41'
 APIKey2 = 'a155d66d86bdd268b15c6488321141e9'
+APIKey3 = '3cbee1c23b11a8f67a3e751c0bfae5a9'
+APIKey4 = 'b3e4f3860e1b82f0aa34c664bab9709a'
 #0-700 done with APIKey
+#-700: done with APIKey2
+#-1400:-701 with APIKey
 
-for timestamp in missing_timestamps_unique[-700:]:
+for timestamp in missing_timestamps_unique[-1400:-701]:
 
-    weather_api = f'https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={timestamp}&appid={APIKey2}'
+    weather_api = f'https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={timestamp}&appid={APIKey}'
     try:
         response = requests.get(weather_api)
         if response.status_code == 200:
