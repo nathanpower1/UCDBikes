@@ -25,7 +25,6 @@ contract = 'dublin'
 api_key = '954118b06527f2a603d5abd3c315876b16221c14'
 stations_url = f"https://api.jcdecaux.com/vls/v1/stations?contract={contract}&apiKey={api_key}"
 weather_api_key = '53cca80e47157e1ee9b5778f95c90c41'
-weather_api = f"https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={weather_api_key}"
 
 try:
     response = requests.get(stations_url)
@@ -36,6 +35,8 @@ try:
 except requests.exceptions.RequestException as e:
     print(f"An error occurred: {e}")
 
+unix_timestamp = int(datetime.now().timestamp())
+
 if stationData:
     for data in stationData:
         number = data.get('number')
@@ -43,7 +44,7 @@ if stationData:
         available_bikes = data.get('available_bikes')
         available_bike_stands = data.get('available_bike_stands')
         status = data.get('status')
-        unix_timestamp = int(datetime.now().timestamp())
+        
         
         # Define values tuple here
         availabilityData = (number, last_update, available_bikes, available_bike_stands, status, unix_timestamp)
