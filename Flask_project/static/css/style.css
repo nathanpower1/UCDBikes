@@ -156,6 +156,7 @@
    margin: 5px;
 }
 #station_wrapper {
+   background-color: #fff;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
