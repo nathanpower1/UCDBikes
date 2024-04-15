@@ -370,13 +370,10 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   
 
 
-  var bool = true;
+ 
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
-    if (bool){
-    document.getElementById("user_title").innerHTML = "User Location";
-    bool=false;
-    }
+    
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
       loadaveragesJSON(parseInt(marker.title))
@@ -452,11 +449,11 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
         
       })
 
-    infoColumn.innerHTML = '<h2><strong> Station Information: </strong> </h2>' +
-    '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
-    '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
-    '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
-    '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>';
+    // infoColumn.innerHTML = '<h2><strong> Station Information: </strong> </h2>' +
+    // '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
+    // '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
+    // '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
+    // '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>';
 
     console.log('Data received:', station_data);
     infoWindow.close();
