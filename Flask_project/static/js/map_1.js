@@ -576,70 +576,18 @@ closestStationMarker = new AdvancedMarkerElement({
   content: bikeImg
 });
 
-  //bikeImgSrc = '../static/images/'+'bicycle-bike-closest.png';
-  
-    // Create the bike image element
-   // const bikeImg = document.createElement('img');
-   // bikeImg.src = bikeImgSrc;
 
-  //new AdvancedMarkerElement({
-  //  position: closestStation[0],
-  //  map: map,
-  //  content: bikeImg 
- // });
 
   // Update the coordinates in the text box
   document.getElementById('Lat').innerHTML =latLng.lat().toFixed(6);
   document.getElementById('Long').innerHTML =latLng.lng().toFixed(6);
   document.getElementById('Closest').innerHTML = closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
-
+  document.getElementById('Available').innerHTML = closestStation[3];
   // Pan the map to the marker's position
   map.panTo(latLng);
 })
 
 }
-
-// Define the placeMarkerAndPanTo function
-//let currentMarker;
-
-//async function placeMarkerAndPanTo(latLng, map) {
- // const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-  // Remove existing marker if it exists
- // if (currentMarker) {
-  //  currentMarker.setMap(null);
- // }
-
-  // Create a new Advanced Marker
- // const marker = new AdvancedMarkerElement({
- //   position: latLng,
- //   map: map,
- // });
-
-  // Store the current marker
- // currentMarker = marker;
-
-  // Update the coordinates in the text box
- // document.getElementById('Lat').textContent = 'Latitude:' +  latLng.lat().toFixed(6);
- // document.getElementById('Long').textContent = 'Longitude:' + latLng.lng().toFixed(6);
-//<h2><strong>User Location:</strong></h2>
-//<p id="Lat:"></p>
-//<p id="Long:"></p>
-  // Pan the map to the marker's position
- // map.panTo(latLng);
-//}
-
-/*function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation.",
-  );
-  infoWindow.open(map);
-
-  
-} */
 
 
 
