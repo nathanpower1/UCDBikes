@@ -162,7 +162,7 @@ async function initMap() {
 
    // Add event listener for map click
    map.addListener("click", (e) => {
-    document.getElementsByClassName("bol_header").innerHTML = "Station Information:"
+    document.getElementsByClassName("box_header").innerHTML = "Station Information:"
     placeMarkerAndPanTo(e.latLng, map);
   });
 
@@ -589,8 +589,8 @@ closestStationMarker = new AdvancedMarkerElement({
  // });
 
   // Update the coordinates in the text box
-  document.getElementById('Lat').textContent =latLng.lat().toFixed(6) +' lat';
-  document.getElementById('Long').textContent =latLng.lng().toFixed(6)+' lng';
+  document.getElementById('Lat').textContent =latLng.lat().toFixed(6);
+  document.getElementById('Long').textContent =latLng.lng().toFixed(6);
   document.getElementById('Closest').textContent = 'Closest Station: ' + closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
 
   // Pan the map to the marker's position
