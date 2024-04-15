@@ -5,13 +5,17 @@ from datetime import datetime
 from sklearn.ensemble import RandomForestRegressor
 import numpy as np
 import pickle
+import os
 
 
-APIKey = 'a155d66d86bdd268b15c6488321141e9'
-lat = '53.3498'
-lon = '6.2603'
+
+
+
 #turn this into a sql table, if time, get running first
 def get_forecast_data():
+    APIKey = 'a155d66d86bdd268b15c6488321141e9'
+    lat = '53.3498'
+    lon = '6.2603'
     forecast_url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}&units=metric'
     try:
         response = requests.get(forecast_url)
@@ -65,8 +69,8 @@ def get_forecast_data():
         return pd.DataFrame()
 
 # Example usage:
-forecast_df = get_forecast_data()
-print(forecast_df)
+# forecast_df = get_forecast_data()
+# print(forecast_df)
 
 
 def predict_available_bikes(df, model):
@@ -76,6 +80,27 @@ def predict_available_bikes(df, model):
         return predicted_bikes
     except Exception as e:
         print(f"An error occurred during prediction: {e}")
+
+
+
+def get_models(rootdir):
+    # model_name = f"RandomForest_Station_{station_number}.pkl"
+    # filepath = f"pickle_files/{model_name}"
+
+    for subdir, dirs, files in os.walk(rootdir):
+        print(files)
+        for file in files:
+            filepath = os.path.join(subdir, file)
+            print(filepath)
+            try:
+                with open(filepath, 'rb') as f:
+                    station_model = pickle.load(f)
+                    print("Model loaded successfully.")
+                    return station_model
+            except FileNotFoundError:
+                print(f"File not found: {f}. Please check the filename and path.")
+            except Exception as e:
+                print(f"An error occurred while loading the pickle file: {e}")
 
 def get_model(station_number):
     model_name = f"RandomForest_Station_{station_number}.pkl"
@@ -111,5 +136,5 @@ def run_prediction(day, hour, forecast_df, station_number):
 #predicted_bikes = run_prediction(day, hour, forecast_df, station_number)
 #print(f"Predicted available bikes: {predicted_bikes}")
 
-
-    
+print("a")
+get_models("pkl") 
