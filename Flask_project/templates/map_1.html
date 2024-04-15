@@ -68,9 +68,17 @@
           <p><strong>Bikes Available:</strong> </p>
           <p><strong>Bike Stations:</strong> </p>
         </div>
+        <div class="info-column-chart">
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        
+            <canvas id="myChart"></canvas>
+        </div>
+
+
         <div id = "user_wrapper">
           <div id = "user_title">
-              User Location
+              Begin by Selecting a Station
           </div>
           <div id = "tablediv">
             <table>
@@ -87,6 +95,8 @@
             </table>
           </div>
         </div>
+
+
         <div id = station_wrapper>
           <div id = station_title>
               Closest Station
@@ -111,12 +121,7 @@
 
         
 
-      <div class="info-column-chart">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
       
-          <canvas id="myChart"></canvas>
-      </div>
       <div class="info-column-filler">
       test filler div
       </div>
