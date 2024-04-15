@@ -89,7 +89,10 @@
    /* border-radius: 10px; */
    /* margin-bottom: 10px; */
    flex:0 0 auto;
-   margin-bottom: 1px;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
 
 }
 
@@ -113,6 +116,10 @@
    /* border-radius: 10px; */
    margin-bottom: 1px;
    flex:1 1 content;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
 }
 .info-column-filler {
    background-color: #fff;
@@ -121,6 +128,10 @@
    /* margin-bottom: 2px; */
    /* flex:1 1 content; */
    height: 100%;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
 }
 
 #infobox {
@@ -175,7 +186,7 @@ tr {
 }
 
 tr:hover {
-   background-color: #444;
+   background-color: #6f6f6f41;
 }
 
 tr:last-child {
