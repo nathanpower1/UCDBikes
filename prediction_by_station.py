@@ -10,7 +10,7 @@ import pickle
 APIKey = 'a155d66d86bdd268b15c6488321141e9'
 lat = '53.3498'
 lon = '6.2603'
-
+#turn this into a sql table, if time, get running first
 def get_forecast_data():
     forecast_url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}&units=metric'
     try:
@@ -80,7 +80,9 @@ def predict_available_bikes(df, model):
 def get_model(station_number):
     model_name = f"RandomForest_Station_{station_number}.pkl"
     filepath = f"pickle_files/{model_name}"
-
+#write for loop
+#to go through directory
+#and load all pickles
     try:
         with open(filepath, 'rb') as file:
             station_model = pickle.load(file)
