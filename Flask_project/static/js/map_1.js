@@ -162,6 +162,7 @@ async function initMap() {
 
    // Add event listener for map click
    map.addListener("click", (e) => {
+    document.getElementsByClassName("bol_header").innerHTML = "Station Information:"
     placeMarkerAndPanTo(e.latLng, map);
   });
 
@@ -320,6 +321,56 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
 
   markers.push(marker);
 
+
+
+  //Blank map
+
+  const ctx = document.getElementById('myChart');
+        
+          myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            datasets: [{
+              label: 'Average Available Bikes',
+              //data: array,
+              data: [],
+              borderWidth: .1,
+              barThickness: 'flex'
+            },
+          {
+            label:"Current Station Availability",
+            data: [],
+            borderWidth: 0.1,
+            barThickness: 'flex',
+            maxBarThickness: 14
+          }]
+          },
+          options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'hour',
+                            displayFormats: {
+                                hour: 'HH:mm'
+                            },
+                            stepSize: 1
+                        },
+                        stacked: true,
+                        offset: true // Allow bars to overlap
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+//Blank map
+
+
+
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
     document.getElementById("user_title").innerHTML = "User Location"
@@ -339,17 +390,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
           myChart.destroy();
         }
         
-        // const xData = [];
-        // for(let asx; asx<23; asx++){
-        //   p = new Date().setHours(asx,0,0);
-        //   xData.push(p);
-        // }
-        //  xData = [new Date('2024-08-12T00:00:00'), new Date('2024-08-12T01:00:00'), new Date('2024-08-12T02:00:00'), new Date('2024-08-12T03:00:00'),
-        //           new Date('2024-08-12T04:00:00'), new Date('2024-08-12T05:00:00'), new Date('2024-08-12T06:00:00'), new Date('2024-08-12T07:00:00'),
-        //           new Date('2024-08-12T08:00:00'), new Date('2024-08-12T09:00:00'), new Date('2024-08-12T10:00:00'), new Date('2024-08-12T11:00:00'),
-        //           new Date('2024-08-12T12:00:00'), new Date('2024-08-12T13:00:00'), new Date('2024-08-12T14:00:00'), new Date('2024-08-12T15:00:00'),
-        //           new Date('2024-08-12T16:00:00'), new Date('2024-08-12T17:00:00'), new Date('2024-08-12T18:00:00'), new Date('2024-08-12T19:00:00'),
-        //           new Date('2024-08-12T20:00:00'), new Date('2024-08-12T21:00:00'), new Date('2024-08-12T22:00:00'), new Date('2024-08-12T23:00:00')];
+        
         const xData = [new Date().setHours(0,0,0), new Date().setHours(1,0,0), new Date().setHours(2,0,0), new Date().setHours(3,0,0),
           new Date().setHours(4,0,0), new Date().setHours(5,0,0), new Date().setHours(6,0,0), new Date().setHours(7,0,0),
           new Date().setHours(8,0,0), new Date().setHours(9,0,0), new Date().setHours(10,0,0), new Date().setHours(11,0,0),
