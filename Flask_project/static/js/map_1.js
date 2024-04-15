@@ -267,10 +267,11 @@ loadweatherJSON().then(weatherData => {
 loadJSON()
     
     .then(bikeStations => {
-      //Blank map
 
+//Blank map
+//close the myChart element for clarity when reading code
+//whole section just loads blank map
   const ctx = document.getElementById('myChart');
-        
   myChart = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -309,9 +310,8 @@ loadJSON()
         }
     }
 });
-
-
 //Blank map
+
 // Create an info window to share between markers.
 const infoWindow = new InfoWindow;
 const infoBox = document.getElementById('infobox');
