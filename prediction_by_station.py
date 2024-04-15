@@ -86,7 +86,7 @@ def predict_available_bikes(df, model):
 def get_models(rootdir):
     # model_name = f"RandomForest_Station_{station_number}.pkl"
     # filepath = f"pickle_files/{model_name}"
-
+    station_models = dict()
     for subdir, dirs, files in os.walk(rootdir):
         print(files)
         for file in files:
@@ -96,12 +96,12 @@ def get_models(rootdir):
                 with open(filepath, 'rb') as f:
                     station_model = pickle.load(f)
                     print("Model loaded successfully.")
-                    return station_model
+                    station_models[file] = station_model.copy()
             except FileNotFoundError:
                 print(f"File not found: {f}. Please check the filename and path.")
             except Exception as e:
                 print(f"An error occurred while loading the pickle file: {e}")
-
+        return station_models
 def get_model(station_number):
     model_name = f"RandomForest_Station_{station_number}.pkl"
     filepath = f"pickle_files/{model_name}"
