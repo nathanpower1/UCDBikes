@@ -162,7 +162,7 @@ async function initMap() {
 
    // Add event listener for map click
    map.addListener("click", (e) => {
-    document.getElementById("box_header").innerHTML = "Station Information:"
+    // document.getElementById("box_header").innerHTML = "Station Information:"
     placeMarkerAndPanTo(e.latLng, map);
   });
 
