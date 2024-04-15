@@ -8,7 +8,7 @@ app = Flask(__name__)
 ####################################################
 ############### Website pages/routes ###############
 ####################################################
-
+# train_pickes()
 #create a base route and an index route
 @app.route('/')
 @app.route('/index/')
