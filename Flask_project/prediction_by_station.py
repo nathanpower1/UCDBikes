@@ -90,18 +90,19 @@ def get_models(rootdir):
     for subdir, dirs, files in os.walk(rootdir):
         #print(files)
         for file in files:
-            filepath = os.path.join(subdir, file)
-            #print(filepath)
-            try:
-                with open(filepath, 'rb') as f:
-                    station_model = pickle.load(f)
-                    print("Model loaded successfully.")
-                    station_models[file] = station_model#.copy()
-            except FileNotFoundError:
-                print(f"File not found: {f}. Please check the filename and path.")
-            except Exception as e:
-                print(f"An error occurred while loading the pickle file: {e}")
-        return station_models
+            print(file)
+        #     filepath = os.path.join(subdir, file)
+        #     #print(filepath)
+        #     try:
+        #         with open(filepath, 'rb') as f:
+        #             station_model = pickle.load(f)
+        #             print("Model loaded successfully.")
+        #             station_models[file] = station_model#.copy()
+        #     except FileNotFoundError:
+        #         print(f"File not found: {f}. Please check the filename and path.")
+        #     except Exception as e:
+        #         print(f"An error occurred while loading the pickle file: {e}")
+        # return station_models
     
 def get_model(station_number):
     model_name = f"RandomForest_Station_{station_number}.pkl"
