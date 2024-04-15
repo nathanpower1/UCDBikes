@@ -172,6 +172,10 @@ tr {
    border-bottom:1px solid rgba(0, 0, 0, 0.1);
 }
 
+tr:hover {
+   background-color: #444;
+}
+
 tr:last-child {
    border-bottom: none; 
 }
@@ -187,7 +191,7 @@ td {
    font-size:medium;
 }
 #tablediv{
-   width: 30%;
+   width: 100%;
    float: right;
 }
 /* Styling foR Geolaction Button*/ 
