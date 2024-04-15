@@ -88,15 +88,15 @@ def get_models(rootdir):
     # filepath = f"pickle_files/{model_name}"
     station_models = dict()
     for subdir, dirs, files in os.walk(rootdir):
-        print(files)
+        #print(files)
         for file in files:
             filepath = os.path.join(subdir, file)
-            print(filepath)
+            #print(filepath)
             try:
                 with open(filepath, 'rb') as f:
                     station_model = pickle.load(f)
                     print("Model loaded successfully.")
-                    station_models[file] = station_model.copy()
+                    station_models[file] = station_model#.copy()
             except FileNotFoundError:
                 print(f"File not found: {f}. Please check the filename and path.")
             except Exception as e:
