@@ -370,7 +370,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   
 
 
-  const bool = true;
+  var bool = true;
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
     if (bool){
