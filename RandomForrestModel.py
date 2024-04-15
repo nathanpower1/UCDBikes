@@ -37,7 +37,7 @@ def get_data():
     cursor = connection.cursor()
     cursor.execute(f"SELECT number, timestamp, available_bikes, available_bike_stands FROM dublinbikes1104.availability")
     data = cursor.fetchall()
-    select_query = "SELECT COUNT(*) FROM dublinbikes1104.availability;"
+    select_query = "SELECT COUNT(*) FROM dublinbikes.availability;"
     cursor.execute(select_query)
 
     count = cursor.fetchone()
@@ -60,7 +60,7 @@ availability = make_df()
 
 def get_weather_data():
     cursor = connection.cursor()
-    cursor.execute(f"SELECT timestamp, main, rain, temp, wind_speed FROM dublinbikes1104.weather")
+    cursor.execute(f"SELECT timestamp, main, rain, temp, wind_speed FROM dublinbikes.weather")
     data = cursor.fetchall()
     cursor.close()
     return data
