@@ -139,3 +139,5 @@ def run_prediction(day, hour, forecast_df, station_number):
 
 #print("a")
 #get_models("pkl") 
+station_models = get_models("../pickle_files_new")
+print(station_models)
