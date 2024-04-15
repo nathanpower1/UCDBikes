@@ -124,9 +124,9 @@ def slice_forcast_data(day, hour, df):
     sliced_df = df[(df['Day'] == day) & (df['Hour'] == hour)]
     return sliced_df
 
-def run_prediction(day, hour, forecast_df, station_number):
+def run_prediction(day, hour, forecast_df, model):#station_number,model):
     input_data = slice_forcast_data(day, hour, forecast_df)
-    station_model = get_model(station_number)
+    station_model = model#get_model(station_number)
     predicted_bikes = round(predict_available_bikes(input_data, station_model))
     return predicted_bikes
 
@@ -139,5 +139,5 @@ def run_prediction(day, hour, forecast_df, station_number):
 
 #print("a")
 #get_models("pkl") 
-station_models = get_models("../pickle_files_new")
-print(station_models)
+#station_models = get_models("../pickle_files_new")
+#print(station_models)
