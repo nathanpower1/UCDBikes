@@ -589,9 +589,9 @@ closestStationMarker = new AdvancedMarkerElement({
  // });
 
   // Update the coordinates in the text box
-  // document.getElementById('Lat').innerHTML =latLng.lat().toFixed(6);
-  // document.getElementById('Long').innerHTML =latLng.lng().toFixed(6);
-  // document.getElementById('Closest').innerHTML = closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
+  document.getElementById('Lat').innerHTML =latLng.lat().toFixed(6);
+  document.getElementById('Long').innerHTML =latLng.lng().toFixed(6);
+  document.getElementById('Closest').innerHTML = closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
 
   // Pan the map to the marker's position
   map.panTo(latLng);
