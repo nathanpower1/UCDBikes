@@ -110,7 +110,7 @@ def get_models(rootdir):
     
 def get_model(station_number):
     model_name = f"RandomForest_Station_{station_number}.pkl"
-    filepath = f"pickle_files/{model_name}"
+    filepath = f"../pickle_files_new/{model_name}"
 #write for loop
 #to go through directory
 #and load all pickles
@@ -129,9 +129,9 @@ def slice_forcast_data(day, hour, df):
     sliced_df = df[(df['Day'] == day) & (df['Hour'] == hour)]
     return sliced_df
 
-def run_prediction(day, hour, forecast_df, model):#station_number,model):
+def run_prediction(day, hour, forecast_df, station_number,model):#model):
     input_data = slice_forcast_data(day, hour, forecast_df)
-    station_model = model#get_model(station_number)
+    station_model = get_model(station_number)#model
     predicted_bikes = round(predict_available_bikes(input_data, station_model))
     return predicted_bikes
 
