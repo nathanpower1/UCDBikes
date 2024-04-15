@@ -370,10 +370,13 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   
 
 
-
+  const bool = true;
   // Add a click listener for each marker, and set up the info window.
   marker.addListener("click", () => {
-    document.getElementById("user_title").innerHTML = "User Location"
+    if (bool){
+    document.getElementById("user_title").innerHTML = "User Location";
+    bool=false;
+    }
     loadstationJSON(parseInt(marker.title))
     .then(station_data =>{
       loadaveragesJSON(parseInt(marker.title))
