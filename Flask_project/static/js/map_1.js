@@ -267,7 +267,51 @@ loadweatherJSON().then(weatherData => {
 loadJSON()
     
     .then(bikeStations => {
+      //Blank map
 
+  const ctx = document.getElementById('myChart');
+        
+  myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    datasets: [{
+      label: 'Average Available Bikes',
+      //data: array,
+      data: [],
+      borderWidth: .1,
+      barThickness: 'flex'
+    },
+  {
+    label:"Current Station Availability",
+    data: [],
+    borderWidth: 0.1,
+    barThickness: 'flex',
+    maxBarThickness: 14
+  }]
+  },
+  options: {
+        scales: {
+            x: {
+                type: 'time',
+                time: {
+                    unit: 'hour',
+                    displayFormats: {
+                        hour: 'HH:mm'
+                    },
+                    stepSize: 1
+                },
+                stacked: true,
+                offset: true // Allow bars to overlap
+            },
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+//Blank map
 // Create an info window to share between markers.
 const infoWindow = new InfoWindow;
 const infoBox = document.getElementById('infobox');
@@ -323,51 +367,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
 
 
 
-  //Blank map
-
-  const ctx = document.getElementById('myChart');
-        
-          myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            datasets: [{
-              label: 'Average Available Bikes',
-              //data: array,
-              data: [],
-              borderWidth: .1,
-              barThickness: 'flex'
-            },
-          {
-            label:"Current Station Availability",
-            data: [],
-            borderWidth: 0.1,
-            barThickness: 'flex',
-            maxBarThickness: 14
-          }]
-          },
-          options: {
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'hour',
-                            displayFormats: {
-                                hour: 'HH:mm'
-                            },
-                            stepSize: 1
-                        },
-                        stacked: true,
-                        offset: true // Allow bars to overlap
-                    },
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-
-//Blank map
+  
 
 
 
