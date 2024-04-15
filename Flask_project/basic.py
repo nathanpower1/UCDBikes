@@ -1,7 +1,7 @@
 #Import modules from flask and own python module "sql_puller"
 from flask import Flask, jsonify, request, url_for, render_template,send_file
 import sql_puller
-
+import prediction_by_station
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
@@ -9,6 +9,8 @@ app = Flask(__name__)
 ############### Website pages/routes ###############
 ####################################################
 # train_pickes()
+station_models = prediction_by_station.get_models("./pickle_files_new")
+print(station_models)
 #create a base route and an index route
 @app.route('/')
 @app.route('/index/')
