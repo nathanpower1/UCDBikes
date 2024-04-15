@@ -449,6 +449,10 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
         
       })
 
+    document.getElementById('stat_number').innerHTML =station_data[0].number;
+  document.getElementById('stat_name').innerHTML =station_data[0].name;
+  document.getElementById('b_available').innerHTML = station_data[0].available_bikes;
+  document.getElementById('b_stations').innerHTML = station_data[0].available_bike_stands;
     // infoColumn.innerHTML = '<h2><strong> Station Information: </strong> </h2>' +
     // '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
     // '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
@@ -583,6 +587,7 @@ closestStationMarker = new AdvancedMarkerElement({
   document.getElementById('Long').innerHTML =latLng.lng().toFixed(6);
   document.getElementById('Closest').innerHTML = closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
   document.getElementById('Available').innerHTML = closestStation[3];
+  document.getElementById('current_location').innerHTML = 'Current Location';
   // Pan the map to the marker's position
   map.panTo(latLng);
 })
