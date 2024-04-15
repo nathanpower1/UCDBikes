@@ -102,6 +102,7 @@ def get_models(rootdir):
             except Exception as e:
                 print(f"An error occurred while loading the pickle file: {e}")
         return station_models
+    
 def get_model(station_number):
     model_name = f"RandomForest_Station_{station_number}.pkl"
     filepath = f"pickle_files/{model_name}"
@@ -136,5 +137,5 @@ def run_prediction(day, hour, forecast_df, station_number):
 #predicted_bikes = run_prediction(day, hour, forecast_df, station_number)
 #print(f"Predicted available bikes: {predicted_bikes}")
 
-print("a")
-get_models("pkl") 
+#print("a")
+#get_models("pkl") 
