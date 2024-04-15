@@ -35,7 +35,7 @@ print("Connected to the database")
 
 def get_data():
     cursor = connection.cursor()
-    cursor.execute(f"SELECT number, timestamp, available_bikes, available_bike_stands FROM dublinbikes1104.availability")
+    cursor.execute(f"SELECT number, timestamp, available_bikes, available_bike_stands FROM dublinbikes.availability")
     data = cursor.fetchall()
     select_query = "SELECT COUNT(*) FROM dublinbikes.availability;"
     cursor.execute(select_query)
