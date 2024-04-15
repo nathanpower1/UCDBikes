@@ -10,7 +10,9 @@ app = Flask(__name__)
 ####################################################
 # train_pickes()
 station_models = prediction_by_station.get_models("./pickle_files_new")
+weather_data = prediction_by_station.get_forecast_data()
 print(station_models)
+print(weather_data)
 #create a base route and an index route
 @app.route('/')
 @app.route('/index/')
