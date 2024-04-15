@@ -58,28 +58,16 @@
     <div id="map"></div>
     <!-- <div id = "scroll_div"></div> -->
     <div id="infobox">
-      <div id = station_wrapper>
-        <div id = station_title>
-            Closest Station
-        </div>
-        <div id = "tablediv">
-          <table id = lnglat_table>
-            <thead>
-              <tr>
-                <td><div id="Closest"></div></td>
-                <td>name</td>
-              </tr>
-              <tr>
-                <td>12</td>
-                <td>bikes</td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
       <div class="info-column-coordinates">
-        <div id = sidebar_title>
+        <!-- <div id = sidebar_title> -->
           <!-- Info:</div><div id="Lat">Lat</div><div id="Long">Long</div> -->
+        <div class="info-column-station">
+            <h2><strong>Station Information:</strong></h2>
+          <p><strong>Station Number:</strong> </p>
+          <p><strong>Station Name:</strong> </p>
+          <p><strong>Bikes Available:</strong> </p>
+          <p><strong>Bike Stations:</strong> </p>
+        </div>
         <div id = "user_wrapper">
           <div id = "user_title">
               User Location
@@ -99,29 +87,30 @@
             </table>
           </div>
         </div>
-        
-        
-
-
-        <!-- <p id="Lat">Latitude: </p> -->
-        <!-- <p id="Long">Longitude: </p> -->
+        <div id = station_wrapper>
+          <div id = station_title>
+              Closest Station
+          </div>
+          <div id = "tablediv">
+            <table id = lnglat_table>
+              <thead>
+                <tr>
+                  <td><div id="Closest"></div></td>
+                  <td>name</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>bikes</td>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
         <p id="Closest">Closest Station: </p>
-      </div>
+      <!-- </div> -->
 
-      <!-- <div class="info-column-weather">
-        <h2><strong> Current Weather Information:</h2>
-        <p id="temperature"></p>
-        <p id="wind-speed"></p>
-        <p id="rain"></p>
-        <p id="weather-condition"></p></strong>
-      </div>-->
-        <div class="info-column-station">
-          <h2><strong>Station Information:</strong></h2>
-        <p><strong>Station Number:</strong> </p>
-        <p><strong>Station Name:</strong> </p>
-        <p><strong>Bikes Available:</strong> </p>
-        <p><strong>Bike Stations:</strong> </p>
-      </div>
+        
+
       <div class="info-column-chart">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
