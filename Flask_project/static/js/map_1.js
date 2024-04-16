@@ -59,7 +59,7 @@ async function loadPredictions(station_number,day,time) {
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
-    const predicitonData = response;
+    const predicitonData = await response.json();
     //console.log(station_data);
     console.log(predicitonData)
     document.getElementById("predicitons_").innerHTML = "predicitonData"
