@@ -12,7 +12,7 @@ app = Flask(__name__)
 weather_data = prediction_by_station.get_forecast_data()
 station_models = prediction_by_station.get_models("../pickle_files_new")
 print(station_models)
-run_prediction(1,1,weather_data,34)
+print(prediction_by_station.run_prediction(1,1,weather_data,34))
 #
 
 #create a base route and an index route
