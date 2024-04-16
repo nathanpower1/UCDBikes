@@ -237,7 +237,7 @@ async function initMap() {
     console.log(selectedOptions2);
     var predictions_ = loadPredictions(selectedOptions2[0],selectedOptions1[0],selectedOptions[0]);
     console.log(predictions_)
-    document.getElementById("predictions_").innerHTML = predictions_
+    // document.getElementById("predictions_").innerHTML = predictions_
   });
   });
 
