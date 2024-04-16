@@ -135,6 +135,7 @@
 }
 
 #infobox {
+   float: left;
    display: flex;
    height: 100%;
    width: 30%;
