@@ -62,6 +62,7 @@ async function loadPredictions(station_number,day,time) {
     const predicitonData = response;
     //console.log(station_data);
     console.log(predicitonData)
+    document.getElementById("predictions_").innerHTML = predicitonData
     return predicitonData;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
