@@ -209,7 +209,7 @@ async function initMap() {
   //   let output = selectElement.value;
   //   console.log(output);
   // });
-
+  document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submitButton').addEventListener('click', function() {
     let selectElement = document.getElementById('select-time');
     let selectedOptions = [];
@@ -220,7 +220,7 @@ async function initMap() {
     }
     console.log(selectedOptions);
   });
-
+  });
 
 
   // The location of center of map (The Spire)
