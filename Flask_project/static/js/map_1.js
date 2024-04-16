@@ -146,9 +146,9 @@ async function loadstationJSON(station_number) {
 
 async function initMap() {
   // define dropdown
-  // let select_date = document.createElement("select");
+  let select_day = document.createElement("select");
   let select_time = document.createElement("select");
-  // let select_station = document.createElement("select");
+  let select_station = document.createElement("select");
 // define default option
   let default_option = document.createElement("option")
   default_option.innerText = "Senators with Titles";
@@ -156,18 +156,32 @@ async function initMap() {
 
 // create data for dropdowns
   const hours_dropdown = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
-  // const days_dropdown = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-  // const stations_dropdown = [Array.from({length: 117}, (_, i) => i + 1)]
+  const days_dropdown = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+  const stations_dropdown = [Array.from({length: 117}, (_, i) => i + 1)]
 // fill dropdows
+  //hours dropdown
   hours_dropdown.forEach(element => {
-    // console.log(element)
     var option_hours = document.createElement("option");
     option_hours.text = element;
     select_time.add(option_hours);
   });
-  
+  //days_dropdown
+  days_dropdown.forEach(element => {
+    var option_days = document.createElement("option");
+    option_days.text = element;
+    select_day.add(option_days);
+  });
+  //stations_dropdown
+  stations_dropdown.forEach(element => {
+    var option_stations = document.createElement("option");
+    option_stations.text = element;
+    select_station.add(option_stations);
+  });
 
   document.getElementById("info-column-prediction").appendChild(select_time);
+  document.getElementById("info-column-prediction").appendChild(select_day);
+  document.getElementById("info-column-prediction").appendChild(select_station);
+
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 
   // Request needed libraries.
