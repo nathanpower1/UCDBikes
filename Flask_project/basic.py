@@ -31,9 +31,10 @@ def index_station(number):
 #Machine Learning Prediction
 @app.route('/get_station_prediction/<hour>/<day>/<station_number>')
 def predict_station(hour,day,station_number):
-    weather_data = prediction_by_station.get_forecast_data()
-    prediction = prediction_by_station.run_prediction(day,hour,weather_data,34)
-    return prediction,weather_data
+    print("Hour",hour,"day",day,"station#",station_number)
+    # weather_data = prediction_by_station.get_forecast_data()
+    # prediction = prediction_by_station.run_prediction(day,hour,weather_data,station_number)
+    # return prediction,weather_data
 
 
 

@@ -206,12 +206,8 @@ async function initMap() {
   document.getElementById("select-day").appendChild(select_day);
   document.getElementById("select-station").appendChild(select_station);
 
-  // document.getElementById('submitButton').addEventListener('click', function() {
-  //   console.log("asdasdasdasdasd")
-  //   let selectElement = document.getElementById('select-time');
-  //   let output = selectElement.value;
-  //   console.log(output);
-  // });
+  
+  
   document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submitButton').addEventListener('click', function() {
     let selectElement = document.getElementById('select-time-sel');
@@ -238,6 +234,7 @@ async function initMap() {
       }
     }
     console.log(selectedOptions2);
+    loadPredictions(selectedOptions2[0],selectedOptions1[0],selectedOptions[0])
   });
   });
 
