@@ -1,5 +1,4 @@
 import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclusterer@2.3.1";
-//const markerCluster = new MarkerClusterer({ markers, map });
 // Initialize and add the map
 let map;
 let infoWindow;
@@ -319,14 +318,7 @@ const infoWindow = new InfoWindow;
 const infoBox = document.getElementById('infobox');
 const infoColumn = document.querySelector('.info-column-station');
 
-//const glyphImg = document.createElement("img");
-// Create the markers.
-//glyphImg.src =
-//  "../static/images/bicycle-bike.svg";
 
-//const glyphSvgPinElement = new PinElement({scale: 0.001,
-//  glyph: glyphImg,
-//});
 
 bikeStations.forEach(([position, title, number, av_bikes], i) => {
   
@@ -342,9 +334,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   } else if (av_bikes >= 1 && av_bikes <= 10) {
     bikeImgSrc = '../static/images/'+'bicycle-bike-orange.png';
     console.log("Setting marker to orange");
-  //} else if (av_bikes >= 11 && av_bikes <= 19) {
-  //  bikeImgSrc = '../static/images/'+'bicycle-bike-yellow.png';
-   // console.log("Setting marker to yellow");
+  
   } else {
     bikeImgSrc = '../static/images/'+'bicycle-bike-green_resize.png';
     console.log("Setting marker to green");
@@ -352,10 +342,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   
     // Create the bike image element
     const bikeImg = document.createElement('img');
-    //icon: {
-      //  url: "../static/images/bicycle-bike.svg",
-      //  scaledSize:new google.maps.Size(50,50)
-      //}
+   
     bikeImg.src = bikeImgSrc;
 
   const marker = new AdvancedMarkerElement({
@@ -455,11 +442,6 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
   document.getElementById('stat_name').innerHTML =station_data[0].name;
   document.getElementById('b_available').innerHTML = station_data[0].available_bikes;
   document.getElementById('b_stations').innerHTML = station_data[0].available_bike_stands;
-    // infoColumn.innerHTML = '<h2><strong> Station Information: </strong> </h2>' +
-    // '<p><strong> Station Number: </strong> ' + station_data[0].number + '</p>' +
-    // '<p><strong> Station Name: </strong> ' + station_data[0].name + '</p>' +
-    // '<p><strong> Bikes Available: </strong> ' + station_data[0].available_bikes + '</p>' +
-    // '<p><strong> Bikes Stations: </strong> ' + station_data[0].available_bike_stands + '</p>';
 
     console.log('Data received:', station_data);
     infoWindow.close();
@@ -489,14 +471,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
         return cluster;
     }
 };
-  // Create a MarkerClusterer object
-// new MarkerClusterer({ markers, map, minimumClusterSize: 5, renderer });
-//new MarkerClusterer( markers, map, {
- /// gridSize: 75, // Adjust the grid size as needed
- // minimumClusterSize: 4, // Set the minimum number of markers in a cluster
- // maxZoom: 16, // Set the maximum zoom level for clustering
- // zoomOnClick: true // Enable zooming when clicking on a cluster
-//});;
+
 });
 
 
@@ -529,10 +504,7 @@ async function placeMarkerAndPanTo(latLng, map) {
 
   // Create the bike image element
   const UserImg = document.createElement('img');
-  //icon: {
-    //  url: "../static/images/bicycle-bike.svg",
-    //  scaledSize:new google.maps.Size(50,50)
-    //}
+  
   UserImg.src = '../static/images/'+'player.png';;
 
   // Create a new Advanced Marker

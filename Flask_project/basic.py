@@ -9,13 +9,7 @@ app = Flask(__name__)
 ####################################################
 ############### Website pages/routes ###############
 ####################################################
-# train_pickes()
-#weather_data = prediction_by_station.get_forecast_data()
-#print(weather_data)
-#station_models = prediction_by_station.get_models("../pickle_files_new")
-#print(station_models)
-#print(prediction_by_station.run_prediction(1,9,weather_data,34))
-#
+
 def get_day_int(x):
     y = {"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}
     return int(y[x])
