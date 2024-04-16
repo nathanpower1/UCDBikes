@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, request, url_for, render_template,send_file
 import sql_puller
 import prediction_by_station
+import time
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
@@ -9,12 +10,14 @@ app = Flask(__name__)
 ############### Website pages/routes ###############
 ####################################################
 # train_pickes()
+print(time.time)
 weather_data = prediction_by_station.get_forecast_data()
 #print(weather_data)
 #station_models = prediction_by_station.get_models("../pickle_files_new")
 #print(station_models)
 print(prediction_by_station.run_prediction(1,9,weather_data,34))
 #
+print(time.time)
 
 #create a base route and an index route
 @app.route('/')
