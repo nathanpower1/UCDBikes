@@ -10,9 +10,9 @@ app = Flask(__name__)
 ####################################################
 # train_pickes()
 weather_data = prediction_by_station.get_forecast_data()
-print(weather_data)
-station_models = prediction_by_station.get_models("../pickle_files_new")
-print(station_models)
+#print(weather_data)
+#station_models = prediction_by_station.get_models("../pickle_files_new")
+#print(station_models)
 print(prediction_by_station.run_prediction(1,9,weather_data,34))
 #
 
