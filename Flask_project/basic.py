@@ -9,8 +9,8 @@ app = Flask(__name__)
 ############### Website pages/routes ###############
 ####################################################
 # train_pickes()
-#station_models = prediction_by_station.get_models("../pickle_files_new")
-#print(station_models)
+station_models = prediction_by_station.get_models("../pickle_files_new")
+print(station_models)
 #
 
 #create a base route and an index route
