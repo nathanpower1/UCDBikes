@@ -179,9 +179,9 @@ async function initMap() {
     select_station.add(option_stations);
   });
 
-  document.getElementById("info-column-prediction").appendChild(select_time);
-  document.getElementById("info-column-prediction").appendChild(select_day);
-  document.getElementById("info-column-prediction").appendChild(select_station);
+  document.getElementById("select-time").appendChild(select_time);
+  document.getElementById("select-day").appendChild(select_day);
+  document.getElementById("select-station").appendChild(select_station);
 
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 
