@@ -20,6 +20,14 @@ def get_day_int(x):
     y = {"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}
     return int(y[x])
 
+def round(n,x): 
+    # Smaller multiple 
+    a = (n // x) * x
+    # Larger multiple 
+    b = a + x
+    # Return of closest of two 
+    return (b if n - a > b - n else a)
+
 
 #create a base route and an index route
 @app.route('/')
@@ -37,7 +45,7 @@ def index_station(number):
 def predict_station(hour,day,station_number):
     print("Hour",hour,"day",day,"station#",station_number)
     day_int = get_day_int(day)
-    hour_int = int(station_number)
+    hour_int = int(round(station_number,3))
     station_int = int(hour)
     weather_data = prediction_by_station.get_forecast_data()
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
