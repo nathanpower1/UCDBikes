@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, request, url_for, render_template,send_file
 import sql_puller
 import prediction_by_station
+import numpy as np
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
@@ -15,6 +16,9 @@ app = Flask(__name__)
 #print(station_models)
 #print(prediction_by_station.run_prediction(1,9,weather_data,34))
 #
+def get_day_int(x):
+    y = {"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}
+    return int(y[x])
 
 
 #create a base route and an index route
@@ -32,10 +36,13 @@ def index_station(number):
 @app.route('/get_station_prediction/<hour>/<day>/<station_number>')
 def predict_station(hour,day,station_number):
     print("Hour",hour,"day",day,"station#",station_number)
-    # weather_data = prediction_by_station.get_forecast_data()
-    # prediction = prediction_by_station.run_prediction(day,hour,weather_data,station_number)
+    day_int = get_day_int(day)
+    hour_int = int(station_number)
+    station_int = int(hour)
+    weather_data = prediction_by_station.get_forecast_data()
+    prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
     # return prediction,weather_data
-    return '{"name":"John", "age":30, "car":null}'
+    return '{"Number of Bikes":'+prediction+'}'
 
 
 
