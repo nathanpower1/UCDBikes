@@ -52,6 +52,24 @@ async function loadaveragesJSON(station_number) {
   }
 }
 
+//async load predictions
+async function loadPredictions(station_number,day,time) {
+  try {
+    const response = await fetch('/get_station_prediction/'+time+'/'+day+'/'+station_number);
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const predicitonData = response;
+    //console.log(station_data);
+    console.log(predicitonData)
+    return predicitonData;
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    // If an error occurs, return a default empty array
+    return [];
+  }
+}
+
 async function loadweatherJSON() {
   try {
       const response = await fetch('/get_current_weather');
@@ -163,6 +181,8 @@ async function initMap() {
   hours_dropdown.forEach(element => {
     var option_hours = document.createElement("option");
     option_hours.text = element;
+    option_hours.setAttribute("value", "option"+element);
+    option_hours.setAttribute("id", "id"+element);
     select_time.add(option_hours);
   });
   //days_dropdown
@@ -182,6 +202,10 @@ async function initMap() {
   document.getElementById("select-time").appendChild(select_time);
   document.getElementById("select-day").appendChild(select_day);
   document.getElementById("select-station").appendChild(select_station);
+
+  document.getElementById('submitButton').addEventListener('click', function() {
+
+  });
 
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 

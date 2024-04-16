@@ -29,11 +29,11 @@ def index():
 def index_station(number):
     return render_template('index.html',data = func(df,int(number)), station_number = number)
 #Machine Learning Prediction
-@app.route('/get_station_averages/<hour>/<day>/<station_number>')
+@app.route('/get_station_prediction/<hour>/<day>/<station_number>')
 def predict_station(hour,day,station_number):
     weather_data = prediction_by_station.get_forecast_data()
     prediction = prediction_by_station.run_prediction(day,hour,weather_data,34)
-    return prediction
+    return prediction,weather_data
 
 
 
