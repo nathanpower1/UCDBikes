@@ -160,6 +160,7 @@ async function initMap() {
   // const stations_dropdown = [Array.from({length: 117}, (_, i) => i + 1)]
 // fill dropdows
   hours_dropdown.forEach(element => {
+    console.log(element)
     var option_hours = document.createElement("option");
     option_hours.text = element;
     select_time.add(option_hours);
