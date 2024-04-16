@@ -184,7 +184,7 @@ async function initMap() {
   hours_dropdown.forEach(element => {
     var option_hours = document.createElement("option");
     option_hours.text = element;
-    option_hours.setAttribute("value", "option"+element);
+    option_hours.setAttribute("value", element);
     option_hours.setAttribute("id", "id"+element);
     select_time.add(option_hours);
   });
