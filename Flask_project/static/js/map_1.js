@@ -165,11 +165,11 @@ async function loadstationJSON(station_number) {
 async function initMap() {
   // define dropdown
   let select_day = document.createElement("select");
-  select_day.setAttribute("select-day-sel");
+  select_day.setAttribute("id","select-day-sel");
   let select_time = document.createElement("select");
-  select_time.setAttribute("select-time-sel");
+  select_time.setAttribute("id","select-time-sel");
   let select_station = document.createElement("select");
-  select_station.setAttribute("select-station-sel");
+  select_station.setAttribute("id","select-station-sel");
 // define default option
   let default_option = document.createElement("option")
   default_option.innerText = "Senators with Titles";
