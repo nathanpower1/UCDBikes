@@ -35,7 +35,7 @@ def predict_station(hour,day,station_number):
     # weather_data = prediction_by_station.get_forecast_data()
     # prediction = prediction_by_station.run_prediction(day,hour,weather_data,station_number)
     # return prediction,weather_data
-    return "asdasdas"
+    return '{"name":"John", "age":30, "car":null}'
 
 
 
