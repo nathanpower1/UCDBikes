@@ -234,7 +234,9 @@ async function initMap() {
       }
     }
     console.log(selectedOptions2);
-    console.log(loadPredictions(selectedOptions2[0],selectedOptions1[0],selectedOptions[0]));
+    var predictions_ = loadPredictions(selectedOptions2[0],selectedOptions1[0],selectedOptions[0]);
+    console.log(predictions_)
+    document.getElementById("predictions_").innerHTML = predictions_
   });
   });
 
