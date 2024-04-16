@@ -212,6 +212,7 @@ async function initMap() {
   document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submitButton').addEventListener('click', function() {
     let selectElement = document.getElementById('select-time');
+    console.log(selectElement); // Add this line
     let selectedOptions = [];
     for (let i = 0; i < selectElement.options.length; i++) {
       if (selectElement.options[i].selected) {
