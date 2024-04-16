@@ -40,6 +40,9 @@ def index():
 @app.route('/index/<number>')
 def index_station(number):
     return render_template('index.html',data = func(df,int(number)), station_number = number)
+
+#changes: need to align days and hours more clearly  only some days work
+#changes: pull weather from sql not from api
 #Machine Learning Prediction
 @app.route('/get_station_prediction/<hour>/<day>/<station_number>')
 def predict_station(hour,day,station_number):
