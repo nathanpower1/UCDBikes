@@ -157,7 +157,7 @@ async function initMap() {
 // create data for dropdowns
   const hours_dropdown = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
   const days_dropdown = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-  const stations_dropdown = [Array.from({length: 117}, (_, i) => i + 1)]
+  const stations_dropdown = Array.from({length: 117}, (_, i) => i + 1)
 // fill dropdows
   //hours dropdown
   hours_dropdown.forEach(element => {
@@ -173,6 +173,7 @@ async function initMap() {
   });
   //stations_dropdown
   stations_dropdown.forEach(element => {
+    console.log(element);
     var option_stations = document.createElement("option");
     option_stations.text = element;
     select_station.add(option_stations);
