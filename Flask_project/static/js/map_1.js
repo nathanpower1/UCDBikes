@@ -205,7 +205,7 @@ async function initMap() {
 
   document.getElementById('submitButton').addEventListener('click', function() {
     console.log("asdasdasdasdasd")
-    let selectElement = document.querySelector('#select-time');
+    let selectElement = document.getElementById('select-time');
     let output = selectElement.value;
     console.log(output);
   });
