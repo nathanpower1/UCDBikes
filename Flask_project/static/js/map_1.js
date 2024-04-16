@@ -160,12 +160,12 @@ async function initMap() {
   // const stations_dropdown = [Array.from({length: 117}, (_, i) => i + 1)]
 // fill dropdows
   hours_dropdown.forEach(element => {
-    console.log(element)
+    // console.log(element)
     var option_hours = document.createElement("option");
     option_hours.text = element;
     select_time.add(option_hours);
   });
-  document.getElementById("info-column-prediction").add(select_time);
+  document.getElementById("info-column-prediction").appendChild(select_time);
   
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 
