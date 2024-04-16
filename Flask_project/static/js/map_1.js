@@ -215,7 +215,6 @@ async function initMap() {
   document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submitButton').addEventListener('click', function() {
     let selectElement = document.getElementById('select-time-sel');
-    console.log(selectElement); // Add this line
     let selectedOptions = [];
     for (let i = 0; i < selectElement.options.length; i++) {
       if (selectElement.options[i].selected) {
@@ -223,6 +222,22 @@ async function initMap() {
       }
     }
     console.log(selectedOptions);
+    let selectElement1 = document.getElementById('select-day-sel');
+    let selectedOptions1 = [];
+    for (let i = 0; i < selectElement.options.length; i++) {
+      if (selectElement1.options[i].selected) {
+        selectedOptions1.push(selectElement.options[i].value);
+      }
+    }
+    console.log(selectedOptions1);
+    let selectElement2 = document.getElementById('select-station-sel');
+    let selectedOptions2 = [];
+    for (let i = 0; i < selectElement.options.length; i++) {
+      if (selectElement2.options[i].selected) {
+        selectedOptions2.push(selectElement.options[i].value);
+      }
+    }
+    console.log(selectedOptions2);
   });
   });
 
