@@ -234,7 +234,7 @@ async function initMap() {
       }
     }
     console.log(selectedOptions2);
-    loadPredictions(selectedOptions2[0],selectedOptions1[0],selectedOptions[0])
+    console.log(loadPredictions(selectedOptions2[0],selectedOptions1[0],selectedOptions[0]));
   });
   });
 
@@ -260,63 +260,7 @@ async function initMap() {
   });
 
 
-loadweatherJSON().then(weatherData => console.log(weatherData))
-
-// Load weather data and update the webpage
-//loadweatherJSON().then(weatherData => {
- // if (weatherData) {
-      // Update HTML elements with weather information
-  //    document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherData.main;
-  //    document.getElementById('temperature').textContent = 'Temperature: ' + weatherData.temp + ' Kelvin';
-   //   document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherData.wind_speed + ' m/s';
- // }
-//});
-
-/*
-loadweatherJSON().then(weatherData => {
-  if (weatherData && weatherData.length > 0 && weatherData[0].length > 0) {
-    const weatherObject = weatherData[0][0];
-    document.getElementById('weather-condition').textContent = 'Weather Condition: ' + weatherObject.main;
-    document.getElementById('temperature').textContent = 'Temperature: ' + Math.round(weatherObject.temp - 273.15) + ' Celsius';
-    document.getElementById('wind-speed').textContent = 'Wind Speed: ' + weatherObject.wind_speed + 'm/s';
-    document.getElementById('rain').textContent = 'Rain: ' + weatherObject.rain;
-  }
-});
- */
-
-// loadaveragesJSON(1)
-// .then(averages_data =>{
-//   const d = new Date();
-//   let day = d.getDay()
-//   const array = [];
-
-//   for (let i = day*24; i <= day*24 + 23; i++) {
-//     const position = averages_data[i].AVG_available;
-//     array.push(position);
-//   }
-
-//   const ctx = document.getElementById('myChart');
-//   console.log(averages_data)      
-//   new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//       labels: ['00', '01', '02', '03', '04', '05','06', '07', '08', '09', '10', '11','12'
-//               ,'13', '14', '15', '16', '17', '18','19', '20', '21', '22', '23'],
-//       datasets: [{
-//         label: '# of Available Bikes',
-//         data: array,
-//         borderWidth: 1
-//       }]
-//     },
-//     options: {
-//       scales: {
-//         y: {
-//           beginAtZero: true
-//         }
-//       }
-//     }
-//   });
-// })
+loadweatherJSON().then(weatherData => console.log(weatherData));
 
  //call loadJSON function which is static data, then create the markers based on that data
 loadJSON()
