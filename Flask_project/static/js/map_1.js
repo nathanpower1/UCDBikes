@@ -204,7 +204,11 @@ async function initMap() {
   document.getElementById("select-station").appendChild(select_station);
 
   document.getElementById('submitButton').addEventListener('click', function() {
-
+    console.log("asdasdasdasdasd")
+    selectElement = document.querySelector('#select-time');
+    output = selectElement.value;
+    document.querySelector('.output').textContent = output;
+    console.log(output);
   });
 
   // The location of center of map (The Spire)
