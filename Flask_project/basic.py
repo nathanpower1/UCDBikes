@@ -2,7 +2,6 @@
 from flask import Flask, jsonify, request, url_for, render_template,send_file
 import sql_puller
 import prediction_by_station
-import time
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
@@ -10,14 +9,13 @@ app = Flask(__name__)
 ############### Website pages/routes ###############
 ####################################################
 # train_pickes()
-print(time.time)
-weather_data = prediction_by_station.get_forecast_data()
+#weather_data = prediction_by_station.get_forecast_data()
 #print(weather_data)
 #station_models = prediction_by_station.get_models("../pickle_files_new")
 #print(station_models)
-print(prediction_by_station.run_prediction(1,9,weather_data,34))
+#print(prediction_by_station.run_prediction(1,9,weather_data,34))
 #
-print(time.time)
+
 
 #create a base route and an index route
 @app.route('/')
@@ -30,6 +28,14 @@ def index():
 @app.route('/index/<number>')
 def index_station(number):
     return render_template('index.html',data = func(df,int(number)), station_number = number)
+#Machine Learning Prediction
+@app.route('/get_station_averages/<hour>/<day>/<station_number>')
+def predict_station(hour,day,station_number):
+    weather_data = prediction_by_station.get_forecast_data()
+    prediction = prediction_by_station.run_prediction(day,hour,weather_data,34)
+    return prediction
+
+
 
 #Map is the main route as it brings you to the map page
 @app.route('/map/<number>')
