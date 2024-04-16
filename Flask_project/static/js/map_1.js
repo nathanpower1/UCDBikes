@@ -165,8 +165,11 @@ async function loadstationJSON(station_number) {
 async function initMap() {
   // define dropdown
   let select_day = document.createElement("select");
+  select_day.setAttribute("select-day-sel");
   let select_time = document.createElement("select");
+  select_time.setAttribute("select-time-sel");
   let select_station = document.createElement("select");
+  select_station.setAttribute("select-station-sel");
 // define default option
   let default_option = document.createElement("option")
   default_option.innerText = "Senators with Titles";
@@ -211,7 +214,7 @@ async function initMap() {
   // });
   document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submitButton').addEventListener('click', function() {
-    let selectElement = document.getElementById('select-time');
+    let selectElement = document.getElementById('select-time-sel');
     console.log(selectElement); // Add this line
     let selectedOptions = [];
     for (let i = 0; i < selectElement.options.length; i++) {
