@@ -203,12 +203,25 @@ async function initMap() {
   document.getElementById("select-day").appendChild(select_day);
   document.getElementById("select-station").appendChild(select_station);
 
+  // document.getElementById('submitButton').addEventListener('click', function() {
+  //   console.log("asdasdasdasdasd")
+  //   let selectElement = document.getElementById('select-time');
+  //   let output = selectElement.value;
+  //   console.log(output);
+  // });
+
   document.getElementById('submitButton').addEventListener('click', function() {
-    console.log("asdasdasdasdasd")
     let selectElement = document.getElementById('select-time');
-    let output = selectElement.value;
-    console.log(output);
+    let selectedOptions = [];
+    for (let i = 0; i < selectElement.options.length; i++) {
+      if (selectElement.options[i].selected) {
+        selectedOptions.push(selectElement.options[i].value);
+      }
+    }
+    console.log(selectedOptions);
   });
+
+
 
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 
