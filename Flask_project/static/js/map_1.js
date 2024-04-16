@@ -165,8 +165,11 @@ async function initMap() {
     option_hours.text = element;
     select_time.add(option_hours);
   });
+  $(document).ready(function(){
+    //your script here.
+
   document.getElementById("info-column-prediction").appendChild(select_time);
-  
+  });
   // The location of center of map (The Spire)
   const center_dublin = { lat: 53.3472461, lng: -6.2574757 }; 
   // Request needed libraries.
