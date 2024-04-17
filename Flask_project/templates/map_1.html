@@ -3,7 +3,7 @@
   <head>
     <title>Boldly Navigating Nature</title>
     <script src="https://kit.fontawesome.com/ac147dd639.js" crossorigin="anonymous"></script>
-    
+
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
@@ -26,36 +26,8 @@
         </ul>
       </nav>
 
-      <!-- Legend container -->
-      <!-- <div id="legend">
-        <h2>Map Legend</h2>
-        <ul>
-          <li>
-            <img src="../static/images/player.png" alt="Marker 1" class="legend-marker">
-            User Location (on click)
-          </li>
-          <li>
-            <img src="../static/images/bicycle-bike-closest_star.png" alt="Marker 1" class="legend-marker">
-            Closest Station to User (on click)
-          </li>
-          <li>
-            <img src="../static/images/bicycle-bike-green.png" alt="Marker 1" class="legend-marker">
-            Plentiful Bike Station
-          </li>
-          <li>
-            <img src="../static/images/bicycle-bike-orange.png" alt="Marker 1" class="legend-marker">
-            Bike Station with less than 10 Bikes Remaining
-          </li>
-          <li>
-            <img src="../static/images/bicycle-bike-red.png" alt="Marker 1" class="legend-marker">
-            Bike Station with No Bikes Remaining
-          </li>
-          
-        </ul>
-      </div> -->
-    <!-- Add more legend items as needed -->
-
     <!--The div element for the map -->
+    <div>
     <div id="map"></div>
     <!-- <div id = "scroll_div"></div> -->
     <div id="infobox">
@@ -88,37 +60,14 @@
             </tr>
         </table>
       </div>
-        </div>
-        <div class="info-column-chart">
+      </div>
+      <div class="info-column-chart">
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
         
             <canvas id="myChart"></canvas>
-        </div>
-
-
-        <!-- <div id = "user_wrapper">
-          <div id = "user_title">
-              Click Map for Location Marker
-          </div>
-          <div id = "tablediv">
-            <table>
-              
-                <tr>
-                  <td id="lnglat_nmb_format"><div id="Lat">Lat</div></td>
-                  <td id="lnglat_txt_format">Lat</td>
-                </tr>
-                <tr>
-                  <td id="lnglat_nmb_format"><div id="Long">Lng</div></td>
-                  <td id="lnglat_txt_format">Lng</td>
-                </tr>
-              
-            </table>
-          </div>
-        </div> -->
-
-
-        <div id = "info-column-coordinates ">
+      </div>
+      <div id = "info-column-coordinates ">
           <div id = "info-column-station ">
           <h2 class = "current_location"><strong>Click Map for Location Marker</strong></h2>
           <div id = "tablediv">
@@ -146,15 +95,9 @@
           </div>
         </div>
       </div>
-        <!-- <p id="Closest">Closest Station: </p> -->
-      <!-- </div> -->
-
-        
-
-      
       <div class="info-column-filler">
         
-          <h2>Map Legend</h2>
+          <h2 class = "map_leg">Map Legend</h2>
           <ul>
             <li>
               <img src="../static/images/player.png" alt="Marker 1" class="legend-marker">
@@ -179,14 +122,40 @@
             <!-- Add more legend items as needed -->
           </ul>
       </div>
+      <div id = 'info-column-prediction'>
+        
+        <h2 class = "current_location"><strong>Journey Planner</strong></h2>
+          <div id = "tablediv">
+            <table id = lnglat_table>
+              
+                <tr>
+                  <td>Select Day</td>
+                  <td><div id="select-day"></div></td>
+                </tr>
+                <tr>
+                  <td>Select Time</td>
+                  <td><div id="select-time"></div></td>
+                </tr>
+                <tr>
+                  <td>Select Station</td>
+                  <td><div id="select-station"></div></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><button type="button" id = "submitButton">Plan Trip</button></td>
+                </tr>
+              
+            </table>
+      </div>
+      <div id="predicitons_">add answer</div>
     </div>
     <!-- prettier-ignore -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="module" src="{{ url_for('static', filename='js/map_1.js') }}"></script>
     <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
         ({key: "AIzaSyBMP-D_lSKcqEIldSO4LYi_1NdYEvw71eI", map_ids :'992d9c838bb18c39', v: "weekly"});</script>
-         <script src="https://cdn.jsdelivr.net/npm/markerclustererplus@2.1.4/dist/markerclusterer.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/markerclustererplus@2.1.4/dist/markerclusterer.min.js"></script>
+  </div>
   <footer id = main-footer>
     <!-- Navbar -->
     <nav id="navbar_small">

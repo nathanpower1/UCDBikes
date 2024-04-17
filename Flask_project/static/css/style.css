@@ -51,8 +51,9 @@
   top: 0;
   left: 0;
    height: 100%;
-   width: 70%;
-   float: left;
+   width: 74.8%;
+   margin-left: 0.2%;
+   float: right;
  }
 
  /* CSS styles for weather information */
@@ -83,6 +84,7 @@
 
 .info-column-coordinates {
    /* background-color: #93cb52; */
+   /* text-align: center; */
    background-color: #fff;
 
    /* padding: 50px; */
@@ -139,17 +141,33 @@
    float: left;
    display: flex;
    height: 100%;
-   width: 30%;
+   width: 25%;
    background-color: #ffffff90;
    /* padding: 10px; */
    flex-direction: column;
    overflow: scroll;
-   box-shadow: 0 1px 4px -1px rgba(21, 251, 5, 0.3);
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   padding-left: 0.2rem;
+   padding-top: 0.5rem;
 }
 /*Styling for table in the first info box*/
 #user_title{
    vertical-align: middle;
    margin: auto;
+   text-align: center;
+}
+ul {
+   list-style-type: none;
+ }
+#current_location{
+   vertical-align: middle;
+   margin: auto;
+   text-align: center;
+}
+#map_leg{
+   vertical-align: middle;
+   margin: auto;
+   text-align: center;
 }
 #sidebar_title{
    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);

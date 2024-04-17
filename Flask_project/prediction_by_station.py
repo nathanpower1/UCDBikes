@@ -7,10 +7,6 @@ import numpy as np
 import pickle
 import os
 
-
-
-
-
 #turn this into a sql table, if time, get running first
 def get_forecast_data():
     APIKey = 'a155d66d86bdd268b15c6488321141e9'
@@ -134,15 +130,3 @@ def run_prediction(day, hour, forecast_df, station_number):#model):
     station_model = get_model(station_number)#model
     predicted_bikes = round(predict_available_bikes(input_data, station_model))
     return predicted_bikes
-
-#day = int(input("Enter a Day (0=Monday, 6=Sunday): "))
-#hour = round(int(input("Enter an hour (0-23, 24hr Clock): ")) / 3) * 3
-#station_number = int(input("Enter a station number: "))
-
-#predicted_bikes = run_prediction(day, hour, forecast_df, station_number)
-#print(f"Predicted available bikes: {predicted_bikes}")
-
-#print("a")
-#get_models("pkl") 
-#station_models = get_models("../pickle_files_new")
-#print(station_models)

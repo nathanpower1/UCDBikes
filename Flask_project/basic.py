@@ -2,18 +2,26 @@
 from flask import Flask, jsonify, request, url_for, render_template,send_file
 import sql_puller
 import prediction_by_station
+import numpy as np
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
 ####################################################
 ############### Website pages/routes ###############
 ####################################################
-# train_pickes()
-weather_data = prediction_by_station.get_forecast_data()
-station_models = prediction_by_station.get_models("../pickle_files_new")
-print(station_models)
-print(prediction_by_station.run_prediction(1,1,weather_data,34))
-#
+
+def get_day_int(x):
+    y = {"Monday":0,"Tuesday":1,"Wednesday":2,"Thursday":3,"Friday":4,"Saturday":5,"Sunday":6}
+    return int(y[x])
+
+def round(n,x): 
+    # Smaller multiple 
+    a = (n // x) * x
+    # Larger multiple 
+    b = a + x
+    # Return of closest of two 
+    return (b if n - a > b - n else a)
+
 
 #create a base route and an index route
 @app.route('/')
@@ -26,6 +34,22 @@ def index():
 @app.route('/index/<number>')
 def index_station(number):
     return render_template('index.html',data = func(df,int(number)), station_number = number)
+
+#changes: need to align days and hours more clearly  only some days work
+#changes: pull weather from sql not from api
+#Machine Learning Prediction
+@app.route('/get_station_prediction/<hour>/<day>/<station_number>')
+def predict_station(hour,day,station_number):
+    print("Hour",hour,"day",day,"station#",station_number)
+    day_int = get_day_int(day)
+    hour_int = int(round(int(hour),3))
+    station_int = int(station_number)
+    weather_data = prediction_by_station.get_forecast_data()
+    prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
+    # return prediction,weather_data
+    return '{"Number of Bikes":'+str(prediction)+'}'
+
+
 
 #Map is the main route as it brings you to the map page
 @app.route('/map/<number>')
