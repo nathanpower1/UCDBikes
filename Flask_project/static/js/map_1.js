@@ -61,7 +61,7 @@ async function loadPredictions(station_number,day,time) {
     const predicitonData = await response.json();
     //console.log(station_data);
     console.log(predicitonData);
-    document.getElementById("predicitons_").innerHTML = 'Number of Bikes Predicted:' + predicitonData["Number of Bikes"];
+    document.getElementById("predicitons_").innerHTML = 'Number of Bikes Predicted: ' + predicitonData["Number of Bikes"];
     return predicitonData;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
