@@ -155,7 +155,8 @@
    font-size: 1.5rem;
    font-weight: bold;
    margin-bottom: 1rem;
-   color: #93cb52; 
+   color: #93cb52;
+   text-align: left; 
 }
 
 /* Style for the sections */
