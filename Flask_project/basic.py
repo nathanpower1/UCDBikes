@@ -4,6 +4,7 @@ import sql_puller
 import prediction_by_station
 import numpy as np
 import pandas as pd
+import json
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
@@ -47,10 +48,10 @@ def predict_station(hour,day,station_number):
     station_int = int(station_number)
     # weather_data = prediction_by_station.get_forecast_data()
     try:
-        weather_data = sql_puller.sql_data(f"call dublinbikes.forecast_weather();")
+        weather_data = json.loads(sql_puller.sql_data(f"call dublinbikes.forecast_weather();"))
         print(weather_data)
         forecast_df = pd.DataFrame(weather_data)
-        print(forecast_df,forecast_df.dtypes)
+        print(forecast_df)
     except Exception as e:
         return str(e), 500
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
