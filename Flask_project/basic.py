@@ -128,18 +128,18 @@ def get_json_weather():
 ################################################
     
 # #if in correct environment run the website on port 5000
-# if __name__ == "__main__":
-#     app.run(debug=True, host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 #sudo fuser -k 5000/tcp #command kills port 5000 in case website left running
-x = [6,9,12,15,18,21]
-x1 = [3,3,3,3,3,3]
-# print(x)
-z = map(round,x,x1)
-y = [i*4+1 for i in range(25)]
-# print(y)
-weatherasd = prediction_by_station.get_forecast_data()
-for i in z:
-    for j in y:
-        # print(i,j)
-        print(f"Prediction for bike station {j} at time {i} lknlkm{prediction_by_station.run_prediction(3,i,weatherasd,j)}")
+# x = [6,9,12,15,18,21]
+# x1 = [3,3,3,3,3,3]
+# # print(x)
+# z = map(round,x,x1)
+# y = [i*+1 for i in range(25)]
+# # print(y)
+# weatherasd = prediction_by_station.get_forecast_data()
+# for i in z:
+#     for j in y:
+#         # print(i,j)
+#         print(f"Prediction for bike station {j} at time {i} lknlkm{prediction_by_station.run_prediction(3,i,weatherasd,j)}")
