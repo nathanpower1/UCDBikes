@@ -272,26 +272,29 @@ loadJSON()
 //Blank map
 //close the myChart element for clarity when reading code
 //whole section just loads blank map
-  const ctx = document.getElementById('myChart');
-  myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    datasets: [{
-      label: 'Average Available Bikes',
-      //data: array,
-      data: [],
-      borderWidth: .1,
-      barThickness: 'flex'
+const ctx = document.getElementById('myChart');
+myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Average Available Bikes',
+            data: [],
+            backgroundColor: '#93cb52', // Set the background color
+            borderColor: '#93cb52', // Set the border color
+            borderWidth: 1,
+            barThickness: 'flex'
+        },
+        {
+            label: "Current Station Availability",
+            data: [],
+            backgroundColor: '#588d1c', // Set the background color
+            borderColor: '#588d1c', // Set the border color
+            borderWidth: 1,
+            barThickness: 'flex',
+            maxBarThickness: 14
+        }]
     },
-  {
-    label:"Current Station Availability",
-    data: [],
-    borderWidth: 0.1,
-    barThickness: 'flex',
-    maxBarThickness: 14
-  }]
-  },
-  options: {
+    options: {
         scales: {
             x: {
                 type: 'time',
@@ -308,9 +311,17 @@ loadJSON()
             y: {
                 beginAtZero: true
             }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ffffff' // Set the text color for the legend
+                }
+            }
         }
     }
 });
+
 //Blank map
 
 // Create an info window to share between markers.
