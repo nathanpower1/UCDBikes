@@ -142,7 +142,7 @@
    /* padding: 10px; */
    flex-direction: column;
    overflow: scroll;
-   box-shadow: 0 1px 4px -1px rgba(21, 251, 5, 0.3);
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 /*Styling for table in the first info box*/
 #user_title{
