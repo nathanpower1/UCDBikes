@@ -146,7 +146,7 @@
    padding: 1rem;
    overflow-y: auto; /* Add scrollbar when content exceeds height */
    position: fixed;
-   right: 0;
+   left: 0;
    top: 0;
    bottom: 0;
    z-index: 1; /* Ensure the info column is above the map */
