@@ -11,7 +11,7 @@ app = Flask(__name__)
 ####################################################
 
 def get_day_int(x):
-    y = {"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}
+    y = {"Monday":0,"Tuesday":1,"Wednesday":2,"Thursday":3,"Friday":4,"Saturday":5,"Sunday":6}
     return int(y[x])
 
 def round(n,x): 
@@ -43,7 +43,7 @@ def predict_station(hour,day,station_number):
     print("Hour",hour,"day",day,"station#",station_number)
     day_int = get_day_int(day)
     hour_int = int(round(int(station_number),3))
-    station_int = int(hour)
+    station_int = int(station_number)
     weather_data = prediction_by_station.get_forecast_data()
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
     # return prediction,weather_data
