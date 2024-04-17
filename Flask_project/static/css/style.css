@@ -51,9 +51,9 @@
   top: 0;
   left: 0;
    height: 100%;
-   width: 70%-1px;
-   margin-right: 1px;
-   float: left;
+   width: 69%;
+   margin-right: 1%;
+   float: right;
  }
 
  /* CSS styles for weather information */
