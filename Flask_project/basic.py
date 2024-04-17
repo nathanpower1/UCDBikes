@@ -52,9 +52,13 @@ def predict_station(hour,day,station_number):
         print(weather_data)
         forecast_df = pd.DataFrame(weather_data)
         print(forecast_df)
+        forecast_df['Day'] = forecast_df['Day'].astype('category')
+        forecast_df['Hour'] = forecast_df['Hour'].astype('category')
+        forecast_df['main'] = forecast_df['main'].astype('category')
+        print(forecast_df.dtypes)
     except Exception as e:
         return str(e), 500
-    prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
+    prediction = prediction_by_station.run_prediction(day_int,hour_int,forecast_df,station_int)
     # return prediction,weather_data
     return '{"Number of Bikes":'+str(prediction)+'}'
 
