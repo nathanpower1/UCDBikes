@@ -81,6 +81,23 @@
    margin-bottom: 10px;
 } */
 
+.info-column-coordinates {
+   /* background-color: #93cb52; */
+   /* text-align: center; */
+   background-color: #fff;
+
+   /* padding: 50px; */
+   /* border-radius: 10px; */
+   /* margin-bottom: 10px; */
+   flex:0 0 auto;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+   padding: 10px;
+
+}
+
 .info-column-chart {
    display: flex;
    background-color: #fff;
@@ -129,12 +146,10 @@
    padding: 1rem;
    overflow-y: auto; /* Add scrollbar when content exceeds height */
    position: fixed;
-   left: 0;
-   top: 0;
-   bottom: 0;
- }
- 
- /* Apply sidebar gradient */
+   z-index: 1; /* Ensure the info column is above the map */
+}
+
+/* Apply sidebar gradient */
 #infobox {
    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
    background-position: bottom;
@@ -151,7 +166,7 @@
 }
 
 /* Style for the sections */
-.info-column-chart, .info-column-station, .info-column-filler,.info-column-prediction {
+.info-column-coordinates, .info-column-chart, .info-column-station, .info-column-filler,.info-column-prediction {
    background-color: #ffffff; /* White background */
    padding: 1rem;
    margin-bottom: 1rem;
@@ -163,25 +178,6 @@
    background-repeat: repeat-x;
    position: relative; /* Updated position property */
    z-index: 2;
-}
-
-.info-column-coordinates {
-   padding: 60px 1rem 1rem 1rem; /* Adjust top padding as needed */
-   margin-bottom: 1rem;
-   /* background-color: #93cb52; */
-   /* text-align: center; */
-   background-color: #141414;
-
-   /* padding: 50px; */
-   /* border-radius: 10px; */
-   /* margin-bottom: 10px; */
-   flex:0 0 auto;
-   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
-   background-position: bottom;
-   background-size: 20px 1px;
-   background-repeat: repeat-x;
-   padding: 10px;
-
 }
 
 /* Style for table */
