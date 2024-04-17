@@ -282,7 +282,7 @@ loadJSON()
       data: [],
       borderWidth: .1,
       barThickness: 'flex',
-      backgroundColor: 'rgba(88, 141, 28, 0.5)', // Set the background color
+      backgroundColor: 'rgba(147, 203, 82, 0.5)', // Set the background color
       borderColor: '#93cb52', 
       
     },
@@ -411,7 +411,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
               //data: array,
               data: data_1,
               borderWidth: .1,
-              backgroundColor: 'rgba(88, 141, 28, 0.5)', // Set the background color
+              backgroundColor:'rgba(147, 203, 82, 0.5)', // Set the background color
               borderColor: '#93cb52', 
               barThickness: 'flex'
             },
