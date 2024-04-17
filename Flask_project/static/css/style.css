@@ -113,6 +113,7 @@
 }
 
 .info-column-station {
+   top: 60px;
    background-color: #fff;
    /* padding: 50px; */
    /* border-radius: 10px; */
