@@ -67,7 +67,7 @@
         
             <canvas id="myChart"></canvas>
       </div>
-      <div id = "info-column-coordinates ">
+      <div class = "info-column-coordinates ">
           <div id = "info-column-station ">
           <h2 class = "current_location"><strong>Click Map for Location Marker</strong></h2>
           <div id = "tablediv">
@@ -84,6 +84,10 @@
                 <tr>
                   <td>Station Name</td>
                   <td><div id="Closest"></div></td>
+                </tr>
+                <tr>
+                  <td>Distance from User</td>
+                  <td><div id="Dist"></div></td>
                 </tr>
                 <tr>
                   <td>Available bikes</td>
@@ -141,13 +145,14 @@
                   <td><div id="select-station"></div></td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td><button type="button" id = "submitButton">Plan Trip</button></td>
-                </tr>
+                  <td colspan="2" style="text-align: center;">
+                      <button type="button" id="submitButton">Plan Trip</button>
+                  </td>
+              </tr>
               
             </table>
       </div>
-      <div id="predicitons_">add answer</div>
+      <div id="predicitons_">Number of Bikes Predicted: </div>
     </div>
     <!-- prettier-ignore -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

@@ -63,7 +63,7 @@ async function loadPredictions(station_number,day,time) {
     const predicitonData = await response.json();
     //console.log(station_data);
     console.log(predicitonData);
-    document.getElementById("predicitons_").innerHTML = JSON.stringify(predicitonData);
+    document.getElementById("predicitons_").innerHTML = 'Number of Bikes Predicted: ' + predicitonData["Number of Bikes"];
     return predicitonData;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
@@ -300,13 +300,18 @@ loadJSON()
       //data: array,
       data: [],
       borderWidth: .1,
-      barThickness: 'flex'
+      barThickness: 'flex',
+      backgroundColor: 'rgba(147, 203, 82, 0.5)', // Set the background color
+      borderColor: '#93cb52', 
+      
     },
   {
     label:"Current Station Availability",
     data: [],
     borderWidth: 0.1,
     barThickness: 'flex',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Set the background color
+    borderColor: '#588d1c', // Set the border color
     maxBarThickness: 14
   }]
   },
@@ -419,20 +424,25 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
           myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            datasets: [{
+            datasets: [
+              {
               label: 'Average Available Bikes',
               //data: array,
               data: data_1,
               borderWidth: .1,
+              backgroundColor:'rgba(147, 203, 82, 0.5)', // Set the background color
+              borderColor: '#93cb52', 
               barThickness: 'flex'
             },
-          {
-            label:"Current Station Availability",
-            data: [{x:d,y:station_data[0].available_bikes}],
-            borderWidth: 0.1,
-            barThickness: 'flex',
-            maxBarThickness: 14
-          }]
+            {
+              label:"Current Station Availability",
+              data: [{x:d,y:station_data[0].available_bikes}],
+              borderWidth: 0.1,
+              barThickness: 'flex',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Set the background color
+              borderColor: '#588d1c', // Set the border color
+              maxBarThickness: 14
+            }]
           },
           options: {
                 scales: {
@@ -578,7 +588,8 @@ closestStationMarker = new AdvancedMarkerElement({
   // Update the coordinates in the text box
   document.getElementById('Lat').innerHTML =latLng.lat().toFixed(6);
   document.getElementById('Long').innerHTML =latLng.lng().toFixed(6);
-  document.getElementById('Closest').innerHTML = closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
+  document.getElementById('Closest').innerHTML = closestStation[1];
+  document.getElementById('Dist').innerHTML = minDistance.toFixed(2) +' meters away';
   document.getElementById('Available').innerHTML = closestStation[3];
   document.getElementById('current_location').innerHTML = 'Current Location';
   // Pan the map to the marker's position

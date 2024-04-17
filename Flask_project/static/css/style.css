@@ -5,14 +5,30 @@
 #logo_small{
    font-size:x-small;
 }
-#Lat{
-   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   font-size: small;
-}
-#Long{
-   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   font-size: small;
-}
+
+/* Width */
+::-webkit-scrollbar {
+   width: 10px; /* Width of the scrollbar */
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: #ffffff; /* Color of the scrollbar track */
+ }
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: #93cb52; /* Color of the scrollbar handle */
+   border-radius: 5px; /* Rounded corners for the handle */
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: #6f9e37; /* Darker green color on hover */
+ }
+ 
+
+
  #legend {
    position: absolute;
    top: 80px;
@@ -47,12 +63,11 @@
  
 
  #map {
-   position: fixed;
-  top: 0;
-  left: 0;
-   height: 100%;
-   width: 74.8%;
-   margin-left: 0.2%;
+   position: absolute;
+   top: 60px;
+   right: 0;
+   height: calc(100% - 60px); /* Subtracting the height of the footer */
+   width: 75%; 
    float: right;
  }
 
@@ -60,13 +75,13 @@
 #weather-info {
    color: #ffffff;
    font-size: 1.2rem;
-   margin-right: 20px; /* Adjust as needed */
+   margin-right: 20px; 
 }
 
 #date-info {
    color: #ffffff;
    font-size: 1.2rem;
-   margin-right: 20px; /* Adjust as needed */
+   margin-right: 20px; 
 }
 
 
@@ -95,6 +110,7 @@
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
+   padding: 10px;
 
 }
 
@@ -138,16 +154,108 @@
 
 #infobox {
    display: flex;
+   flex-direction: column;
    height: 100%;
    width: 25%;
-   background-color: #ffffff90;
-   /* padding: 10px; */
-   flex-direction: column;
-   overflow: scroll;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-   padding-left: 0.2rem;
-   padding-top: 0.5rem;
+   background-color: #ffffff;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
+   padding: 1rem;
+   overflow-y: auto; /* Add scrollbar when content exceeds height */
+   position: fixed;
+   z-index: 1; 
+   text-align: center;/* Ensure the info column is above the map */
 }
+
+/* Apply sidebar gradient */
+#infobox {
+   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+}
+
+/* Style for the title */
+#infobox h2 {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 1rem;
+   color: #93cb52;
+   text-align: left; 
+}
+
+/* Style for the sections */
+.info-column-coordinates, .info-column-chart, .info-column-filler {
+   background-color: #ffffff; /* White background */
+   padding: 1rem;
+   margin-bottom: 1rem;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+   position: relative; /* Updated position property */
+   z-index: 2;
+   text-align: left;
+}
+
+#info-column-prediction {
+   background-color: #ffffff; /* White background */
+   padding: 1rem;
+   padding-bottom: 150px;
+   margin-bottom: 1rem;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+   position: relative; /* Updated position property */
+   z-index: 2;
+}
+
+/* Style for table */
+#infobox table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 1rem;
+}
+
+#infobox th,
+#infobox td {
+   padding: 0.5rem;
+   border-bottom: 1px solid #ddd; /* Light gray border */
+}
+
+/* Style for table header */
+#infobox th {
+   background-color: #f2f2f2; /* Light gray background */
+   font-weight: bold;
+   text-align: left;
+}
+
+/* Style for table rows */
+#infobox tr:hover {
+   background-color: #f9f9f9; /* Light gray background on hover */
+}
+
+/* Style for button */
+#infobox button {
+   background-color: #93cb52; 
+   color: #ffffff;
+   padding: 0.5rem 1rem;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-top: 1rem;
+   text-align: center;
+}
+
+#infobox button:hover {
+   background-color: #588d1c; /* Darker green on hover */
+}
+
 /*Styling for table in the first info box*/
 #user_title{
    vertical-align: middle;
@@ -406,12 +514,18 @@ p{
 
 
 /* Footer */
-#main-footer{
+#main-footer {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 40px; 
    background-color: #333333;
    color: rgba(245, 245, 245, 0.815);
    text-align: center;
-   padding: 0.75rem 0 0 0;
-}
+   padding: 0.75rem 0;
+   z-index: 1;
+ }
 
 /* #info-box {
    width: 30%;
