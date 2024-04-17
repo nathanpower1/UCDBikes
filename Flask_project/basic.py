@@ -46,6 +46,7 @@ def predict_station(hour,day,station_number):
     station_int = int(station_number)
     print(day_int,hour_int,station_int)
     weather_data = prediction_by_station.get_forecast_data()
+    print(weather_data)
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
     # return prediction,weather_data
     return '{"Number of Bikes":'+str(prediction)+'}'
