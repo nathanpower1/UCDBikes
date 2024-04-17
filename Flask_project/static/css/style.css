@@ -149,7 +149,6 @@
    left: 0;
    top: 0;
    bottom: 0;
-   z-index: 1; /* Ensure the info column is above the map */
  }
  
  /* Apply sidebar gradient */
