@@ -282,7 +282,7 @@ loadJSON()
       data: [],
       borderWidth: .1,
       barThickness: 'flex',
-      backgroundColor: '#93cb52', // Set the background color
+      backgroundColor: 'rgba(88, 141, 28, 0.5)', // Set the background color
       borderColor: '#93cb52', 
       
     },
@@ -291,7 +291,7 @@ loadJSON()
     data: [],
     borderWidth: 0.1,
     barThickness: 'flex',
-    backgroundColor: 'rgba(88, 141, 28, 0.5)', // Set the background color
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Set the background color
     borderColor: '#588d1c', // Set the border color
     maxBarThickness: 14
   }]
@@ -411,7 +411,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
               //data: array,
               data: data_1,
               borderWidth: .1,
-              backgroundColor: '#93cb52', // Set the background color
+              backgroundColor: 'rgba(88, 141, 28, 0.5)', // Set the background color
               borderColor: '#93cb52', 
               barThickness: 'flex'
             },
