@@ -75,7 +75,7 @@ city = 'dublin'
 postcode = 'D1'
 
 weather_api_key = '53cca80e47157e1ee9b5778f95c90c41'
-weather_api = f"https://api.openweathermap.org/data/2.5/weather?lat=53.3498&lon=6.2603&appid={weather_api_key}"
+weather_api = f"https://api.openweathermap.org/data/2.5/weather?lat=53.3498&lon=-6.2603&appid={weather_api_key}"
 
 try:
     response = requests.get(weather_api)
