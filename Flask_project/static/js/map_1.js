@@ -281,7 +281,10 @@ loadJSON()
       //data: array,
       data: [],
       borderWidth: .1,
-      barThickness: 'flex'
+      barThickness: 'flex',
+      backgroundColor: '#93cb52', // Set the background color
+      borderColor: '#93cb52', 
+      
     },
   {
     label:"Current Station Availability",
@@ -405,6 +408,8 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
               //data: array,
               data: data_1,
               borderWidth: .1,
+              backgroundColor: '#93cb52', // Set the background color
+              borderColor: '#93cb52', 
               barThickness: 'flex'
             },
           {
