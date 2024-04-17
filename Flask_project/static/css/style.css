@@ -6,6 +6,29 @@
    font-size:x-small;
 }
 
+/* Width */
+::-webkit-scrollbar {
+   width: 10px; /* Width of the scrollbar */
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: #ffffff; /* Color of the scrollbar track */
+ }
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: #93cb52; /* Color of the scrollbar handle */
+   border-radius: 5px; /* Rounded corners for the handle */
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: #6f9e37; /* Darker green color on hover */
+ }
+ 
+
+
  #legend {
    position: absolute;
    top: 80px;
