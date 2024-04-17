@@ -51,7 +51,8 @@
   top: 0;
   left: 0;
    height: 100%;
-   width: 70%;
+   width: 69%;
+   margin-right: 2px;
    float: left;
  }
 
