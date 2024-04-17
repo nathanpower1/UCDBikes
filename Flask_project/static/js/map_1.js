@@ -179,7 +179,7 @@ async function initMap() {
 
 // create data for dropdowns
   var currentdate = new Date();
-  var currentday = currentdate.getDay;
+  var currentday = currentdate.getDay();
   function arr(n) {
     var ste = Array.from([n, n+1, n+2, n+3, n+4], x => x % 7);
     return ste;
