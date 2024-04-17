@@ -136,7 +136,7 @@ x = [6,9,12,15,18,21]
 x1 = [3,3,3,3,3,3]
 # print(x)
 z = map(round,x,x1)
-y = [i*4 for i in range(25)]
+y = [i*4+1 for i in range(25)]
 # print(y)
 weatherasd = prediction_by_station.get_forecast_data()
 for i in z:
