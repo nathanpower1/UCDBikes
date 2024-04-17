@@ -50,7 +50,7 @@ def get_forecast_data():
     APIKey = 'a155d66d86bdd268b15c6488321141e9'
     lat = '53.3498'
     lon = '6.2603'
-    forecast_url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}&units=metric'
+    forecast_url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}&units=imperial'
     try:
         response = requests.get(forecast_url)
         if response.status_code == 200:
