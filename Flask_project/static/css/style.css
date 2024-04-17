@@ -138,18 +138,82 @@
 }
 
 #infobox {
-   float: left;
    display: flex;
+   flex-direction: column;
    height: 100%;
    width: 25%;
-   background-color: #ffffff90;
-   /* padding: 10px; */
-   flex-direction: column;
-   overflow: scroll;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-   padding-left: 0.2rem;
-   padding-top: 0.5rem;
+   background-color: #ffffff;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
+   padding: 1rem;
+   overflow-y: auto; /* Add scrollbar when content exceeds height */
 }
+
+/* Apply sidebar gradient */
+#infobox {
+   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+}
+
+/* Style for the title */
+#infobox h2 {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 1rem;
+   color: #93cb52; 
+}
+
+/* Style for the sections */
+.info-column-coordinates, .info-column-chart, .info-column-station, .info-column-filler {
+   background-color: #ffffff; /* White background */
+   padding: 1rem;
+   margin-bottom: 1rem;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for table */
+#infobox table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 1rem;
+}
+
+#infobox th,
+#infobox td {
+   padding: 0.5rem;
+   border-bottom: 1px solid #ddd; /* Light gray border */
+}
+
+/* Style for table header */
+#infobox th {
+   background-color: #f2f2f2; /* Light gray background */
+   font-weight: bold;
+   text-align: left;
+}
+
+/* Style for table rows */
+#infobox tr:hover {
+   background-color: #f9f9f9; /* Light gray background on hover */
+}
+
+/* Style for button */
+#infobox button {
+   background-color: #93cb52; /* Google Maps blue */
+   color: #ffffff;
+   padding: 0.5rem 1rem;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-top: 1rem;
+}
+
+#infobox button:hover {
+   background-color: #588d1c; /* Darker green on hover */
+}
+
 /*Styling for table in the first info box*/
 #user_title{
    vertical-align: middle;
