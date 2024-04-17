@@ -15,12 +15,12 @@ def get_day_int(x):
     return int(y[x])
 
 def round(n,x): 
-    # Smaller multiple 
-    a = (n // x) * x
-    # Larger multiple 
-    b = a + x
-    # Return of closest of two 
-    return (b if n - a > b - n else a)
+    return ((n + 2) // 3) * 3
+
+def hours_from_string(time_string):
+    # Extract the first two characters (hours part) and convert to integer
+    hours = int(time_string[:2])
+    return hours
 
 
 #create a base route and an index route
@@ -42,7 +42,7 @@ def index_station(number):
 def predict_station(hour,day,station_number):
     print("Hour",hour,"day",day,"station#",station_number)
     day_int = get_day_int(day)
-    hour_int = int(round(int(hour),3))
+    hour_int = int(round(int(hours_from_string(hour)),3))
     station_int = int(station_number)
     weather_data = prediction_by_station.get_forecast_data()
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
