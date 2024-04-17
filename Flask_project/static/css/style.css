@@ -166,7 +166,8 @@
 }
 
 .info-column-coordinates {
-   top: 100px;
+   padding: 60px 1rem 1rem 1rem; /* Adjust top padding as needed */
+   margin-bottom: 1rem;
    /* background-color: #93cb52; */
    /* text-align: center; */
    background-color: #141414;
