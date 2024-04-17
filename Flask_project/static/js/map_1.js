@@ -51,21 +51,17 @@ async function loadaveragesJSON(station_number) {
   }
 }
 
-async function loadPredictions(station_number, day, time) {
+//async load predictions
+async function loadPredictions(station_number,day,time) {
   try {
-    const response = await fetch('/get_station_prediction/' + time + '/' + day + '/' + station_number);
+    const response = await fetch('/get_station_prediction/'+time+'/'+day+'/'+station_number);
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok');
     }
     const predicitonData = await response.json();
+    //console.log(station_data);
     console.log(predicitonData);
-
-    // Format the prediction data for nicer output
-    const formattedOutput = Object.entries(predicitonData).map(([key, value]) => {
-      return `<strong>${key}:</strong> ${value}`;
-    }).join('<br>');
-
-    document.getElementById("predictions_").innerHTML = formattedOutput;
+    document.getElementById("predicitons_").innerHTML = JSON.stringify(predicitonData);
     return predicitonData;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
@@ -73,7 +69,6 @@ async function loadPredictions(station_number, day, time) {
     return [];
   }
 }
-
 
 async function loadweatherJSON() {
   try {
