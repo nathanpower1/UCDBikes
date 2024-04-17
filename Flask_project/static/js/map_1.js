@@ -184,7 +184,7 @@ async function initMap() {
     var ste = Array.from([n, n+1, n+2, n+3, n+4], x => x % 7);
     return ste;
 }
-  var days_to_display = arr
+  var days_to_display = arr(currentday)
   const numberToDay = {
     0: "Sunday",
     1: "Monday",
