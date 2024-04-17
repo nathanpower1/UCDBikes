@@ -153,7 +153,15 @@
    margin: auto;
    text-align: center;
 }
+ul {
+   list-style-type: none;
+ }
 #current_location{
+   vertical-align: middle;
+   margin: auto;
+   text-align: center;
+}
+#map_leg{
    vertical-align: middle;
    margin: auto;
    text-align: center;
