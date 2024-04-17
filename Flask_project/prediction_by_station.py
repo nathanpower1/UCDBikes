@@ -17,7 +17,6 @@ def get_forecast_data():
         response = requests.get(forecast_url)
         if response.status_code == 200:
             forecast_data = json.loads(response.text)
-            print(forecast_data)
 
             if forecast_data and 'list' in forecast_data:
                 forecast_list = forecast_data['list']

@@ -181,7 +181,7 @@ async function initMap() {
   var currentdate = new Date();
   var currentday = currentdate.getDay();
   function arr(n) {
-    var ste = Array.from([n, n+1, n+2, n+3, n+4], x => x % 7);
+    var ste = Array.from([n+1, n+2, n+3, n+4,n+5], x => x % 7);
     return ste;
 }
 
