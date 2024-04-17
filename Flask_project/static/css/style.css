@@ -81,7 +81,7 @@
    margin-bottom: 10px;
 } */
 
-.info-column-coordinates, .info-column-chart, .info-column-station, .info-column-filler,.info-column-prediction  {
+.info-column-coordinates {
    /* background-color: #93cb52; */
    /* text-align: center; */
    background-color: #fff;
