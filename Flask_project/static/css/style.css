@@ -162,7 +162,8 @@
    padding: 1rem;
    overflow-y: auto; /* Add scrollbar when content exceeds height */
    position: fixed;
-   z-index: 1; /* Ensure the info column is above the map */
+   z-index: 1; 
+   text-align: center;/* Ensure the info column is above the map */
 }
 
 /* Apply sidebar gradient */
@@ -248,6 +249,7 @@
    cursor: pointer;
    transition: background-color 0.3s ease;
    margin-top: 1rem;
+   text-align: center;
 }
 
 #infobox button:hover {
