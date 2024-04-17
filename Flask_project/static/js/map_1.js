@@ -184,6 +184,7 @@ async function initMap() {
     var ste = Array.from([n, n+1, n+2, n+3, n+4], x => x % 7);
     return ste;
 }
+
   var days_to_display = arr(currentday)
   const numberToDay = {
     0: "Sunday",
@@ -198,6 +199,7 @@ const daysArray = days_to_display.map(number => numberToDay[number]);
   const hours_dropdown = ['05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','24:00'];
   const days_dropdown = daysArray
   const stations_dropdown = Array.from({length: 117}, (_, i) => i + 1)
+  console.log(currentday,days_to_display,daysArray)
 // fill dropdows
   //hours dropdown
   hours_dropdown.forEach(element => {
