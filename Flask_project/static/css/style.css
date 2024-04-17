@@ -170,6 +170,7 @@
 
 /* Style for the sections */
 .info-column-coordinates {
+   top: 100px;
    background-color: #fff;
    padding: 10px;
    flex: 0 0 auto;
