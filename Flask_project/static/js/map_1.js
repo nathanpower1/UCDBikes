@@ -420,7 +420,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
               data: [{x:d,y:station_data[0].available_bikes}],
               borderWidth: 0.1,
               barThickness: 'flex',
-              backgroundColor: 'rgba(88, 141, 28, 0.5)', // Set the background color
+              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Set the background color
               borderColor: '#588d1c', // Set the border color
               maxBarThickness: 14
             }]
