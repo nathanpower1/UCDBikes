@@ -47,12 +47,11 @@
  
 
  #map {
-   position: fixed;
-  top: 0;
-  left: 0;
-   height: 100%;
-   width: 74.8%;
-   margin-left: 0.2%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: calc(100% - 60px); /* Subtracting the height of the footer */
+   width: 75%; 
    float: right;
  }
 
@@ -146,15 +145,20 @@
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
    padding: 1rem;
    overflow-y: auto; /* Add scrollbar when content exceeds height */
-}
-
-/* Apply sidebar gradient */
-#infobox {
+   position: fixed;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   z-index: 1; /* Ensure the info column is above the map */
+ }
+ 
+ /* Apply sidebar gradient */
+ #infobox {
    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
-}
+ }
 
 /* Style for the title */
 #infobox h2 {
@@ -472,12 +476,17 @@ p{
 
 
 /* Footer */
-#main-footer{
+#main-footer {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 60px; /* Adjust as needed */
    background-color: #333333;
    color: rgba(245, 245, 245, 0.815);
    text-align: center;
-   padding: 0.75rem 0 0 0;
-}
+   padding: 0.75rem 0;
+ }
 
 /* #info-box {
    width: 30%;
