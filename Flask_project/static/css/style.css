@@ -144,7 +144,7 @@
 
 /* Apply sidebar gradient */
 #infobox {
-   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9),#588d1c);
+   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
@@ -166,7 +166,7 @@
    margin-bottom: 1rem;
    border-radius: 5px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, #588d1c 0%);
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
@@ -182,7 +182,7 @@
    margin-bottom: 1rem;
    border-radius: 5px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, #588d1c 0%);
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
@@ -200,7 +200,7 @@
 #infobox th,
 #infobox td {
    padding: 0.5rem;
-   border-bottom: 1px solid #588d1c; /* Light gray border */
+   border-bottom: 1px solid #ddd; /* Light gray border */
 }
 
 /* Style for table header */
@@ -212,7 +212,7 @@
 
 /* Style for table rows */
 #infobox tr:hover {
-   background-color: #588d1c; /* Light gray background on hover */
+   background-color: #f9f9f9; /* Light gray background on hover */
 }
 
 /* Style for button */
