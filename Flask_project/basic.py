@@ -44,9 +44,11 @@ def predict_station(hour,day,station_number):
     day_int = get_day_int(day)
     hour_int = int(round(int(hours_from_string(hour)),3))
     station_int = int(station_number)
-    weather_data = prediction_by_station.get_forecast_data()
+    # weather_data = prediction_by_station.get_forecast_data()
     try:
         weather_data = sql_puller.sql_data(f"call dublinbikes.forecast_weather();")
+        forecast_df = pd.DataFrame(weather_data)
+        print(weather_data,forecast_df,forecast_df.dtypes)
     except Exception as e:
         return str(e), 500
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
