@@ -45,6 +45,10 @@ def predict_station(hour,day,station_number):
     hour_int = int(round(int(hours_from_string(hour)),3))
     station_int = int(station_number)
     weather_data = prediction_by_station.get_forecast_data()
+    try:
+        weather_data = sql_puller.sql_data(f"call dublinbikes.forecast_weather();")
+    except Exception as e:
+        return str(e), 500
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
     # return prediction,weather_data
     return '{"Number of Bikes":'+str(prediction)+'}'
