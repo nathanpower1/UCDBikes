@@ -25,6 +25,7 @@ def hours_from_string(time_string):
     return hours
 
 
+
 #create a base route and an index route
 @app.route('/')
 @app.route('/index/')
@@ -33,9 +34,9 @@ def index():
 
 #This route allows you to pass variable into the python function below
 #i.e. http/ec2_xxx.xxx.xxx./index/5 will call the below root and pass 5 as the number argument
-@app.route('/index/<number>')
+@app.route('/index/')
 def index_station(number):
-    return render_template('index.html',data = func(df,int(number)), station_number = number)
+    return render_template('index.html')
 
 #changes: need to align days and hours more clearly  only some days work
 #changes: pull weather from sql not from api
@@ -126,8 +127,16 @@ def get_json_weather():
 ############### Data/JSON routes ###############
 ################################################
     
-#if in correct environment run the website on port 5000
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=5000)
+# #if in correct environment run the website on port 5000
+# if __name__ == "__main__":
+#     app.run(debug=True, host='0.0.0.0', port=5000)
 
 #sudo fuser -k 5000/tcp #command kills port 5000 in case website left running
+x = [6,9,12,15,18,21,24]
+print(x)
+y = [i*4 for i in range(25)]
+print(y)
+weather = prediction_by_station.get_forecast_data()
+for i in x:
+    for j in y:
+        print(f"Prediction for bike station {j} at time {i} lknlkm{prediction_by_station.run_prediction(3,i,weather,j)}")
