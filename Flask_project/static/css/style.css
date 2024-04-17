@@ -82,7 +82,6 @@
 } */
 
 .info-column-coordinates {
-   top: 100px;
    /* background-color: #93cb52; */
    /* text-align: center; */
    background-color: #fff;
@@ -170,12 +169,16 @@
 }
 
 /* Style for the sections */
-.info-column-coordinates, .info-column-chart, .info-column-station, .info-column-filler {
-   background-color: #ffffff; /* White background */
-   padding: 1rem;
-   margin-bottom: 1rem;
-   border-radius: 5px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.info-column-coordinates {
+   background-color: #fff;
+   padding: 10px;
+   flex: 0 0 auto;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
+   background-position: bottom;
+   background-size: 20px 1px;
+   background-repeat: repeat-x;
+   position: relative; /* Updated position property */
+   z-index: 2; /* Ensure it's above other elements */
 }
 
 /* Style for table */
