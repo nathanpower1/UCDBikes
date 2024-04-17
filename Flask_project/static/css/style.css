@@ -84,6 +84,7 @@
 
 .info-column-coordinates {
    /* background-color: #93cb52; */
+   /* text-align: center; */
    background-color: #fff;
 
    /* padding: 50px; */
@@ -144,11 +145,18 @@
    flex-direction: column;
    overflow: scroll;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   padding-left: 1rem;
 }
 /*Styling for table in the first info box*/
 #user_title{
    vertical-align: middle;
    margin: auto;
+   text-align: center;
+}
+#current_location{
+   vertical-align: middle;
+   margin: auto;
+   text-align: center;
 }
 #sidebar_title{
    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
