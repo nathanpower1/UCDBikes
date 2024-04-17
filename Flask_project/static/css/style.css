@@ -146,6 +146,7 @@
    overflow: scroll;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
    padding-left: 1rem;
+   padding-top: 1rem;
 }
 /*Styling for table in the first info box*/
 #user_title{
