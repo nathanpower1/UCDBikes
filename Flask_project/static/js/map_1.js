@@ -52,23 +52,31 @@ async function loadaveragesJSON(station_number) {
 }
 
 //async load predictions
-async function loadPredictions(station_number,day,time) {
+async function loadPredictions(station_number, day, time) {
   try {
-    const response = await fetch('/get_station_prediction/'+time+'/'+day+'/'+station_number);
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const predicitonData = await response.json();
-    //console.log(station_data);
-    console.log(predicitonData);
-    document.getElementById("predicitons_").innerHTML = JSON.stringify(predicitonData);
-    return predicitonData;
+      const response = await fetch('/get_station_prediction/' + time + '/' + day + '/' + station_number);
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const predictionData = await response.json();
+      console.log(predictionData);
+
+      // Construct formatted string
+      let formattedOutput = '<ul>';
+      for (const key in predictionData) {
+          formattedOutput += `<li>${key}: ${predictionData[key]}</li>`;
+      }
+      formattedOutput += '</ul>';
+
+      document.getElementById("predictions_").innerHTML = formattedOutput;
+      return predictionData;
   } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
-    // If an error occurs, return a default empty array
-    return [];
+      console.error('There was a problem with the fetch operation:', error);
+      // If an error occurs, return a default empty object
+      return {};
   }
 }
+
 
 async function loadweatherJSON() {
   try {
