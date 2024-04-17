@@ -152,12 +152,12 @@
  }
  
  /* Apply sidebar gradient */
- #infobox {
+#infobox {
    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
- }
+}
 
 /* Style for the title */
 #infobox h2 {
@@ -168,17 +168,18 @@
 }
 
 /* Style for the sections */
-.info-column-coordinates {
-   top: 60px;
-   background-color: #fff;
-   padding: 10px;
-   flex: 0 0 auto;
+.info-column-coordinates, .info-column-chart, .info-column-station, .info-column-filler,.info-column-prediction {
+   background-color: #ffffff; /* White background */
+   padding: 1rem;
+   margin-bottom: 1rem;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 20%, rgba(255, 255, 255, 0) 0%);
    background-position: bottom;
    background-size: 20px 1px;
    background-repeat: repeat-x;
    position: relative; /* Updated position property */
-   z-index: 2; /* Ensure it's above other elements */
+   z-index: 2;
 }
 
 /* Style for table */
@@ -208,7 +209,7 @@
 
 /* Style for button */
 #infobox button {
-   background-color: #93cb52; /* Google Maps blue */
+   background-color: #93cb52; 
    color: #ffffff;
    padding: 0.5rem 1rem;
    border: none;
