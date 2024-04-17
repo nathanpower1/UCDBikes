@@ -291,6 +291,8 @@ loadJSON()
     data: [],
     borderWidth: 0.1,
     barThickness: 'flex',
+    backgroundColor: '#588d1c', // Set the background color
+    borderColor: '#588d1c', // Set the border color
     maxBarThickness: 14
   }]
   },
@@ -417,6 +419,8 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
             data: [{x:d,y:station_data[0].available_bikes}],
             borderWidth: 0.1,
             barThickness: 'flex',
+            backgroundColor: '#588d1c', // Set the background color
+            borderColor: '#588d1c', // Set the border color
             maxBarThickness: 14
           }]
           },
