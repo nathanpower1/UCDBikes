@@ -405,7 +405,17 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
           myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            datasets: [{
+            datasets: [
+              {
+                label:"Current Station Availability",
+                data: [{x:d,y:station_data[0].available_bikes}],
+                borderWidth: 0.1,
+                barThickness: 'flex',
+                backgroundColor: '#588d1c', // Set the background color
+                borderColor: '#588d1c', // Set the border color
+                maxBarThickness: 14
+              },
+              {
               label: 'Average Available Bikes',
               //data: array,
               data: data_1,
@@ -413,16 +423,7 @@ bikeStations.forEach(([position, title, number, av_bikes], i) => {
               backgroundColor: '#93cb52', // Set the background color
               borderColor: '#93cb52', 
               barThickness: 'flex'
-            },
-          {
-            label:"Current Station Availability",
-            data: [{x:d,y:station_data[0].available_bikes}],
-            borderWidth: 0.1,
-            barThickness: 'flex',
-            backgroundColor: '#588d1c', // Set the background color
-            borderColor: '#588d1c', // Set the border color
-            maxBarThickness: 14
-          }]
+            }]
           },
           options: {
                 scales: {
