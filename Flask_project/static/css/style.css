@@ -49,7 +49,7 @@
  #map {
    position: absolute;
    top: 60px;
-   left: 0;
+   right: 0;
    height: calc(100% - 60px); /* Subtracting the height of the footer */
    width: 75%; 
    float: right;
