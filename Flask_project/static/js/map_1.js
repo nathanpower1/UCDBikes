@@ -559,7 +559,7 @@ closestStationMarker = new AdvancedMarkerElement({
   // Update the coordinates in the text box
   document.getElementById('Lat').innerHTML =latLng.lat().toFixed(6);
   document.getElementById('Long').innerHTML =latLng.lng().toFixed(6);
-  document.getElementById('Closest').innerHTML = closestStation[1] + ' (' + minDistance.toFixed(2) +' meters away)';
+  document.getElementById('Closest').innerHTML = closestStation[1];
   document.getElementById('Dist').innerHTML = minDistance.toFixed(2) +' meters away';
   document.getElementById('Available').innerHTML = closestStation[3];
   document.getElementById('current_location').innerHTML = 'Current Location';
