@@ -42,7 +42,7 @@ def index_station(number):
 def predict_station(hour,day,station_number):
     print("Hour",hour,"day",day,"station#",station_number)
     day_int = get_day_int(day)
-    hour_int = int(round(int(station_number),3))
+    hour_int = int(round(int(hour),3))
     station_int = int(station_number)
     weather_data = prediction_by_station.get_forecast_data()
     prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
