@@ -169,7 +169,7 @@
 }
 
 /* Style for the sections */
-.info-column-coordinates, .info-column-chart, .info-column-station, .info-column-filler,.info-column-prediction {
+.info-column-chart, .info-column-station, .info-column-filler,.info-column-prediction {
    background-color: #ffffff; /* White background */
    padding: 1rem;
    margin-bottom: 1rem;
