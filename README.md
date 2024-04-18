@@ -3,7 +3,7 @@ Welcome to the Dublin Bikes Application repository! This repository contains the
 
 ## Files:
 ### Flask_project: 
-This directory contains the Flask application code for the backend of the Dublin Bikes web application.
+This directory contains the Flask application code for the Dublin Bikes web application.
 ### map_design_23_02: 
 This directory holds design files and assets related to the map interface design, last updated on February 23rd.
 ### pkl: 
