@@ -44,8 +44,8 @@ For frontend development or updates, refer to the contents of the templates in F
 Data scraping and model training scripts are available for data processing and analysis.
 
 # Contributors:
-Niall Mckay
-Nathan Power
+Niall Mckay,
+Nathan Power,
 Brian McMahon
 
 Thank you for visiting our repository! If you have any questions or feedback, feel free to reach out to us. Happy coding!
