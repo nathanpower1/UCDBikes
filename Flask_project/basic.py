@@ -3,6 +3,8 @@ from flask import Flask, jsonify, request, url_for, render_template,send_file
 import sql_puller
 import prediction_by_station
 import numpy as np
+import pandas as pd
+import json
 #create an istance of the Flask class called app
 app = Flask(__name__)
 
@@ -15,12 +17,13 @@ def get_day_int(x):
     return int(y[x])
 
 def round(n,x): 
-    # Smaller multiple 
-    a = (n // x) * x
-    # Larger multiple 
-    b = a + x
-    # Return of closest of two 
-    return (b if n - a > b - n else a)
+    return ((n + 2) // 3) * 3
+
+def hours_from_string(time_string):
+    # Extract the first two characters (hours part) and convert to integer
+    hours = int(time_string[:2])
+    return hours
+
 
 
 #create a base route and an index route
@@ -31,9 +34,9 @@ def index():
 
 #This route allows you to pass variable into the python function below
 #i.e. http/ec2_xxx.xxx.xxx./index/5 will call the below root and pass 5 as the number argument
-@app.route('/index/<number>')
+@app.route('/index/')
 def index_station(number):
-    return render_template('index.html',data = func(df,int(number)), station_number = number)
+    return render_template('index.html')
 
 #changes: need to align days and hours more clearly  only some days work
 #changes: pull weather from sql not from api
@@ -42,10 +45,18 @@ def index_station(number):
 def predict_station(hour,day,station_number):
     print("Hour",hour,"day",day,"station#",station_number)
     day_int = get_day_int(day)
-    hour_int = int(round(int(hour),3))
+    hour_int = int(round(int(hours_from_string(hour)),3))
     station_int = int(station_number)
-    weather_data = prediction_by_station.get_forecast_data()
-    prediction = prediction_by_station.run_prediction(day_int,hour_int,weather_data,station_int)
+    # weather_data = prediction_by_station.get_forecast_data()
+    try:
+        weather_data = json.loads(sql_puller.sql_data(f"call dublinbikes.forecast_weather();"))
+        forecast_df = pd.DataFrame(weather_data)
+        forecast_df['Day'] = forecast_df['Day'].astype('category')
+        forecast_df['Hour'] = forecast_df['Hour'].astype('category')
+        forecast_df['main'] = forecast_df['main'].astype('category')
+    except Exception as e:
+        return str(e), 500
+    prediction = prediction_by_station.run_prediction(day_int,hour_int,forecast_df,station_int)
     # return prediction,weather_data
     return '{"Number of Bikes":'+str(prediction)+'}'
 
@@ -116,8 +127,19 @@ def get_json_weather():
 ############### Data/JSON routes ###############
 ################################################
     
-#if in correct environment run the website on port 5000
+# #if in correct environment run the website on port 5000
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
 
 #sudo fuser -k 5000/tcp #command kills port 5000 in case website left running
+# x = [6,9,12,15,18,21]
+# x1 = [3,3,3,3,3,3]
+# # print(x)
+# z = map(round,x,x1)
+# y = [i*+1 for i in range(25)]
+# # print(y)
+# weatherasd = prediction_by_station.get_forecast_data()
+# for i in z:
+#     for j in y:
+#         # print(i,j)
+#         print(f"Prediction for bike station {j} at time {i} lknlkm{prediction_by_station.run_prediction(3,i,weatherasd,j)}")
