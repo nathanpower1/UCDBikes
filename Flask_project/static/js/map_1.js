@@ -126,11 +126,30 @@ async function updateWeatherAndDateInfo() {
         case 'Rain':
           weatherIcon.classList.add('fa-cloud-showers-heavy'); // Add rain icon for rainy weather
           break;
-        // Add more cases for other weather conditions as needed
+        case 'Drizzle':
+          weatherIcon.classList.add('fa-cloud-rain'); // Add cloud rain icon for drizzle
+          break;
+        case 'Thunderstorm':
+          weatherIcon.classList.add('fa-bolt'); // Add bolt icon for thunderstorm
+          break;
+        case 'Snow':
+          weatherIcon.classList.add('fa-snowflake'); // Add snowflake icon for snowy weather
+          break;
+        case 'Mist':
+        case 'Fog':
+          weatherIcon.classList.add('fa-smog'); // Add smog icon for misty or foggy weather
+          break;
+        case 'Smoke':
+          weatherIcon.classList.add('fa-smoke'); // Add smoke icon for smoky weather
+          break;
+        case 'Haze':
+          weatherIcon.classList.add('fa-smog'); // Add smog icon for hazy weather
+          break;
         default:
           weatherIcon.classList.add('fa-question'); // Default icon for unknown weather conditions
           break;
       }
+      
       // Append the weather icon to the weather info container
       weatherInfoContainer.appendChild(weatherIcon);
     } else {
