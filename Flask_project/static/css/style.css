@@ -491,13 +491,22 @@ p{
    flex: 1;
 }
 
-#who .who-img{
-   background: url('../images/people.jpg') no-repeat center center/cover;
+/* #who .who-img{
+   /* background: url('../images/people.jpg') no-repeat center center/cover; 
+   
+} */
+
+#who-img{
+   /* background: url('../images/people.jpg') no-repeat center center/cover; */
+   text-align: center;
+   /* align-items: center; */
+   background: rgb(147,203,82);
+   background: linear-gradient(45deg, rgba(147,203,82,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 #who .who-text{
    padding: 1.5rem;
-   background-color: #333333;
+   background-color: #333333ce;
    color: #ffffff;
 }
 #who .who-text ul{
@@ -527,7 +536,11 @@ p{
    z-index: 1;
  }
 
- 
+ #headshots{
+   border-color: #050800;
+   border-radius: 50%;
+   background-color: #ffffff;
+ }
 /* #info-box {
    width: 30%;
    float: left;
