@@ -538,6 +538,9 @@ p{
    border-radius: 50%;
    background-color: #ffffff;
  }
+ #main_section{
+   margin-bottom: 10px;
+ }
 /* #info-box {
    width: 30%;
    float: left;
