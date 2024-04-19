@@ -44,8 +44,6 @@ def insert_data(df):
             cursor.execute(sql, data)
             connection.commit()
             logging.info("Data inserted successfully.")
-            cursor.close()
-            connection.close()
         except mysql.connector.Error as err:
             logging.error(f"Error inserting data: {err}")
 
