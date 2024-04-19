@@ -217,7 +217,9 @@ async function initMap() {
 const daysArray = days_to_display.map(number => numberToDay[number]);
   const hours_dropdown = ['05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','24:00'];
   const days_dropdown = daysArray
-  const stations_dropdown = Array.from({length: 117}, (_, i) => i + 1)
+  //just define explicit list as some stataions have closed 46,70,81
+  // const stations_dropdown = Array.from({length: 117}, (_, i) => i + 1)
+  const stations_dropdown = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117]
   console.log(currentday,days_to_display,daysArray)
 // fill dropdows
   //hours dropdown
