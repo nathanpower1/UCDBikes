@@ -1,6 +1,10 @@
 # Dublin Bikes Application
 Welcome to the Dublin Bikes Application repository! This repository contains the source code and relevant files for our Dublin Bikes web application project. Below is a brief overview of the files and directories included in this repository:
 
+## Project Description
+
+The project is focused on developing a comprehensive web application that enhances the experience of DublinBikes users by providing them with valuable insights, real-time information, and interactive features. Leveraging the JCDecaux API for data collection and storage on an RDS DB on AWS, the application aims to offer users a seamless and intuitive platform for navigating the DublinBikes network.
+
 ![image](https://github.com/Niallmckayy/UCDBikes/assets/143412613/bf9d6db6-e006-4e42-af1c-4c0883cd9d25)
 
 ## Runthrough
