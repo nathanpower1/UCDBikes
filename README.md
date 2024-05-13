@@ -37,10 +37,6 @@ To run the Flask backend, navigate to the Flask_project directory and execute th
 The prediction_by_station.py script can be used to generate predictions for bike availability by station.
 The sql_puller.py script facilitates pulling data from the SQL database for analysis or processing.
 
-### map_design_23_02: 
-This directory holds design files and assets related to the map interface design, last updated on February 23rd.
-### pkl: 
-This directory contains pickle files used for data serialization.
 ### AvailabilityScraper.py:
 Python script for scraping availability data.
 ### Dump20240415.sql: 
@@ -51,20 +47,8 @@ You are currently reading this file! It provides an overview of the repository c
 Python script for the Random Forest model.
 ### check_static_data.py:
 Python script for checking static data.
-### crontab_dynamicscraper.txt: 
-Crontab file for scheduling the dynamic data scraper.
 ### dailyWeatherForecast.py: 
 Python script for fetching daily weather forecasts.
-### dataScraper.py: 
-Python script for scraping data.
-### dublinbikes.sql: 
-SQL file for the Dublin Bikes database.
-### dublinbikes_dump110424.sql: 
-SQL dump file.
-### dynamicDataScraper.py: 
-Python script for scraping dynamic data.
-### front_end_1_16_Feb.zip: 
-Zip file containing the inital test frontend files, last updated on February 16th.
 ### historicalWeatherData.py: 
 Python script for fetching historical weather data.
 ### missing_timestamps_unique.pkl: 
