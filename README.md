@@ -1,6 +1,8 @@
 # Dublin Bikes Application
 Welcome to the Dublin Bikes Application repository! This repository contains the source code and relevant files for our Dublin Bikes web application project. Below is a brief overview of the files and directories included in this repository:
 
+![image](https://github.com/Niallmckayy/UCDBikes/assets/143412613/bf9d6db6-e006-4e42-af1c-4c0883cd9d25)
+
 ## Runthrough
 
 https://youtu.be/S0UQt1eIAOk
