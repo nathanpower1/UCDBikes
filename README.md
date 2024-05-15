@@ -11,6 +11,12 @@ The project is focused on developing a comprehensive web application that enhanc
 
 https://youtu.be/S0UQt1eIAOk
 
+## Features 
+* Display bike stations and occupancy information on a map. Each bike station is a marker on the map, with its color ranges from red (no available bike) to orange (very few available bikes) to green (many available bikes). When clicking on the marker (in the shape of bike), user can see some information on the info window.
+* Show current weather in nav bar, and historical average availability of bikes (for each day of week and by hour in the same weekday) shows up on the sidebar.
+* Predict available bikes when user choose a stand, what time and what day of week, they can get the prediction of available bikes for that time.
+* Find nearest station with availabke bikes when user clicks on their location on the map. Location info for both user and nearest station is shown in sidebar. User Location is shown on the map and closest station with bikes available is marked on map also. 
+
 
 ## Files:
 ## Flask_project: 
